@@ -1,0 +1,339 @@
+/* ================= ABOUT PAGE ================= */
+
+.about-page {
+  min-height: 100vh;
+  background-color: #f8fafc;
+  color: #1f2937;
+  font-family: Arial, sans-serif;
+}
+
+
+/* ================= NAVBAR ================= */
+
+.about-navbar {
+  height: 70px;
+  padding: 0 8%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #ffffff;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.about-logo {
+  font-size: 24px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  color: #2563eb;
+}
+
+.about-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.about-nav-links button {
+  border: none;
+  background: transparent;
+
+  padding: 10px 16px;
+
+  font-size: 15px;
+
+  cursor: pointer;
+
+  color: #374151;
+
+  border-radius: 6px;
+}
+
+.about-nav-links button:hover {
+  background: #eff6ff;
+
+  color: #2563eb;
+}
+
+.about-nav-links .active-link {
+  background: #2563eb;
+
+  color: white;
+}
+
+
+/* ================= HERO ================= */
+
+.about-hero {
+  padding: 90px 20px;
+
+  text-align: center;
+
+  background: linear-gradient(
+    135deg,
+    #eff6ff,
+    #ffffff
+  );
+}
+
+.about-small-title {
+  margin-bottom: 15px;
+
+  color: #2563eb;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+.about-hero h1 {
+  margin-bottom: 20px;
+
+  font-size: 48px;
+
+  line-height: 1.2;
+
+  color: #111827;
+}
+
+.about-hero-text {
+  max-width: 750px;
+
+  margin: 0 auto;
+
+  color: #6b7280;
+
+  font-size: 17px;
+
+  line-height: 1.7;
+}
+
+.about-explore-btn {
+  margin-top: 30px;
+
+  padding: 14px 30px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #2563eb;
+
+  color: white;
+
+  font-size: 16px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.about-explore-btn:hover {
+  background: #1d4ed8;
+
+  transform: translateY(-2px);
+}
+
+
+/* ================= CONTENT ================= */
+
+.about-content {
+  padding: 80px 8%;
+}
+
+.about-heading {
+  max-width: 700px;
+
+  margin: 0 auto 50px;
+
+  text-align: center;
+}
+
+.about-heading p {
+  margin-bottom: 10px;
+
+  color: #2563eb;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+.about-heading h2 {
+  margin-bottom: 15px;
+
+  font-size: 36px;
+
+  color: #111827;
+}
+
+.about-heading span {
+  color: #6b7280;
+
+  line-height: 1.6;
+
+  font-size: 16px;
+}
+
+
+/* ================= CARDS ================= */
+
+.about-cards {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+.about-card {
+  padding: 35px 30px;
+
+  background: white;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 5px 20px
+    rgba(0, 0, 0, 0.08);
+
+  transition: 0.3s;
+}
+
+.about-card:hover {
+  transform: translateY(-7px);
+
+  box-shadow:
+    0 12px 30px
+    rgba(0, 0, 0, 0.12);
+}
+
+.about-icon {
+  font-size: 35px;
+}
+
+.about-card h3 {
+  margin: 18px 0 10px;
+
+  font-size: 21px;
+
+  color: #111827;
+}
+
+.about-card p {
+  color: #6b7280;
+
+  line-height: 1.7;
+}
+
+
+/* ================= MISSION ================= */
+
+.mission-section {
+  max-width: 950px;
+
+  margin: 80px auto 0;
+
+  padding: 60px 40px;
+
+  text-align: center;
+
+  background: #ffffff;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 5px 25px
+    rgba(0, 0, 0, 0.07);
+}
+
+.mission-small-title {
+  margin-bottom: 12px;
+
+  color: #2563eb;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+.mission-section h2 {
+  margin-bottom: 18px;
+
+  font-size: 34px;
+
+  color: #111827;
+}
+
+.mission-section p:last-child {
+  max-width: 750px;
+
+  margin: auto;
+
+  color: #6b7280;
+
+  font-size: 16px;
+
+  line-height: 1.8;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+  .about-navbar {
+    height: auto;
+
+    padding: 20px;
+
+    flex-direction: column;
+
+    gap: 15px;
+  }
+
+  .about-nav-links {
+    flex-wrap: wrap;
+
+    justify-content: center;
+  }
+
+  .about-hero {
+    padding: 65px 20px;
+  }
+
+  .about-hero h1 {
+    font-size: 34px;
+  }
+
+  .about-content {
+    padding: 60px 20px;
+  }
+
+  .about-heading h2 {
+    font-size: 30px;
+  }
+
+  .about-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .mission-section {
+    margin-top: 50px;
+
+    padding: 40px 20px;
+  }
+
+  .mission-section h2 {
+    font-size: 28px;
+  }
+
+}
