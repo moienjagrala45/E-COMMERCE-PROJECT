@@ -40,7 +40,7 @@ function AdminProducts() {
 
         const response =
           await fetch(
-            "http://192.168.0.101:5000/api/products"
+            "https://e-commerce-project-backend-pvdz.onrender.com/api/products"
           );
 
         const data =
@@ -135,7 +135,7 @@ function AdminProducts() {
 
         const response =
           await fetch(
-            `http://192.168.0.101:5000/api/products/${id}`,
+            `https://e-commerce-project-backend-pvdz.onrender.com/api/products/${id}`,
             {
               method: "DELETE",
 

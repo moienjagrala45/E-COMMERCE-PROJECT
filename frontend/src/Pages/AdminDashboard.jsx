@@ -66,7 +66,7 @@ function AdminDashboard() {
       }
 
       const response = await fetch(
-        "http://192.168.0.101:5000/api/admin/stats",
+        "https://e-commerce-project-backend-pvdz.onrender.com/api/admin/stats",
         {
           headers: {
             Authorization:
@@ -395,4 +395,4 @@ function AdminDashboard() {
   );
 }
 
-export default AdminDashboard;
+export default AdminDashboard;z

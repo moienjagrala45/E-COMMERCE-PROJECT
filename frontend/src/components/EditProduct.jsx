@@ -29,7 +29,7 @@ function EditProduct() {
     const fetchProduct = async () => {
       try {
         const response = await fetch(
-          "http://192.168.0.101:5000/api/products/${id}"
+          "https://e-commerce-project-backend-pvdz.onrender.com/api/products/${id}"
         );
 
         const data = await response.json();
@@ -77,7 +77,7 @@ function EditProduct() {
 
     try {
       const response = await fetch(
-        `http://192.168.0.101:5000/api/products/${id}`,
+        `https://e-commerce-project-backend-pvdz.onrender.com/api/products/${id}`,
         {
           method: "PUT",
 

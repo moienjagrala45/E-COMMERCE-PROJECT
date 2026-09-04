@@ -20,7 +20,7 @@ function AdminOrders() {
       );
 
       const response = await fetch(
-        "http://192.168.0.101:5000/api/orders/admin/all",
+        "https://e-commerce-project-backend-pvdz.onrender.com/api/orders/admin/all",
         {
           headers: {
             Authorization: `Bearer ${adminToken}`,
@@ -74,7 +74,7 @@ function AdminOrders() {
       );
 
       const response = await fetch(
-        "http://192.168.0.101:5000/api/orders/${orderId}/status",
+        "https://e-commerce-project-backend-pvdz.onrender.com/api/orders/${orderId}/status",
         {
           method: "PUT",
 

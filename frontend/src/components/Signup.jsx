@@ -42,7 +42,7 @@ function Signup() {
 
     try {
       const response = await fetch(
-        "http://192.168.0.101:5000/api/users/register",
+        "https://e-commerce-project-backend-pvdz.onrender.com/api/users/register",
         {
           method: "POST",
 
