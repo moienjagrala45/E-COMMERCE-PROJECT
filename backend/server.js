@@ -28,24 +28,11 @@ const app = express();
 
 // ================= MIDDLEWARE =================
 
+// ================= MIDDLEWARE =================
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://e-commerce-project-frontend-m5o2.onrender.com"
-    ],
-    
-    methods: [
-      "GET",
-      "POST",
-      "PUT",
-      "DELETE",
-      "OPTIONS",
-    ],
-    allowedHeaders: [
-      "Content-Type",
-      "Authorization",
-    ],
+    origin: "*",
   })
 );
 
