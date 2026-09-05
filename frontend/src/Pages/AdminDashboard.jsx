@@ -66,7 +66,7 @@ function AdminDashboard() {
       }
 
       const response = await fetch(
-        "https://e-commerce-project-backend-pvdz.onrender.com/api/admin/stats",
+        "https://e-commerce-project-backend-vpdz.onrender.com/api/admin/stats",
         {
           headers: {
             Authorization:

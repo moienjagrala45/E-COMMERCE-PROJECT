@@ -20,7 +20,7 @@ function AdminUsers() {
       );
 
       const response = await fetch(
-        "https://e-commerce-project-backend-pvdz.onrender.com/api/users/admin/all",
+        "https://e-commerce-project-backend-vpdz.onrender.com/api/users/admin/all",
         {
           headers: {
             Authorization: `Bearer ${adminToken}`,

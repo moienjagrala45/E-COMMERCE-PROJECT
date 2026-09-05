@@ -34,7 +34,7 @@ function AddProduct() {
 
     try {
       const response = await fetch(
-        "https://e-commerce-project-backend-pvdz.onrender.com/api/products",
+        "https://e-commerce-project-backend-vpdz.onrender.com/api/products",
         {
           method: "POST",
 

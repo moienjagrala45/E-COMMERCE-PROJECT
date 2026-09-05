@@ -39,7 +39,7 @@ function Checkout() {
     useState(false);
 
   const API_URL =
-    "https://e-commerce-project-backend-pvdz.onrender.com";
+    "https://e-commerce-project-backend-vpdz.onrender.com";
 
 
   /* ================= LOAD CART ITEMS ================= */
