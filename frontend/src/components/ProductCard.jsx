@@ -1,10 +1,21 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
 
 function ProductCard({ product }) {
   const { addToCart } = useContext(CartContext);
+  const [stockMessage, setStockMessage] = useState("");
 
   const handleAddToCart = () => {
+    // Check product stock before adding to cart
+    if (
+      product.stock !== undefined &&
+      Number(product.stock) <= 0
+    ) {
+      setStockMessage("Product is out of stock");
+      return;
+    }
+
+    setStockMessage("");
     addToCart(product);
   };
 
@@ -26,6 +37,18 @@ function ProductCard({ product }) {
         <p className="product-price">
           ₹{product.price}
         </p>
+
+        {stockMessage && (
+          <p
+            style={{
+              color: "red",
+              fontWeight: "bold",
+              margin: "10px 0",
+            }}
+          >
+            ❌ {stockMessage}
+          </p>
+        )}
 
         <button
           className="add-cart-btn"
