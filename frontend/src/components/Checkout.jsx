@@ -42,12 +42,12 @@ function Checkout() {
     "https://e-commerce-project-backend-vpdz.onrender.com";
 
 
-  /* ================= LOAD CART ITEMS ================= */
+  /* =====================================================
+     LOAD CART ITEMS
+  ===================================================== */
 
   useEffect(() => {
-
     try {
-
       const savedCheckoutItems =
         JSON.parse(
           localStorage.getItem(
@@ -60,38 +60,32 @@ function Checkout() {
         Array.isArray(savedCheckoutItems) &&
         savedCheckoutItems.length > 0
       ) {
-
         setCheckoutItems(
           savedCheckoutItems
         );
-
       } else if (
         cartItems &&
         cartItems.length > 0
       ) {
-
         setCheckoutItems(
           cartItems
         );
-
       }
 
     } catch (error) {
-
       console.error(
         "Checkout items error:",
         error
       );
-
     }
-
   }, [cartItems]);
 
 
-  /* ================= LOAD ADDRESS ================= */
+  /* =====================================================
+     LOAD SAVED ADDRESS
+  ===================================================== */
 
   useEffect(() => {
-
     const loadAddress =
       async () => {
 
@@ -103,11 +97,8 @@ function Checkout() {
             );
 
           if (!token) {
-
             navigate("/login");
-
             return;
-
           }
 
           const response =
@@ -152,7 +143,6 @@ function Checkout() {
             setPincode(
               data.address.pincode || ""
             );
-
           }
 
         } catch (error) {
@@ -163,16 +153,65 @@ function Checkout() {
           );
 
         }
-
       };
-
 
     loadAddress();
 
   }, [navigate]);
 
 
-  /* ================= PLACE ORDER ================= */
+  /* =====================================================
+     LOAD RAZORPAY SCRIPT
+  ===================================================== */
+
+  const loadRazorpayScript =
+    () => {
+
+      return new Promise(
+        (resolve) => {
+
+          const existingScript =
+            document.getElementById(
+              "razorpay-checkout-script"
+            );
+
+          if (existingScript) {
+            resolve(true);
+            return;
+          }
+
+          const script =
+            document.createElement(
+              "script"
+            );
+
+          script.id =
+            "razorpay-checkout-script";
+
+          script.src =
+            "https://checkout.razorpay.com/v1/checkout.js";
+
+          script.onload =
+            () => {
+              resolve(true);
+            };
+
+          script.onerror =
+            () => {
+              resolve(false);
+            };
+
+          document.body.appendChild(
+            script
+          );
+        }
+      );
+    };
+
+
+  /* =====================================================
+     PLACE ORDER + RAZORPAY PAYMENT
+  ===================================================== */
 
   const handlePlaceOrder =
     async (e) => {
@@ -181,6 +220,10 @@ function Checkout() {
 
       setMessage("");
 
+
+      /* =============================================
+         VALIDATE DELIVERY DETAILS
+      ============================================= */
 
       if (
         !fullName.trim() ||
@@ -196,22 +239,40 @@ function Checkout() {
         );
 
         return;
-
       }
 
+
+      /* =============================================
+         CHECK TOKEN
+      ============================================= */
 
       const token =
         localStorage.getItem(
           "token"
         );
 
-
       if (!token) {
 
         navigate("/login");
 
         return;
+      }
 
+
+      /* =============================================
+         CHECK CART
+      ============================================= */
+
+      if (
+        !checkoutItems ||
+        checkoutItems.length === 0
+      ) {
+
+        setMessage(
+          "Your cart is empty."
+        );
+
+        return;
       }
 
 
@@ -220,9 +281,30 @@ function Checkout() {
 
       try {
 
-        const response =
+        /* =========================================
+           LOAD RAZORPAY CHECKOUT
+        ========================================= */
+
+        const razorpayLoaded =
+          await loadRazorpayScript();
+
+        if (!razorpayLoaded) {
+
+          setMessage(
+            "Razorpay failed to load. Please check your internet connection."
+          );
+
+          return;
+        }
+
+
+        /* =========================================
+           CREATE RAZORPAY ORDER
+        ========================================= */
+
+        const paymentResponse =
           await fetch(
-            `${API_URL}/api/orders`,
+            `${API_URL}/api/payments/create-order`,
             {
 
               method:
@@ -242,7 +324,6 @@ function Checkout() {
                 JSON.stringify({
 
                   items:
-
                     checkoutItems.map(
                       (item) => ({
 
@@ -255,110 +336,380 @@ function Checkout() {
                       })
                     ),
 
-                  shippingAddress: {
-
-                    fullName:
-                      fullName.trim(),
-
-                    phone:
-                      phone.trim(),
-
-                    address:
-                      address.trim(),
-
-                    city:
-                      city.trim(),
-
-                    state:
-                      state.trim(),
-
-                    pincode:
-                      pincode.trim(),
-
-                  },
-
                 }),
 
             }
           );
 
 
-        const data =
-          await response.json();
+        const paymentData =
+          await paymentResponse.json();
 
 
         console.log(
-          "ORDER RESPONSE:",
-          data
+          "RAZORPAY ORDER RESPONSE:",
+          paymentData
         );
 
 
-        if (!response.ok) {
+        if (!paymentResponse.ok) {
 
           setMessage(
-            data.message ||
-            "Failed to place order."
+            paymentData.message ||
+            "Failed to create payment order."
           );
 
           return;
-
         }
 
 
-        const createdOrder =
-          data.order;
+        /* =========================================
+           OPEN RAZORPAY CHECKOUT
+        ========================================= */
+
+        const options = {
+
+          key:
+            paymentData.keyId,
+
+          amount:
+            paymentData.amount,
+
+          currency:
+            paymentData.currency,
+
+          name:
+            "ShopEase",
+
+          description:
+            "ShopEase Order Payment",
+
+          order_id:
+            paymentData.orderId,
+
+          prefill: {
+
+            name:
+              fullName.trim(),
+
+            contact:
+              phone.trim(),
+
+          },
+
+          notes: {
+
+            address:
+              `${address.trim()}, ${city.trim()}, ${state.trim()} - ${pincode.trim()}`,
+
+          },
 
 
-        /* ================= SAVE ORDER ================= */
+          /* =====================================
+             PAYMENT SUCCESS
+          ===================================== */
 
-        localStorage.setItem(
+          handler:
+            async function (
+              razorpayResponse
+            ) {
 
-          "latestOrder",
+              try {
 
-          JSON.stringify(
-            createdOrder
-          )
-
-        );
-
-
-        /* ================= CLEAR LOCAL CHECKOUT ================= */
-
-        localStorage.removeItem(
-          "checkoutItems"
-        );
+                setMessage(
+                  "Verifying payment..."
+                );
 
 
-        /* ================= CLEAR CART ================= */
+                /* =================================
+                   VERIFY PAYMENT
+                ================================= */
 
-        if (
-          typeof clearCart ===
-          "function"
-        ) {
+                const verifyResponse =
+                  await fetch(
+                    `${API_URL}/api/payments/verify`,
+                    {
 
-          clearCart();
+                      method:
+                        "POST",
 
-        }
+                      headers: {
+
+                        "Content-Type":
+                          "application/json",
+
+                        Authorization:
+                          `Bearer ${token}`,
+
+                      },
+
+                      body:
+                        JSON.stringify({
+
+                          razorpay_order_id:
+                            razorpayResponse.razorpay_order_id,
+
+                          razorpay_payment_id:
+                            razorpayResponse.razorpay_payment_id,
+
+                          razorpay_signature:
+                            razorpayResponse.razorpay_signature,
+
+                        }),
+
+                    }
+                  );
 
 
-        /* ================= GO TO SUCCESS ================= */
+                const verifyData =
+                  await verifyResponse.json();
 
-        navigate(
-          "/order-success",
-          {
 
-            replace:
-              true,
+                console.log(
+                  "PAYMENT VERIFY RESPONSE:",
+                  verifyData
+                );
 
-            state: {
 
-              order:
-                createdOrder,
+                if (!verifyResponse.ok) {
+
+                  setMessage(
+                    verifyData.message ||
+                    "Payment verification failed."
+                  );
+
+                  return;
+                }
+
+
+                /* =================================
+                   PAYMENT VERIFIED
+                   NOW CREATE SHOP EASE ORDER
+                ================================= */
+
+                setMessage(
+                  "Payment successful. Placing your order..."
+                );
+
+
+                const orderResponse =
+                  await fetch(
+                    `${API_URL}/api/orders`,
+                    {
+
+                      method:
+                        "POST",
+
+                      headers: {
+
+                        "Content-Type":
+                          "application/json",
+
+                        Authorization:
+                          `Bearer ${token}`,
+
+                      },
+
+                      body:
+                        JSON.stringify({
+
+                          items:
+
+                            checkoutItems.map(
+                              (item) => ({
+
+                                product:
+                                  item._id,
+
+                                quantity:
+                                  item.quantity || 1,
+
+                              })
+                            ),
+
+                          shippingAddress: {
+
+                            fullName:
+                              fullName.trim(),
+
+                            phone:
+                              phone.trim(),
+
+                            address:
+                              address.trim(),
+
+                            city:
+                              city.trim(),
+
+                            state:
+                              state.trim(),
+
+                            pincode:
+                              pincode.trim(),
+
+                          },
+
+                        }),
+
+                    }
+                  );
+
+
+                const orderData =
+                  await orderResponse.json();
+
+
+                console.log(
+                  "ORDER RESPONSE:",
+                  orderData
+                );
+
+
+                if (!orderResponse.ok) {
+
+                  setMessage(
+                    orderData.message ||
+                    "Payment succeeded but order could not be created."
+                  );
+
+                  return;
+                }
+
+
+                /* =================================
+                   SAVE ORDER
+                ================================= */
+
+                const createdOrder =
+                  orderData.order;
+
+
+                localStorage.setItem(
+                  "latestOrder",
+                  JSON.stringify(
+                    createdOrder
+                  )
+                );
+
+
+                /* =================================
+                   CLEAR CHECKOUT
+                ================================= */
+
+                localStorage.removeItem(
+                  "checkoutItems"
+                );
+
+
+                /* =================================
+                   CLEAR CART
+                ================================= */
+
+                if (
+                  typeof clearCart ===
+                  "function"
+                ) {
+
+                  clearCart();
+
+                }
+
+
+                /* =================================
+                   GO TO SUCCESS PAGE
+                ================================= */
+
+                navigate(
+                  "/order-success",
+                  {
+
+                    replace:
+                      true,
+
+                    state: {
+
+                      order:
+                        createdOrder,
+
+                    },
+
+                  }
+                );
+
+
+              } catch (error) {
+
+                console.error(
+                  "Payment verification error:",
+                  error
+                );
+
+                setMessage(
+                  "Payment verification failed. Please contact support."
+                );
+
+              }
 
             },
 
+
+          /* =====================================
+             PAYMENT FAILED
+          ===================================== */
+
+          modal: {
+
+            ondismiss:
+              function () {
+
+                setLoading(false);
+
+                setMessage(
+                  "Payment cancelled."
+                );
+
+              },
+
+          },
+
+          theme: {
+
+            color:
+              "#3399cc",
+
+          },
+
+        };
+
+
+        const razorpay =
+          new window.Razorpay(
+            options
+          );
+
+
+        razorpay.on(
+          "payment.failed",
+          function (
+            response
+          ) {
+
+            console.error(
+              "RAZORPAY PAYMENT FAILED:",
+              response
+            );
+
+            setMessage(
+              "Payment failed. Please try again."
+            );
+
+            setLoading(false);
+
           }
         );
+
+
+        razorpay.open();
 
 
       } catch (error) {
@@ -374,9 +725,7 @@ function Checkout() {
 
       } finally {
 
-        setLoading(
-          false
-        );
+        setLoading(false);
 
       }
 
@@ -388,7 +737,6 @@ function Checkout() {
     <section className="checkout-section">
 
       <div className="checkout-container">
-
 
         <div className="checkout-header">
 
@@ -419,7 +767,6 @@ function Checkout() {
 
 
           <div className="checkout-row">
-
 
             <div className="input-group">
 
@@ -462,7 +809,6 @@ function Checkout() {
 
             </div>
 
-
           </div>
 
 
@@ -487,7 +833,6 @@ function Checkout() {
 
 
           <div className="checkout-row">
-
 
             <div className="input-group">
 
@@ -529,7 +874,6 @@ function Checkout() {
               />
 
             </div>
-
 
           </div>
 
@@ -574,8 +918,8 @@ function Checkout() {
 
             {
               loading
-                ? "Placing Order..."
-                : "Place Order ✓"
+                ? "Opening Payment..."
+                : "Pay with Razorpay ✓"
             }
 
           </button>
@@ -588,7 +932,6 @@ function Checkout() {
     </section>
 
   );
-
 }
 
 export default Checkout;
