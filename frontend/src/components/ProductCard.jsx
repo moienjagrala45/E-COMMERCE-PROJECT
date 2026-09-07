@@ -3,20 +3,64 @@ import { CartContext } from "../context/CartContext";
 
 function ProductCard({ product }) {
   const { addToCart } = useContext(CartContext);
-  const [stockMessage, setStockMessage] = useState("");
 
-  const handleAddToCart = () => {
-    // Check product stock before adding to cart
-    if (
-      product.stock !== undefined &&
-      Number(product.stock) <= 0
-    ) {
-      setStockMessage("Product is out of stock");
-      return;
-    }
+  const [stockMessage, setStockMessage] = useState("");
+  const [checkingStock, setCheckingStock] = useState(false);
+
+  const handleAddToCart = async () => {
+    console.log("BUTTON CLICKED");
+    console.log("NEW PRODUCT CARD CODE RUNNING");
+    console.log("PRODUCT:", product);
 
     setStockMessage("");
-    addToCart(product);
+    setCheckingStock(true);
+
+    try {
+      // Get the latest product and stock from backend
+      const response = await fetch(
+        `https://e-commerce-project-backend-vpdz.onrender.com/api/products/${product._id}`,
+        {
+          cache: "no-store",
+        }
+      );
+
+      const latestProduct = await response.json();
+
+      console.log(
+        "LATEST PRODUCT FROM BACKEND:",
+        latestProduct
+      );
+
+      if (!response.ok) {
+        setStockMessage("Unable to check product stock");
+        return;
+      }
+
+      // Check stock
+      if (
+        latestProduct.stock === undefined ||
+        Number(latestProduct.stock) <= 0
+      ) {
+        console.log("PRODUCT IS OUT OF STOCK");
+
+        setStockMessage("Product is out of stock");
+        return;
+      }
+
+      // Stock available → add to cart
+      console.log("STOCK AVAILABLE - ADDING TO CART");
+
+      setStockMessage("");
+      addToCart(latestProduct);
+    } catch (error) {
+      console.error("Stock check error:", error);
+
+      setStockMessage(
+        "Unable to check product stock"
+      );
+    } finally {
+      setCheckingStock(false);
+    }
   };
 
   return (
@@ -53,8 +97,11 @@ function ProductCard({ product }) {
         <button
           className="add-cart-btn"
           onClick={handleAddToCart}
+          disabled={checkingStock}
         >
-          Add to Cart
+          {checkingStock
+            ? "Checking Stock..."
+            : "Add to Cart"}
         </button>
       </div>
     </div>
