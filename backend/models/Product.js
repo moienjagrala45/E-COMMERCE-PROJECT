@@ -26,6 +26,14 @@ const productSchema = new mongoose.Schema(
       trim: true,
     },
 
+    // PRODUCT STOCK
+    stock: {
+      type: Number,
+      required: true,
+      min: 0,
+      default: 1,
+    },
+
     // PRODUCT SHOW / HIDE
     isVisible: {
       type: Boolean,

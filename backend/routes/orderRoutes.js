@@ -140,7 +140,7 @@ router.post(
 
       /* =============================================
          CREATE ORDER ITEMS
-      ============================================= */
+===================================================== */
 
       let totalPrice = 0;
 
@@ -168,28 +168,6 @@ router.post(
 
 
         /* =========================================
-           FIND PRODUCT
-        ========================================= */
-
-        const product =
-          await Product.findById(
-            item.product
-          );
-
-
-        if (!product) {
-
-          return res.status(404).json({
-
-            message:
-              "Product not found",
-
-          });
-
-        }
-
-
-        /* =========================================
            QUANTITY
         ========================================= */
 
@@ -207,6 +185,64 @@ router.post(
 
             message:
               "Invalid quantity",
+
+          });
+
+        }
+
+
+        /* =========================================
+           ATOMIC STOCK CHECK + DEDUCTION
+
+           Only succeeds when enough stock exists.
+
+           Example:
+           stock = 1
+           quantity = 1
+
+           First request:
+           1 >= 1 → stock becomes 0 ✅
+
+           Second simultaneous request:
+           0 >= 1 → no update ❌
+        ========================================= */
+
+        const product =
+          await Product.findOneAndUpdate(
+
+            {
+              _id: item.product,
+
+              stock: {
+                $gte: quantity,
+              },
+
+            },
+
+            {
+              $inc: {
+                stock: -quantity,
+              },
+
+            },
+
+            {
+              new: true,
+            }
+
+          );
+
+
+        /* =========================================
+           PRODUCT NOT FOUND / OUT OF STOCK
+        ========================================= */
+
+        if (!product) {
+
+          return res.status(400).json({
+
+            message:
+              "Product is out of stock",
 
           });
 
