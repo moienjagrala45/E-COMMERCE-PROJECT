@@ -2,6 +2,15 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 
+
+// ================= ENV =================
+// IMPORTANT:
+// dotenv must load BEFORE importing routes
+// that use environment variables.
+
+dotenv.config();
+
+
 const connectDB = require("./config/db");
 
 const productRoutes = require("./routes/productRoutes");
@@ -9,11 +18,7 @@ const userRoutes = require("./routes/userRoutes");
 const cartRoutes = require("./routes/cartRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const adminRoutes = require("./routes/adminRoutes");
-
-
-// ================= ENV =================
-
-dotenv.config();
+const paymentRoutes = require("./routes/paymentRoutes");
 
 
 // ================= DATABASE =================
@@ -25,8 +30,6 @@ connectDB();
 
 const app = express();
 
-
-// ================= MIDDLEWARE =================
 
 // ================= MIDDLEWARE =================
 
@@ -88,6 +91,14 @@ app.use(
 );
 
 
+// ================= PAYMENT ROUTES =================
+
+app.use(
+  "/api/payments",
+  paymentRoutes
+);
+
+
 // ================= SERVER START =================
 
 const PORT =
@@ -97,6 +108,7 @@ app.listen(
   PORT,
   "0.0.0.0",
   () => {
+
     console.log(
       `Server running on port ${PORT}`
     );
@@ -108,5 +120,6 @@ app.listen(
     console.log(
       `Network backend: http://192.168.0.101:${PORT}`
     );
+
   }
 );
