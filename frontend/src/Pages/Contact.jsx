@@ -73,6 +73,12 @@ function Contact() {
           </button>
 
           <button
+            onClick={() => navigate("/products")}
+          >
+            Products
+          </button>
+
+          <button
             onClick={() => navigate("/about")}
           >
             About

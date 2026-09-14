@@ -283,24 +283,27 @@ function Cart() {
 
 
                   <button
-
                     type="button"
-
                     onClick={() =>
-
                       increaseQuantity(
                         item._id
                       )
-
                     }
-
+                    disabled={quantity >= 2}
+                    title={quantity >= 2 ? "Maximum 2 units allowed per product" : "Add more"}
+                    style={{
+                      opacity: quantity >= 2 ? 0.5 : 1,
+                      cursor: quantity >= 2 ? "not-allowed" : "pointer",
+                    }}
                   >
-
                     +
-
                   </button>
-
                 </div>
+                {quantity >= 2 && (
+                  <p style={{ color: "#dc2626", fontSize: "12px", fontWeight: "600", marginTop: "4px" }}>
+                    Max 2 units allowed
+                  </p>
+                )}
 
 
                 <p className="cart-item-total">

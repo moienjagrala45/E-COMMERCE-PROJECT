@@ -19,9 +19,8 @@ function OrderSuccess() {
   }
 
   const goToShop = () => {
-    navigate("/home", {
+    navigate("/products", {
       replace: true,
-      state: { scrollTo: "products" },
     });
   };
 

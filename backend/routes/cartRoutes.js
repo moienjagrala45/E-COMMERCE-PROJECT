@@ -42,13 +42,21 @@ router.post("/add", protect, async (req, res) => {
       );
 
       if (itemIndex > -1) {
-        // Product already in cart → increase quantity
-        cart.items[itemIndex].quantity += quantity || 1;
+        // Product already in cart → check 2 units limit
+        if (cart.items[itemIndex].quantity >= 2) {
+          return res.status(400).json({
+            message: "Maximum 2 units allowed per individual product. OUT OF STOCK.",
+          });
+        }
+        cart.items[itemIndex].quantity = Math.min(
+          cart.items[itemIndex].quantity + (quantity || 1),
+          2
+        );
       } else {
         // Add new product
         cart.items.push({
           product: productId,
-          quantity: quantity || 1,
+          quantity: Math.min(quantity || 1, 2),
         });
       }
     }
@@ -93,10 +101,10 @@ router.put("/update/:productId", protect, async (req, res) => {
     const { productId } = req.params;
     const { quantity } = req.body;
 
-    // Check quantity
-    if (!quantity || quantity < 1) {
+    // Check quantity: maximum 2 units per product
+    if (!quantity || quantity < 1 || quantity > 2) {
       return res.status(400).json({
-        message: "Quantity must be at least 1",
+        message: "Quantity must be between 1 and 2 units. OUT OF STOCK.",
       });
     }
 

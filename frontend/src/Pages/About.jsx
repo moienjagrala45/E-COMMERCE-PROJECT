@@ -23,7 +23,7 @@ function About() {
             Home
           </button>
 
-          <button onClick={() => navigate("/home")}>
+          <button onClick={() => navigate("/products")}>
             Products
           </button>
 
@@ -61,7 +61,7 @@ function About() {
 
         <button
           className="about-explore-btn"
-          onClick={() => navigate("/home")}
+          onClick={() => navigate("/products")}
         >
           Explore Products
         </button>

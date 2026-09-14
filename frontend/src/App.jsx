@@ -22,6 +22,7 @@ import OrderSuccess from "./components/OrderSuccess";
 
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
+import ProductsPage from "./Pages/ProductsPage";
 
 /* ================= ADMIN COMPONENTS ================= */
 
@@ -185,21 +186,9 @@ function Home() {
 
   /* ================= SHOP NOW ================= */
 
-  const goToProducts =
-    () => {
-
-      document
-        .getElementById(
-          "products"
-        )
-        ?.scrollIntoView({
-
-          behavior:
-            "smooth",
-
-        });
-
-    };
+  const goToProducts = () => {
+    navigate("/products");
+  };
 
 
   /* ================= LOGOUT ================= */
@@ -270,15 +259,13 @@ function Home() {
 
 
           <a
-            href="#products"
-
-            onClick={() =>
-              navigate("/home")
-            }
+            href="/products"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/products");
+            }}
           >
-
             Products
-
           </a>
 
 
@@ -431,78 +418,51 @@ function Home() {
       </section>
 
 
-      {/* ================= PRODUCTS SECTION ================= */}
+      {/* ================= FEATURED SHOWCASE ================= */}
 
-      <section
-        className="products-section"
-
-        id="products"
-      >
-
-
+      <section className="products-section" id="products">
         <div className="products-heading">
-
-
-          <p>
-
-            OUR PRODUCTS
-
+          <p>FEATURED COLLECTION</p>
+          <h2>Explore Our Store</h2>
+          <p style={{ color: "#64748b", marginTop: "8px", fontSize: "15px" }}>
+            Click Shop Now to view full product details, specs, and complete catalog.
           </p>
-
-
-          <h2>
-
-            Explore Our Products
-
-          </h2>
-
-
         </div>
 
-
-        {/* ================= LOADING ================= */}
+        <div style={{ textAlign: "center", margin: "20px 0 40px" }}>
+          <button
+            className="shop-btn"
+            onClick={() => navigate("/products")}
+            style={{ fontSize: "16px", padding: "16px 36px" }}
+          >
+            Open Dedicated Products Page →
+          </button>
+        </div>
 
         {loading ? (
-
-          <p className="loading-text">
-
-            Loading products...
-
-          </p>
-
+          <p className="loading-text">Loading featured items...</p>
         ) : products.length === 0 ? (
-
-          <p className="loading-text">
-
-            No products found.
-
-          </p>
-
+          <p className="loading-text">No products found.</p>
         ) : (
-
           <div className="products-grid">
-
-            {products.map(
-              (product) => (
-
-                <ProductCard
-                  key={
-                    product._id
-                  }
-
-                  product={
-                    product
-                  }
-                />
-
-              )
-            )}
-
+            {products.slice(0, 3).map((product) => (
+              <ProductCard
+                key={product._id || product.id}
+                product={product}
+              />
+            ))}
           </div>
-
         )}
 
-
+        <div style={{ textAlign: "center", marginTop: "40px" }}>
+          <button
+            className="shop-btn"
+            onClick={() => navigate("/products")}
+            style={{ background: "#4f46e5" }}
+          >
+            View All Products in Shop ({products.length || 9}) →
+          </button>
+        </div>
       </section>
 
 
@@ -596,6 +556,17 @@ function App() {
         }
       />
 
+      {/* ================= DEDICATED PRODUCTS / SHOP PAGE ================= */}
+
+      <Route
+        path="/products"
+        element={<ProductsPage />}
+      />
+
+      <Route
+        path="/shop"
+        element={<Navigate to="/products" replace />}
+      />
 
       {/* ================= CART ================= */}
 
