@@ -328,7 +328,7 @@ function Checkout() {
                       (item) => ({
 
                         product:
-                          item._id,
+                          item._id || item.product?._id || item.product,
 
                         quantity:
                           item.quantity || 1,
@@ -519,7 +519,7 @@ function Checkout() {
                               (item) => ({
 
                                 product:
-                                  item._id,
+                                  item._id || item.product?._id || item.product,
 
                                 quantity:
                                   item.quantity || 1,

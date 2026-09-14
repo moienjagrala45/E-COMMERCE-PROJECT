@@ -3,7 +3,7 @@ const crypto = require("crypto");
 
 const router = express.Router();
 
-const razorpay = require("../config/razorpay");
+const { razorpay, keyId, keySecret } = require("../config/razorpay");
 const Product = require("../models/Product");
 
 const { protect } = require("../middleware/authMiddleware");
@@ -117,7 +117,7 @@ router.post(
           true,
 
         keyId:
-          process.env.RAZORPAY_KEY_ID,
+          keyId,
 
         orderId:
           razorpayOrder.id,
@@ -137,11 +137,16 @@ router.post(
         error
       );
 
+      const errorMessage =
+        error.error?.description ||
+        error.description ||
+        error.message ||
+        "Failed to create Razorpay order";
+
       return res.status(500).json({
 
         message:
-          error.message ||
-          "Failed to create Razorpay order",
+          errorMessage,
 
       });
 
@@ -192,7 +197,7 @@ router.post(
         crypto
           .createHmac(
             "sha256",
-            process.env.RAZORPAY_KEY_SECRET
+            keySecret
           )
           .update(
             `${razorpay_order_id}|${razorpay_payment_id}`

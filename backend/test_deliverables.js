@@ -18,7 +18,7 @@ const crypto = require("crypto");
 const User = require("./models/User");
 const Product = require("./models/Product");
 const Order = require("./models/Order");
-const razorpay = require("./config/razorpay");
+const { razorpay, keyId, keySecret } = require("./config/razorpay");
 
 const { admin } = require("./middleware/adminMiddleware");
 
@@ -270,12 +270,12 @@ async function runTests() {
 
       const samplePaymentId = "pay_test123456789";
       const validSignature = crypto
-        .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
+        .createHmac("sha256", keySecret)
         .update(`${testRazorpayOrder.id}|${samplePaymentId}`)
         .digest("hex");
 
       const generatedSignature = crypto
-        .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
+        .createHmac("sha256", keySecret)
         .update(`${testRazorpayOrder.id}|${samplePaymentId}`)
         .digest("hex");
 
