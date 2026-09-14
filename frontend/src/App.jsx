@@ -3,6 +3,7 @@ import {
   Routes,
   Route,
   useNavigate,
+  useLocation,
   Navigate,
 } from "react-router-dom";
 
@@ -68,6 +69,35 @@ function Home() {
 
   const navigate =
     useNavigate();
+
+
+  const location =
+    useLocation();
+
+
+  useEffect(() => {
+
+    if (
+      location.state?.scrollTo ===
+      "products"
+    ) {
+
+      const productsSection =
+        document.getElementById(
+          "products"
+        );
+
+
+      productsSection?.scrollIntoView({
+        behavior:
+          "smooth",
+      });
+
+    }
+
+  }, [
+    location.state,
+  ]);
 
 
   /* ================= LOGGED IN USER ================= */

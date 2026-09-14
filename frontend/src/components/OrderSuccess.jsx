@@ -1,611 +1,180 @@
-import {
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
-
+import { useLocation, useNavigate } from "react-router-dom";
 
 function OrderSuccess() {
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const navigate =
-    useNavigate();
-
-
-  const location =
-    useLocation();
-
-
-  /* ========================================
-     GET ORDER
-  ======================================== */
-
-  let order =
-    location.state?.order;
-
-
-  /* ========================================
-     LOCALSTORAGE FALLBACK
-  ======================================== */
+  let order = location.state?.order;
 
   if (!order) {
-
-    const savedOrder =
-      localStorage.getItem(
-        "latestOrder"
-      );
-
+    const savedOrder = localStorage.getItem("latestOrder");
 
     if (savedOrder) {
-
       try {
-
-        order =
-          JSON.parse(
-            savedOrder
-          );
-
+        order = JSON.parse(savedOrder);
       } catch (error) {
-
-        console.error(
-          "Order parsing error:",
-          error
-        );
-
+        console.error("Order parsing error:", error);
       }
-
     }
-
   }
 
-
-  /* ========================================
-     NO ORDER
-  ======================================== */
+  const goToShop = () => {
+    navigate("/home", {
+      replace: true,
+      state: { scrollTo: "products" },
+    });
+  };
 
   if (!order) {
-
     return (
-
-      <section
-        className="order-success-page"
-      >
-
-        <div
-          className="order-success-card"
-        >
-
-          <div
-            className="success-header"
-          >
-
-            <div
-              className="success-icon"
-            >
-              ⚠️
-            </div>
-
-
-            <h1>
-              No Order Found
-            </h1>
-
-
-            <p>
-              No order details are available.
-            </p>
-
-          </div>
-
-
-          <button
-
-            className="continue-shopping-btn"
-
-            onClick={() =>
-              navigate(
-                "/home"
-              )
-            }
-
-          >
-
+      <section className="thankyou-page">
+        <div className="thankyou-card">
+          <div className="thankyou-badge">ShopEase</div>
+          <h1>We could not find this order</h1>
+          <p className="thankyou-lead">
+            Your payment may still be processing. Browse the store while we
+            keep your next favorites ready.
+          </p>
+          <button className="thankyou-shop-btn" onClick={goToShop}>
             Continue Shopping →
-
           </button>
-
         </div>
-
       </section>
-
     );
-
   }
 
+  const shippingAddress = order.shippingAddress || {};
 
-  /* ========================================
-     ORDER DATA
-  ======================================== */
+  let savedUserName = "";
 
-  const shippingAddress =
-    order.shippingAddress ||
-    {};
+  try {
+    savedUserName = JSON.parse(localStorage.getItem("user") || "{}")?.name;
+  } catch {
+    savedUserName = "";
+  }
 
+  const customerName =
+    shippingAddress.fullName || savedUserName || "there";
+  const firstName = String(customerName).trim().split(" ")[0];
 
-  const orderItems =
-    order.items ||
-    order.orderItems ||
-    [];
-
-
-  const totalPrice =
-    Number(
-
-      order.totalPrice ??
-
-      order.totalAmount ??
-
-      order.total ??
-
-      0
-
-    );
-
-
-  const orderStatus =
-    order.status ||
-    "Pending";
-
-
-  /* ========================================
-     GET PRODUCT NAME
-  ======================================== */
-
-  const getProductName =
-    (item) => {
-
-      if (
-        item.product?.name
-      ) {
-
-        return item.product.name;
-
-      }
-
-
-      if (
-        item.name
-      ) {
-
-        return item.name;
-
-      }
-
-
-      if (
-        item.productName
-      ) {
-
-        return item.productName;
-
-      }
-
-
-      return "Product";
-
-    };
-
-
-  /* ========================================
-     GET PRODUCT PRICE
-  ======================================== */
-
-  const getProductPrice =
-    (item) => {
-
-      return Number(
-
-        item.product?.price ??
-
-        item.price ??
-
-        0
-
-      );
-
-    };
-
-
-  /* ========================================
-     GET QUANTITY
-  ======================================== */
-
-  const getQuantity =
-    (item) => {
-
-      return Number(
-
-        item.quantity ??
-
-        item.qty ??
-
-        1
-
-      );
-
-    };
-
-
-  return (
-
-    <section
-      className="order-success-page"
-    >
-
-      <div
-        className="order-success-card"
-      >
-
-
-        {/* SUCCESS */}
-
-        <div
-          className="success-header"
-        >
-
-          <div
-            className="success-icon"
-          >
-            ✓
-          </div>
-
-
-          <h1>
-            Order Successful!
-          </h1>
-
-
-          <p>
-            Thank you for your order.
-          </p>
-
-
-          <p>
-            Your order has been placed successfully.
-          </p>
-
-        </div>
-
-
-        {/* ORDER ID */}
-
-        <div
-          className="success-info-box"
-        >
-
-          <span>
-            Order ID
-          </span>
-
-
-          <strong>
-
-            #
-
-            {
-              order._id ||
-              order.id ||
-              "N/A"
-            }
-
-          </strong>
-
-        </div>
-
-
-        {/* TOTAL */}
-
-        <div
-          className="success-info-box"
-        >
-
-          <span>
-            Total Amount
-          </span>
-
-
-          <strong
-            className="success-price"
-          >
-
-            ₹
-
-            {
-              totalPrice
-                .toFixed(2)
-            }
-
-          </strong>
-
-        </div>
-
-
-        {/* STATUS */}
-
-        <div
-          className="success-info-box"
-        >
-
-          <span>
-            Order Status
-          </span>
-
-
-          <strong
-            className="status-pending"
-          >
-
-            {orderStatus}
-
-          </strong>
-
-        </div>
-
-
-        {/* ORDER ITEMS */}
-
-        <div
-          className="order-products"
-        >
-
-          <h3>
-            🛍️ Order Items
-          </h3>
-
-
-          {
-            orderItems.length === 0
-
-              ? (
-
-                <p>
-                  No products found.
-                </p>
-
-              )
-
-              : (
-
-                orderItems.map(
-
-                  (
-                    item,
-                    index
-                  ) => {
-
-                    const name =
-                      getProductName(
-                        item
-                      );
-
-
-                    const price =
-                      getProductPrice(
-                        item
-                      );
-
-
-                    const quantity =
-                      getQuantity(
-                        item
-                      );
-
-
-                    const itemTotal =
-                      price *
-                      quantity;
-
-
-                    return (
-
-                      <div
-
-                        className="success-product"
-
-                        key={
-                          item._id ||
-                          item.product?._id ||
-                          index
-                        }
-
-                      >
-
-                        <div>
-
-                          <strong>
-                            {name}
-                          </strong>
-
-
-                          <p>
-
-                            Qty:{" "}
-
-                            {quantity}
-
-                          </p>
-
-                        </div>
-
-
-                        <strong>
-
-                          ₹
-
-                          {
-                            itemTotal
-                              .toFixed(2)
-                          }
-
-                        </strong>
-
-                      </div>
-
-                    );
-
-                  }
-
-                )
-
-              )
-          }
-
-        </div>
-
-
-        {/* ADDRESS */}
-
-        <div
-          className="delivery-address"
-        >
-
-          <h3>
-            📍 Delivery Address
-          </h3>
-
-
-          <p>
-
-            <strong>
-
-              {
-                shippingAddress.fullName ||
-                "Customer"
-              }
-
-            </strong>
-
-          </p>
-
-
-          {
-            shippingAddress.phone && (
-
-              <p>
-
-                📞{" "}
-
-                {
-                  shippingAddress.phone
-                }
-
-              </p>
-
-            )
-          }
-
-
-          {
-            shippingAddress.address && (
-
-              <p>
-
-                {
-                  shippingAddress.address
-                }
-
-              </p>
-
-            )
-          }
-
-
-          <p>
-
-            {
-              shippingAddress.city
-            }
-
-            {
-              shippingAddress.city &&
-              shippingAddress.state
-
-                ? ", "
-
-                : ""
-            }
-
-            {
-              shippingAddress.state
-            }
-
-          </p>
-
-
-          {
-            shippingAddress.pincode && (
-
-              <p>
-
-                Pincode:{" "}
-
-                {
-                  shippingAddress.pincode
-                }
-
-              </p>
-
-            )
-          }
-
-        </div>
-
-
-        {/* NOTE */}
-
-        <div
-          className="order-note"
-        >
-
-          <p>
-            📦 Your order is currently being processed.
-          </p>
-
-          <p>
-            🚚 You will receive delivery updates soon.
-          </p>
-
-          <p>
-            🧾 Keep your Order ID for future reference.
-          </p>
-
-        </div>
-
-
-        {/* BUTTON */}
-
-        <button
-
-          className="continue-shopping-btn"
-
-          onClick={() =>
-            navigate(
-              "/home"
-            )
-          }
-
-        >
-
-          Continue Shopping →
-
-        </button>
-
-
-      </div>
-
-    </section>
-
+  const totalPrice = Number(
+    order.totalPrice ?? order.totalAmount ?? order.total ?? 0
   );
 
-}
+  const orderId = order._id || order.id || "N/A";
+  const shortOrderId =
+    String(orderId).length > 10
+      ? `#${String(orderId).slice(-8).toUpperCase()}`
+      : `#${orderId}`;
 
+  const deliveryCity = [shippingAddress.city, shippingAddress.state]
+    .filter(Boolean)
+    .join(", ");
+
+  const estimatedDelivery = (() => {
+    const start = new Date();
+    start.setDate(start.getDate() + 4);
+    const end = new Date();
+    end.setDate(end.getDate() + 7);
+
+    const format = (date) =>
+      date.toLocaleDateString("en-IN", {
+        day: "numeric",
+        month: "short",
+      });
+
+    return `${format(start)} – ${format(end)}`;
+  })();
+
+  return (
+    <section className="thankyou-page">
+      <div className="thankyou-card">
+        <div className="thankyou-confetti" aria-hidden="true">
+          <span>✦</span>
+          <span>◆</span>
+          <span>✦</span>
+        </div>
+
+        <div className="thankyou-icon">✓</div>
+
+        <p className="thankyou-kicker">Payment confirmed</p>
+
+        <h1>
+          Thank you, {firstName}!
+        </h1>
+
+        <p className="thankyou-lead">
+          Your ShopEase order is confirmed and our team is already preparing
+          it with care. Sit back — we will handle packing, shipping, and
+          delivery updates from here.
+        </p>
+
+        <div className="thankyou-highlight">
+          <div>
+            <span>Order reference</span>
+            <strong>{shortOrderId}</strong>
+          </div>
+          <div>
+            <span>Amount paid</span>
+            <strong className="thankyou-amount">₹{totalPrice.toFixed(2)}</strong>
+          </div>
+        </div>
+
+        <div className="thankyou-journey">
+          <h2>What happens next</h2>
+
+          <ol>
+            <li>
+              <strong>We received your payment</strong>
+              <p>Your Razorpay payment was successful and the order is locked in.</p>
+            </li>
+            <li>
+              <strong>We pack it with care</strong>
+              <p>Items are checked, packed, and prepared to leave our warehouse.</p>
+            </li>
+            <li>
+              <strong>It is on the way</strong>
+              <p>
+                Expected delivery{deliveryCity ? ` to ${deliveryCity}` : ""}:{" "}
+                <em>{estimatedDelivery}</em>
+              </p>
+            </li>
+          </ol>
+        </div>
+
+        <div className="thankyou-perks">
+          <article>
+            <h3>Secure &amp; verified</h3>
+            <p>Your payment was processed securely through Razorpay.</p>
+          </article>
+          <article>
+            <h3>Easy returns</h3>
+            <p>Changed your mind? Reach us from Contact and we will help.</p>
+          </article>
+          <article>
+            <h3>We are here</h3>
+            <p>Questions about this order? Share your reference ID with support.</p>
+          </article>
+        </div>
+
+        <p className="thankyou-note">
+          Keep this order reference handy. You can always come back to ShopEase
+          to discover something new — we have more picks waiting for you.
+        </p>
+
+        <button className="thankyou-shop-btn" onClick={goToShop}>
+          Continue Shopping →
+        </button>
+
+        <button
+          className="thankyou-help-btn"
+          onClick={() => navigate("/contact")}
+        >
+          Need help with this order?
+        </button>
+      </div>
+    </section>
+  );
+}
 
 export default OrderSuccess;
