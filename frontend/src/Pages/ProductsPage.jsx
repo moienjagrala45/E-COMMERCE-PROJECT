@@ -13,9 +13,15 @@ function ProductsPage() {
 
   const [products, setProducts] = useState(EXISTING_STORE_PRODUCTS);
   const [loading, setLoading] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategory, setSelectedCategory] = useState(location.state?.category || "All");
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("default");
+
+  useEffect(() => {
+    if (location.state?.category) {
+      setSelectedCategory(location.state.category);
+    }
+  }, [location.state]);
 
   /* ================= TOTAL CART ITEMS ================= */
   const totalItems = cartItems.reduce(
