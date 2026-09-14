@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import "./Auth.css";
 
 function Auth({ initialTab = "login" }) {
   const [tab, setTab] = useState(initialTab); // "login" or "signup"
