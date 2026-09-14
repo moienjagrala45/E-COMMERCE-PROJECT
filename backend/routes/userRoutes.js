@@ -27,11 +27,26 @@ router.post("/register", async (req, res) => {
     } = req.body;
 
 
-    // Check required fields
-    if (!name || !email || !password) {
+    // Check required fields - ensure no empty or whitespace-only inputs
+    if (
+      !name ||
+      !name.toString().trim() ||
+      !email ||
+      !email.toString().trim() ||
+      !password ||
+      !password.toString().trim()
+    ) {
       return res.status(400).json({
         message:
-          "Name, email and password are required",
+          "Name, email, and password are required and cannot be empty",
+      });
+    }
+
+    // Minimum password length check
+    if (password.toString().trim().length < 6) {
+      return res.status(400).json({
+        message:
+          "Password must be at least 6 characters long",
       });
     }
 
@@ -39,7 +54,7 @@ router.post("/register", async (req, res) => {
     // Check existing user
     const userExists =
       await User.findOne({
-        email: email.toLowerCase(),
+        email: email.toString().trim().toLowerCase(),
       });
 
 
@@ -54,9 +69,9 @@ router.post("/register", async (req, res) => {
     // Create user
     const user =
       await User.create({
-        name,
-        email,
-        password,
+        name: name.toString().trim(),
+        email: email.toString().trim().toLowerCase(),
+        password: password.toString().trim(),
       });
 
 
@@ -144,7 +159,7 @@ router.post("/login", async (req, res) => {
     }
 
 
-    // Create JWT
+    // Create JWT with 1 day expiry
     const token =
       jwt.sign(
 
@@ -155,7 +170,7 @@ router.post("/login", async (req, res) => {
         process.env.JWT_SECRET,
 
         {
-          expiresIn: "7d",
+          expiresIn: "1d",
         }
 
       );

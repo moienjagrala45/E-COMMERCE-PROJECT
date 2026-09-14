@@ -23,13 +23,33 @@ function EditProduct() {
     useState("");
 
 
+  /* ================= CHECK ADMIN ================= */
+
+  useEffect(() => {
+    const adminToken = localStorage.getItem("adminToken");
+    const adminUser = localStorage.getItem("adminUser");
+    if (!adminToken || !adminUser) {
+      navigate("/admin");
+      return;
+    }
+    try {
+      const user = JSON.parse(adminUser);
+      if (user.role !== "admin") {
+        navigate("/admin");
+      }
+    } catch {
+      navigate("/admin");
+    }
+  }, [navigate]);
+
+
   /* ================= FETCH PRODUCT ================= */
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
         const response = await fetch(
-          "https://e-commerce-project-backend-vpdz.onrender.com/api/products/${id}"
+          `https://e-commerce-project-backend-vpdz.onrender.com/api/products/${id}`
         );
 
         const data = await response.json();
@@ -75,6 +95,25 @@ function EditProduct() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setMessage("");
+
+    if (!name.trim() || !category.trim() || !image.trim()) {
+      setMessage("Name, category, and image are required and cannot be empty.");
+      return;
+    }
+
+    const numPrice = Number(price);
+    if (isNaN(numPrice) || numPrice <= 0) {
+      setMessage("Price must be a number greater than 0.");
+      return;
+    }
+
+    const adminToken = localStorage.getItem("adminToken");
+    if (!adminToken) {
+      navigate("/admin");
+      return;
+    }
+
     try {
       const response = await fetch(
         `https://e-commerce-project-backend-vpdz.onrender.com/api/products/${id}`,
@@ -84,14 +123,16 @@ function EditProduct() {
           headers: {
             "Content-Type":
               "application/json",
+            Authorization:
+              `Bearer ${adminToken}`,
           },
 
           body: JSON.stringify({
-            name,
-            category,
-            price: Number(price),
-            image,
-            description,
+            name: name.trim(),
+            category: category.trim(),
+            price: numPrice,
+            image: image.trim(),
+            description: description.trim(),
           }),
         }
       );

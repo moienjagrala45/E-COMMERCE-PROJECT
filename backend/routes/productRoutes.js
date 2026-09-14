@@ -23,11 +23,55 @@ router.post(
   admin,
   async (req, res) => {
     try {
+      const { name, category, price, image } = req.body;
+
+      // Check required fields - no empty strings
+      if (
+        !name ||
+        !name.toString().trim() ||
+        !category ||
+        !category.toString().trim() ||
+        !image ||
+        !image.toString().trim()
+      ) {
+        return res.status(400).json({
+          message: "Name, category, and image are required and cannot be empty",
+        });
+      }
+
+      // Check price - must be a number greater than 0
+      const numPrice = Number(price);
+      if (
+        price === undefined ||
+        price === null ||
+        isNaN(numPrice) ||
+        numPrice <= 0
+      ) {
+        return res.status(400).json({
+          message: "Price must be a number greater than 0",
+        });
+      }
+
+      // Check stock if provided
+      let cleanStock = 1;
+      if (req.body.stock !== undefined) {
+        const numStock = Number(req.body.stock);
+        if (isNaN(numStock) || numStock < 0) {
+          return res.status(400).json({
+            message: "Stock must be a non-negative number",
+          });
+        }
+        cleanStock = numStock;
+      }
 
       const product =
         await Product.create({
           ...req.body,
-
+          name: name.toString().trim(),
+          category: category.toString().trim(),
+          price: numPrice,
+          image: image.toString().trim(),
+          stock: cleanStock,
           isVisible:
             req.body.isVisible !== undefined
               ? req.body.isVisible
@@ -163,6 +207,21 @@ router.put(
   admin,
   async (req, res) => {
     try {
+      if (req.body.price !== undefined) {
+        const numPrice = Number(req.body.price);
+        if (isNaN(numPrice) || numPrice <= 0) {
+          return res.status(400).json({
+            message: "Price must be a number greater than 0",
+          });
+        }
+        req.body.price = numPrice;
+      }
+
+      if (req.body.name !== undefined && !req.body.name.toString().trim()) {
+        return res.status(400).json({
+          message: "Product name cannot be empty",
+        });
+      }
 
       const product =
         await Product.findByIdAndUpdate(
@@ -170,6 +229,7 @@ router.put(
           req.body,
           {
             new: true,
+            runValidators: true,
           }
         );
 

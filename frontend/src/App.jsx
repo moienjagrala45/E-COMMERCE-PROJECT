@@ -3,6 +3,7 @@ import {
   Routes,
   Route,
   useNavigate,
+  Navigate,
 } from "react-router-dom";
 
 import "./App.css";
@@ -494,6 +495,29 @@ function Home() {
 }
 
 
+/* ================= ADMIN ROUTE GUARD ================= */
+
+function AdminRoute({ children }) {
+  const adminToken = localStorage.getItem("adminToken");
+  const adminUser = localStorage.getItem("adminUser");
+
+  if (!adminToken || !adminUser) {
+    return <Navigate to="/admin" replace />;
+  }
+
+  try {
+    const user = JSON.parse(adminUser);
+    if (user.role !== "admin") {
+      return <Navigate to="/admin" replace />;
+    }
+  } catch {
+    return <Navigate to="/admin" replace />;
+  }
+
+  return children;
+}
+
+
 /* =========================================================
    APP ROUTES
 ========================================================= */
@@ -613,7 +637,9 @@ function App() {
         path="/admin/dashboard"
 
         element={
-          <AdminDashboard />
+          <AdminRoute>
+            <AdminDashboard />
+          </AdminRoute>
         }
       />
 
@@ -624,7 +650,9 @@ function App() {
         path="/admin/products"
 
         element={
-          <AdminProduct />
+          <AdminRoute>
+            <AdminProduct />
+          </AdminRoute>
         }
       />
 
@@ -633,7 +661,9 @@ function App() {
         path="/admin/products/add"
 
         element={
-          <AddProduct />
+          <AdminRoute>
+            <AddProduct />
+          </AdminRoute>
         }
       />
 
@@ -642,7 +672,9 @@ function App() {
         path="/admin/products/edit/:id"
 
         element={
-          <EditProduct />
+          <AdminRoute>
+            <EditProduct />
+          </AdminRoute>
         }
       />
 
@@ -653,7 +685,9 @@ function App() {
         path="/admin/orders"
 
         element={
-          <AdminOrders />
+          <AdminRoute>
+            <AdminOrders />
+          </AdminRoute>
         }
       />
 
@@ -664,7 +698,9 @@ function App() {
         path="/admin/users"
 
         element={
-          <AdminUsers />
+          <AdminRoute>
+            <AdminUsers />
+          </AdminRoute>
         }
       />
 

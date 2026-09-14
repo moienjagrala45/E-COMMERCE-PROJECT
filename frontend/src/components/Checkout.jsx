@@ -527,6 +527,15 @@ function Checkout() {
                               })
                             ),
 
+                          paymentId:
+                            razorpayResponse.razorpay_payment_id,
+
+                          razorpayOrderId:
+                            razorpayResponse.razorpay_order_id,
+
+                          paymentMethod:
+                            "Razorpay",
+
                           shippingAddress: {
 
                             fullName:

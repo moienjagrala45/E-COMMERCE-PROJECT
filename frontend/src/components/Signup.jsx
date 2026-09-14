@@ -35,6 +35,22 @@ function Signup() {
 
     setMessage("");
 
+    if (
+      !firstName.trim() ||
+      !lastName.trim() ||
+      !email.trim() ||
+      !password.trim() ||
+      !confirmPassword.trim()
+    ) {
+      setMessage("All fields are required and cannot be empty spaces.");
+      return;
+    }
+
+    if (password.trim().length < 6) {
+      setMessage("Password must be at least 6 characters long.");
+      return;
+    }
+
     if (password !== confirmPassword) {
       setMessage("Passwords do not match");
       return;

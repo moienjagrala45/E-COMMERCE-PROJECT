@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function AddProduct() {
@@ -12,10 +12,46 @@ function AddProduct() {
 
   const [message, setMessage] = useState("");
 
+  // Admin authentication check on mount
+  useEffect(() => {
+    const adminToken = localStorage.getItem("adminToken");
+    const adminUser = localStorage.getItem("adminUser");
+    if (!adminToken || !adminUser) {
+      navigate("/admin");
+      return;
+    }
+    try {
+      const user = JSON.parse(adminUser);
+      if (user.role !== "admin") {
+        navigate("/admin");
+      }
+    } catch {
+      navigate("/admin");
+    }
+  }, [navigate]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     setMessage("");
+
+    // Check required fields - no empty or whitespace-only inputs
+    if (
+      !name.trim() ||
+      !category.trim() ||
+      !image.trim() ||
+      !description.trim()
+    ) {
+      setMessage("All fields are required and cannot be empty.");
+      return;
+    }
+
+    // Check price is a number greater than 0
+    const numPrice = Number(price);
+    if (isNaN(numPrice) || numPrice <= 0) {
+      setMessage("Price must be a number greater than 0.");
+      return;
+    }
 
     // Get admin token
     const adminToken =

@@ -32,6 +32,9 @@ router.post(
       const {
         items,
         shippingAddress,
+        paymentId,
+        razorpayOrderId,
+        paymentMethod,
       } = req.body;
 
 
@@ -299,7 +302,22 @@ router.post(
             totalPrice,
 
           status:
-            "Pending",
+            paymentId ? "Processing" : "Pending",
+
+          paymentMethod:
+            paymentMethod || "Razorpay",
+
+          paymentId:
+            paymentId || "",
+
+          razorpayOrderId:
+            razorpayOrderId || "",
+
+          isPaid:
+            Boolean(paymentId),
+
+          paidAt:
+            paymentId ? new Date() : null,
 
         });
 

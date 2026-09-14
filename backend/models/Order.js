@@ -130,6 +130,30 @@ const orderSchema = new mongoose.Schema(
 
     },
 
+    paymentMethod: {
+      type: String,
+      default: "Razorpay",
+    },
+
+    paymentId: {
+      type: String,
+      default: "",
+    },
+
+    razorpayOrderId: {
+      type: String,
+      default: "",
+    },
+
+    isPaid: {
+      type: Boolean,
+      default: false,
+    },
+
+    paidAt: {
+      type: Date,
+    },
+
   },
 
 
