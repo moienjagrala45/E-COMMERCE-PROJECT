@@ -328,19 +328,23 @@ function Home() {
           </button>
 
 
-          {/* LOGOUT BUTTON */}
+          {/* LOGIN / LOGOUT BUTTON */}
 
-          <button
-            className="logout-btn"
-
-            onClick={
-              handleLogout
-            }
-          >
-
-            Logout
-
-          </button>
+          {localStorage.getItem("token") ? (
+            <button
+              className="logout-btn"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          ) : (
+            <button
+              className="logout-btn"
+              onClick={() => navigate("/login")}
+            >
+              Login
+            </button>
+          )}
 
 
         </div>
@@ -523,9 +527,8 @@ function App() {
 
       <Route
         path="/"
-
         element={
-          <Login />
+          <Home />
         }
       />
 
