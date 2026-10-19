@@ -40,7 +40,10 @@ function AdminProducts() {
 
         const response =
           await fetch(
-            "https://e-commerce-project-backend-vpdz.onrender.com/api/products"
+            "https://e-commerce-project-backend-vpdz.onrender.com/api/products",
+            {
+              cache: "no-store",
+            }
           );
 
         const data =
@@ -285,16 +288,43 @@ function AdminProducts() {
               >
 
 
-                {/* PRODUCT IMAGE */}
+                {/* ================= PRODUCT IMAGE ================= */}
 
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="admin-product-image"
-                />
+                <div
+                  style={{
+                    width: "100%",
+                    height: "300px",
+                    backgroundColor: "#ffffff",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    overflow: "hidden",
+                    padding: "12px",
+                    boxSizing: "border-box",
+                  }}
+                >
+
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="admin-product-image"
+
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "contain",
+                      objectPosition: "center",
+                      display: "block",
+                      margin: "0",
+                      padding: "0",
+                      transform: "none",
+                    }}
+                  />
+
+                </div>
 
 
-                {/* PRODUCT INFO */}
+                {/* ================= PRODUCT INFO ================= */}
 
                 <div className="admin-product-info">
 
@@ -310,11 +340,13 @@ function AdminProducts() {
 
 
                   <p className="admin-product-price">
-                    ₹{product.price}
+                    ₹{Number(product.price).toLocaleString(
+                      "en-IN"
+                    )}
                   </p>
 
 
-                  {/* ACTION BUTTONS */}
+                  {/* ================= ACTION BUTTONS ================= */}
 
                   <div className="admin-product-actions">
 

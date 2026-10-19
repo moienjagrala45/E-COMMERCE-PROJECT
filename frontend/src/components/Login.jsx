@@ -5,7 +5,6 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-
   const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
@@ -60,78 +59,117 @@ function Login() {
   return (
     <section className="login-section">
 
-      <h2>Welcome Back</h2>
+      <div className="auth-card">
 
-      <p className="login-subtitle">
-        Login to continue shopping
-      </p>
+        <div className="auth-heading">
 
-      <form
-        className="login-form"
-        onSubmit={handleLogin}
-      >
+          <span className="auth-badge">
+            Welcome Back
+          </span>
 
-        <input
-          type="email"
-          placeholder="Enter your email"
-          value={email}
-          onChange={(e) =>
-            setEmail(e.target.value)
-          }
-          required
-        />
+          <h2>Sign in to ShopEase</h2>
 
-        <div className="password-wrapper">
-
-          <input
-            type={
-              showPassword
-                ? "text"
-                : "password"
-            }
-            placeholder="Enter your password"
-            value={password}
-            onChange={(e) =>
-              setPassword(e.target.value)
-            }
-            required
-          />
-
-          <button
-            type="button"
-            className="password-toggle"
-            onClick={() =>
-              setShowPassword(!showPassword)
-            }
-          >
-            {showPassword ? "🙈" : "👁"}
-          </button>
+          <p className="login-subtitle">
+            Login to your account and continue shopping
+          </p>
 
         </div>
 
-        {message && (
-          <p className="login-message">
-            {message}
-          </p>
-        )}
+        <form
+          className="login-form"
+          onSubmit={handleLogin}
+        >
 
-        <button type="submit">
-          Login
-        </button>
+          <div className="input-group">
 
-        <p className="auth-switch">
-          Don't have an account?{" "}
+            <label>Email Address</label>
 
-          <span
-            onClick={() =>
-              navigate("/signup")
-            }
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) =>
+                setEmail(e.target.value)
+              }
+              required
+            />
+
+          </div>
+
+          <div className="input-group">
+
+            <label>Password</label>
+
+            <div className="password-wrapper">
+
+              <input
+                type={
+                  showPassword
+                    ? "text"
+                    : "password"
+                }
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) =>
+                  setPassword(e.target.value)
+                }
+                required
+              />
+
+              <button
+                type="button"
+                className="password-toggle"
+                onClick={() =>
+                  setShowPassword(!showPassword)
+                }
+                aria-label="Show or hide password"
+              >
+                {showPassword ? "🙈" : "👁"}
+              </button>
+
+            </div>
+
+          </div>
+
+          {message && (
+            <p className="login-message">
+              {message}
+            </p>
+          )}
+
+          <button
+            type="submit"
+            className="auth-submit-btn"
           >
-            Create Account
-          </span>
-        </p>
+            Sign In to ShopEase
+            <span>→</span>
+          </button>
 
-      </form>
+          <div className="auth-divider">
+            <span>New to ShopEase?</span>
+          </div>
+
+          <p className="auth-switch">
+
+            Don't have an account?
+
+            <span
+              onClick={() =>
+                navigate("/signup")
+              }
+            >
+              Create Account
+            </span>
+
+          </p>
+
+        </form>
+
+        <div className="auth-footer">
+          🔒 Your information is securely protected
+        </div>
+
+      </div>
 
     </section>
   );

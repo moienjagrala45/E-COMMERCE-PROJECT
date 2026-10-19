@@ -114,7 +114,7 @@ body {
 
 .hero h1 {
   font-size: 64px;
-  line-height: 1.1;
+  line-height: 1.1;A
   margin-bottom: 25px;
 }
 
@@ -197,10 +197,12 @@ body {
 
 .product-image {
   width: 100%;
-  aspect-ratio: 16 / 10;
-  height: auto;
-  object-fit: cover;
+  height: 260px;
+  object-fit: contain;
+  object-position: center;
   display: block;
+  background-color: #ffffff;
+  padding: 10px;
 }
 
 .product-info {
@@ -395,140 +397,561 @@ body {
 }
 
 /* =====================================================
-   LOGIN / SIGNUP
+   MODERN LOGIN / SIGNUP
 ===================================================== */
 
 .login-section {
   min-height: 100vh;
   padding: 70px 20px;
-  background: #f8f8f8;
-  text-align: center;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(99, 102, 241, 0.14),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(139, 92, 246, 0.12),
+      transparent 35%
+    ),
+    #f6f7fb;
+
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  text-align: center;
 }
 
-.login-section h2 {
-  font-size: 42px;
-  margin: 0 0 15px;
-  color: #1c1c1c;
+
+/* =========================
+   AUTH CARD
+========================= */
+
+.auth-card {
+  width: 100%;
+  max-width: 500px;
+
+  padding: 42px 44px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  border: 1px solid rgba(255, 255, 255, 0.8);
+
+  border-radius: 24px;
+
+  box-shadow:
+    0 25px 60px rgba(31, 41, 55, 0.12),
+    0 5px 18px rgba(31, 41, 55, 0.05);
+
+  backdrop-filter: blur(12px);
+
+  animation: authCardAppear 0.45s ease;
 }
+
+
+@keyframes authCardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================
+   AUTH HEADING
+========================= */
+
+.auth-heading {
+  margin-bottom: 30px;
+}
+
+
+.auth-badge {
+  display: inline-block;
+
+  padding: 7px 14px;
+
+  margin-bottom: 14px;
+
+  border-radius: 999px;
+
+  background: #eef2ff;
+
+  color: #6366f1;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.8px;
+
+  text-transform: uppercase;
+}
+
+
+.auth-heading h2 {
+  margin: 0 0 10px;
+
+  color: #111827;
+
+  font-size: 34px;
+
+  line-height: 1.2;
+
+  font-weight: 800;
+
+  letter-spacing: -0.8px;
+}
+
 
 .login-subtitle {
-  color: #777;
-  margin-bottom: 25px;
-  font-size: 16px;
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 15px;
+
+  line-height: 1.6;
 }
+
+
+/* =========================
+   FORM
+========================= */
 
 .login-form {
   width: 100%;
-  max-width: 420px;
-  margin: 0 auto;
+
   display: flex;
+
   flex-direction: column;
-  gap: 18px;
-  padding: 40px;
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+  gap: 19px;
+
+  padding: 0;
+
+  margin: 0;
+
+  background: transparent;
+
+  box-shadow: none;
+
+  border-radius: 0;
 }
+
+
+/* =========================
+   INPUT GROUP
+========================= */
+
+.input-group {
+  width: 100%;
+
+  text-align: left;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+
+.input-group label {
+  color: #374151;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  margin-left: 2px;
+}
+
 
 .login-form input {
   width: 100%;
-  padding: 15px 18px;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+
+  height: 52px;
+
+  padding: 0 16px;
+
+  border: 1px solid #dfe3eb;
+
+  border-radius: 12px;
+
   outline: none;
-  transition: 0.2s;
+
+  background: #f9fafc;
+
+  color: #111827;
+
+  font-size: 15px;
+
+  font-family: Arial, sans-serif;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
 }
+
+
+.login-form input::placeholder {
+  color: #9ca3af;
+}
+
+
+.login-form input:hover {
+  background: #ffffff;
+
+  border-color: #cfd4df;
+}
+
 
 .login-form input:focus {
-  border-color: #6c63ff;
-  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.1);
+  background: #ffffff;
+
+  border-color: #6366f1;
+
+  box-shadow:
+    0 0 0 4px rgba(99, 102, 241, 0.11);
 }
 
-.login-form > button[type="submit"] {
+
+/* =========================
+   FIRST + LAST NAME
+========================= */
+
+.name-row {
   width: 100%;
-  padding: 15px;
-  border: none;
-  border-radius: 8px;
-  background: #1c1c1c;
-  color: white;
-  font-size: 17px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 14px;
 }
 
-.login-form > button[type="submit"]:hover {
-  background: #6c63ff;
-  transform: translateY(-2px);
-}
 
-.login-message {
-  color: #d11;
-  font-size: 14px;
-}
-
-.auth-switch {
-  margin-top: 5px;
-  font-size: 14px;
-  color: #666;
-}
-
-.auth-switch span {
-  color: #6366f1;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.auth-switch span:hover {
-  text-decoration: underline;
-}
-
-/* =====================================================
-   PASSWORD SHOW / HIDE
-===================================================== */
+/* =========================
+   PASSWORD
+========================= */
 
 .password-wrapper {
   position: relative;
+
   width: 100%;
 }
 
+
 .password-wrapper input {
-  width: 100%;
-  padding-right: 50px;
+  padding-right: 52px;
 }
+
 
 .login-form .password-toggle {
   position: absolute;
-  right: 12px;
+
+  right: 9px;
+
   top: 50%;
+
   transform: translateY(-50%);
-  width: 32px;
-  height: 32px;
+
+  width: 36px;
+
+  height: 36px;
+
   padding: 0;
+
   margin: 0;
+
   border: none;
-  border-radius: 50%;
+
+  border-radius: 9px;
+
   background: transparent;
-  color: #555;
-  font-size: 18px;
+
+  color: #6b7280;
+
+  font-size: 17px;
+
   line-height: 1;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   cursor: pointer;
-  transition: 0.2s;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
+
 
 .login-form .password-toggle:hover {
-  background: #f2f2f2;
-  color: #111;
+  background: #eef2ff;
+
+  color: #4f46e5;
 }
 
+
+/* =========================
+   ERROR MESSAGE
+========================= */
+
+.login-message {
+  width: 100%;
+
+  margin: 0;
+
+  padding: 11px 13px;
+
+  border: 1px solid #fecaca;
+
+  border-radius: 10px;
+
+  background: #fff1f2;
+
+  color: #dc2626;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  text-align: left;
+}
+
+
+/* =========================
+   SUBMIT BUTTON
+========================= */
+
+.auth-submit-btn {
+  width: 100%;
+
+  height: 53px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #111827,
+      #312e81
+    );
+
+  color: #ffffff;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  box-shadow:
+    0 8px 20px rgba(49, 46, 129, 0.2);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+
+.auth-submit-btn span {
+  font-size: 19px;
+
+  transition: transform 0.2s ease;
+}
+
+
+.auth-submit-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 25px rgba(49, 46, 129, 0.28);
+
+  filter: brightness(1.08);
+}
+
+
+.auth-submit-btn:hover span {
+  transform: translateX(4px);
+}
+
+
+.auth-submit-btn:active {
+  transform: translateY(0);
+}
+
+
+/* =========================
+   DIVIDER
+========================= */
+
+.auth-divider {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  color: #9ca3af;
+
+  font-size: 12px;
+
+  margin: 2px 0;
+}
+
+
+.auth-divider::before,
+.auth-divider::after {
+  content: "";
+
+  flex: 1;
+
+  height: 1px;
+
+  background: #e5e7eb;
+}
+
+
+.auth-divider span {
+  white-space: nowrap;
+}
+
+
+/* =========================
+   SWITCH LOGIN / SIGNUP
+========================= */
+
+.auth-switch {
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+}
+
+
+.auth-switch span {
+  margin-left: 5px;
+
+  color: #5b21b6;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition: color 0.2s ease;
+}
+
+
+.auth-switch span:hover {
+  color: #4338ca;
+
+  text-decoration: underline;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.auth-footer {
+  margin-top: 25px;
+
+  padding-top: 20px;
+
+  border-top: 1px solid #edf0f4;
+
+  color: #9ca3af;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================
+   SIGNUP CARD
+========================= */
+
+.signup-card {
+  max-width: 540px;
+}
+
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+  .login-section {
+    padding: 35px 15px;
+  }
+
+
+  .auth-card {
+    padding: 32px 22px;
+
+    border-radius: 20px;
+  }
+
+
+  .auth-heading h2 {
+    font-size: 28px;
+  }
+
+
+  .login-subtitle {
+    font-size: 14px;
+  }
+
+
+  .name-row {
+    grid-template-columns: 1fr;
+
+    gap: 19px;
+  }
+
+
+  .login-form input {
+    height: 50px;
+  }
+
+
+  .auth-submit-btn {
+    height: 51px;
+  }
+
+}
 /* =====================================================
    CART NOTIFICATION
 ===================================================== */
@@ -851,10 +1274,26 @@ body {
 }
 
 .admin-product-image {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  display: block;
+  width: 100% !important;
+  height: 300px !important;
+
+  object-fit: contain !important;
+  object-position: center !important;
+
+  display: block !important;
+
+  background-color: #ffffff !important;
+
+  padding: 12px !important;
+  margin: 0 !important;
+
+  box-sizing: border-box !important;
+
+  transform: none !important;
+}
+
+.admin-product-card:hover .admin-product-image {
+  transform: none !important;
 }
 
 .admin-product-info {

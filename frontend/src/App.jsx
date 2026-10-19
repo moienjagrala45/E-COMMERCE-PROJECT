@@ -14,8 +14,6 @@ import "./App.css";
 import ProductCard from "./components/ProductCard";
 import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
 import Auth from "./components/Auth";
 import OrderSuccess from "./components/OrderSuccess";
 

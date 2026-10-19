@@ -110,7 +110,7 @@
   }
 }
 
-/* CATEGORY PILLS */
+/* ================= CATEGORY PILLS ================= */
 
 .category-pills-row {
   display: flex;
@@ -142,7 +142,7 @@
   border-color: #0f172a !important;
 }
 
-/* SEARCH & SORT GROUP */
+/* ================= SEARCH & SORT ================= */
 
 .shop-filter-group {
   display: flex;
@@ -210,7 +210,7 @@
   border-color: #6366f1;
 }
 
-/* RESULTS STATUS */
+/* ================= RESULTS STATUS ================= */
 
 .shop-results-status {
   display: flex;
@@ -232,7 +232,7 @@
   text-decoration: underline;
 }
 
-/* ================= RESPONSIVE PRODUCTS GRID ================= */
+/* ================= PRODUCTS GRID ================= */
 
 .shop-products-grid {
   display: grid;
@@ -265,7 +265,10 @@
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .product-card-enhanced:hover {
@@ -274,7 +277,7 @@
   border-color: #cbd5e1;
 }
 
-/* SECTION 1: DETAILS CONTAINER */
+/* ================= PRODUCT DETAILS ================= */
 
 .product-details-container {
   display: flex;
@@ -282,58 +285,89 @@
   flex: 1;
 }
 
-/* IMAGE */
+/* =====================================================
+   PRODUCT IMAGE - FULL IMAGE / NO CROPPING
+===================================================== */
 
 .product-image-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  height: 280px;
   overflow: hidden;
-  background-color: #f1f5f9;
+  background-color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 14px;
 }
 
 .product-image-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+
+  object-fit: contain !important;
+  object-position: center !important;
+
   display: block;
-  transition: transform 0.4s ease;
+
+  transform: none !important;
+
+  transition: none;
 }
 
+/* Keep complete image visible even on card hover */
 .product-card-enhanced:hover .product-image-img {
-  transform: scale(1.04);
+  transform: none !important;
 }
+
+/* ================= CATEGORY LABEL ================= */
 
 .product-category-pill {
   position: absolute;
   top: 12px;
   left: 12px;
+
   background: rgba(15, 23, 42, 0.85);
   backdrop-filter: blur(4px);
+
   color: #ffffff;
+
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.8px;
+
   padding: 4px 10px;
   border-radius: 12px;
+
+  z-index: 2;
 }
+
+/* ================= OUT OF STOCK RIBBON ================= */
 
 .product-soldout-ribbon {
   position: absolute;
   top: 12px;
   right: 12px;
+
   background: #dc2626;
   color: #ffffff;
+
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.8px;
+
   padding: 4px 10px;
   border-radius: 6px;
+
   box-shadow: 0 2px 6px rgba(220, 38, 38, 0.4);
+
+  z-index: 2;
 }
 
-/* DETAILS BODY */
+/* ================= DETAILS BODY ================= */
 
 .product-body-content {
   padding: 20px;
@@ -372,7 +406,7 @@
   margin-bottom: 16px;
 }
 
-/* SPECS & FEATURES BOX */
+/* ================= SPECS & FEATURES ================= */
 
 .product-specs-card {
   background: #f8fafc;
@@ -395,17 +429,22 @@
   list-style: none;
   padding: 0;
   margin: 0;
+
   display: flex;
   flex-direction: column;
+
   gap: 6px;
 }
 
 .product-feature-item {
   display: flex;
   align-items: flex-start;
+
   gap: 8px;
+
   font-size: 12.5px;
   line-height: 1.4;
+
   color: #334155;
 }
 
@@ -420,12 +459,14 @@
   flex: 1;
 }
 
-/* HIGHLIGHTS ROW */
+/* ================= HIGHLIGHTS ================= */
 
 .product-highlights-row {
   display: flex;
   flex-wrap: wrap;
+
   gap: 6px 12px;
+
   margin-top: auto;
   padding-top: 6px;
 }
@@ -436,10 +477,11 @@
   color: #6366f1;
 }
 
-/* ================= VISUAL CARD DIVIDER ================= */
+/* ================= CARD DIVIDER ================= */
 
 .product-card-divider {
   height: 1px;
+
   background: linear-gradient(
     90deg,
     transparent 0%,
@@ -447,26 +489,34 @@
     #e2e8f0 85%,
     transparent 100%
   );
+
   margin: 0;
   width: 100%;
 }
 
-/* ================= SECTION 2: ACTION CONTAINER (VISUALLY SEPARATED) ================= */
+/* ================= ACTION CONTAINER ================= */
 
 .product-action-container {
   background-color: #f8fafc;
+
   border-top: 1px solid #edf2f7;
+
   padding: 16px 20px 20px;
+
   display: flex;
   flex-direction: column;
 }
 
 .product-cart-meta {
   display: flex;
+
   justify-content: space-between;
   align-items: center;
+
   font-size: 12px;
+
   color: #64748b;
+
   margin-bottom: 10px;
 }
 
@@ -476,13 +526,17 @@
 
 .in-cart-indicator {
   font-weight: 700;
+
   color: #4f46e5;
+
   background: #eef2ff;
+
   padding: 2px 8px;
+
   border-radius: 10px;
 }
 
-/* OUT OF STOCK ALERT - RED COLOR */
+/* ================= OUT OF STOCK ALERT ================= */
 
 .out-of-stock-alert {
   animation: fadeInAlert 0.25s ease-in-out;
@@ -493,31 +547,41 @@
     opacity: 0;
     transform: translateY(-4px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* ADD TO CART ACTION BUTTON */
+/* ================= ADD TO CART BUTTON ================= */
 
 .add-cart-action-btn {
   width: 100%;
+
   padding: 13px 18px;
+
   background-color: #111827;
   color: #ffffff;
+
   border: none;
   border-radius: 8px;
+
   font-size: 14.5px;
   font-weight: 600;
+
   cursor: pointer;
+
   transition: all 0.2s ease;
+
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .add-cart-action-btn:hover:not(:disabled) {
   background-color: #1f2937;
+
   transform: translateY(-1px);
+
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
 }
 
@@ -532,13 +596,17 @@
 
 .btn-out-of-stock {
   background-color: #fee2e2 !important;
+
   color: #dc2626 !important;
+
   border: 1px solid #f87171 !important;
+
   font-weight: 700;
 }
 
 .btn-out-of-stock:hover {
   background-color: #fecaca !important;
+
   transform: none !important;
 }
 
@@ -547,19 +615,28 @@
 .shop-loading-state,
 .shop-empty-state {
   text-align: center;
+
   padding: 80px 20px;
+
   background: #ffffff;
+
   border-radius: 12px;
+
   border: 1px solid #e2e8f0;
 }
 
 .shop-spinner {
   width: 44px;
   height: 44px;
+
   border: 4px solid #e2e8f0;
+
   border-top-color: #4f46e5;
+
   border-radius: 50%;
+
   animation: spin 0.8s linear infinite;
+
   margin: 0 auto 16px;
 }
 
@@ -571,18 +648,23 @@
 
 .empty-icon {
   font-size: 48px;
+
   display: block;
+
   margin-bottom: 12px;
 }
 
 .shop-empty-state h3 {
   font-size: 20px;
+
   font-weight: 700;
+
   margin-bottom: 8px;
 }
 
 .shop-empty-state p {
   color: #64748b;
+
   margin-bottom: 20px;
 }
 
@@ -590,60 +672,77 @@
 
 .shop-footer {
   background: #0f172a;
+
   color: #94a3b8;
+
   padding: 48px 24px 24px;
+
   margin-top: auto;
+
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .shop-footer-inner {
   max-width: 1280px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 36px;
-  padding-bottom: 36px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
 
-@media (max-width: 768px) {
-  .shop-footer-inner {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: 2fr 1fr 1fr;
+
+  gap: 36px;
+
+  padding-bottom: 36px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .footer-brand h3 {
   color: #ffffff;
+
   font-size: 22px;
+
   margin-bottom: 10px;
 }
 
 .footer-brand p {
   font-size: 14px;
+
   line-height: 1.6;
+
   max-width: 320px;
 }
 
 .footer-links-col {
   display: flex;
+
   flex-direction: column;
+
   gap: 8px;
 }
 
 .footer-links-col h4 {
   color: #ffffff;
+
   font-size: 14px;
+
   font-weight: 700;
+
   text-transform: uppercase;
+
   letter-spacing: 0.5px;
+
   margin-bottom: 6px;
 }
 
 .footer-links-col span {
   font-size: 13.5px;
+
   color: #94a3b8;
+
   cursor: pointer;
+
   transition: color 0.2s;
 }
 
@@ -653,21 +752,30 @@
 
 .footer-bottom-copy {
   max-width: 1280px;
+
   margin: 24px auto 0;
+
   text-align: center;
+
   font-size: 12px;
+
   color: #64748b;
 }
 
+/* ================= ACTIVE NAV ================= */
+
 .nav-link-active {
   color: #000000 !important;
+
   font-weight: 700 !important;
+
   border-bottom: 2px solid #111827;
+
   padding-bottom: 2px;
 }
 
 /* =====================================================
-   MOBILE OPTIMIZATIONS FOR PHONES (< 768px & < 480px)
+   TABLET / MOBILE
 ===================================================== */
 
 @media (max-width: 768px) {
@@ -702,46 +810,84 @@
 
   .category-pills-row {
     display: flex !important;
+
     flex-wrap: nowrap !important;
+
     overflow-x: auto !important;
+
     padding-bottom: 6px !important;
+
     -webkit-overflow-scrolling: touch;
+
     width: 100% !important;
+
     gap: 8px !important;
   }
 
   .category-pill {
     flex-shrink: 0 !important;
+
     padding: 7px 14px !important;
+
     font-size: 13px !important;
+
     white-space: nowrap !important;
   }
 
   .shop-filter-group {
     flex-direction: column !important;
+
     width: 100% !important;
+
     gap: 10px !important;
   }
 
   .search-input-wrapper {
     width: 100% !important;
+
     min-width: 0 !important;
   }
 
   .shop-sort-select {
     width: 100% !important;
+
     font-size: 13.5px !important;
+
     padding: 10px 12px !important;
   }
 
   .shop-results-status {
     font-size: 13px !important;
+
     margin-bottom: 16px !important;
   }
 
   .shop-products-grid {
     grid-template-columns: 1fr !important;
+
     gap: 18px !important;
+  }
+
+  /* FULL PRODUCT IMAGE ON MOBILE */
+
+  .product-image-wrapper {
+    height: 260px !important;
+    padding: 12px !important;
+    background: #ffffff !important;
+  }
+
+  .product-image-img {
+    width: 100% !important;
+    height: 100% !important;
+
+    object-fit: contain !important;
+    object-position: center !important;
+
+    transform: none !important;
+  }
+
+  .product-card-enhanced:hover .product-image-img {
+    transform: none !important;
   }
 
   .product-body-content {
@@ -758,17 +904,21 @@
 
   .product-short-description {
     font-size: 13px !important;
+
     line-height: 1.5 !important;
+
     margin-bottom: 12px !important;
   }
 
   .product-specs-card {
     padding: 10px 12px !important;
+
     margin-bottom: 12px !important;
   }
 
   .product-specs-title {
     font-size: 11px !important;
+
     margin-bottom: 6px !important;
   }
 
@@ -782,15 +932,28 @@
 
   .add-cart-action-btn {
     padding: 13px !important;
+
     font-size: 14px !important;
+
     min-height: 46px !important;
   }
 
   .out-of-stock-alert {
     padding: 8px 12px !important;
+
     font-size: 12.5px !important;
   }
+
+  .shop-footer-inner {
+    grid-template-columns: 1fr;
+
+    gap: 24px;
+  }
 }
+
+/* =====================================================
+   SMALL PHONES
+===================================================== */
 
 @media (max-width: 480px) {
   .shop-main-title {
@@ -801,19 +964,33 @@
     font-size: 13.5px !important;
   }
 
+  .product-image-wrapper {
+    height: 230px !important;
+    padding: 10px !important;
+  }
+
+  .product-image-img {
+    object-fit: contain !important;
+    object-position: center !important;
+  }
+
   .product-header-info {
     flex-direction: column !important;
+
     align-items: flex-start !important;
+
     gap: 6px !important;
   }
 
   .product-price-tag {
     font-size: 20px !important;
+
     color: #4f46e5 !important;
   }
 
   .shop-footer-inner {
     padding-bottom: 24px !important;
+
     gap: 20px !important;
   }
 }
