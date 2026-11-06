@@ -1,5 +1,7 @@
 const express = require("express");
 
+const mongoose = require("mongoose");
+
 const router = express.Router();
 
 const Product = require("../models/Product");
@@ -39,16 +41,17 @@ router.post(
         });
       }
 
-      // Check price - must be a number greater than 0
+      // Check price - must be between 1 and 25000
       const numPrice = Number(price);
       if (
         price === undefined ||
         price === null ||
         isNaN(numPrice) ||
-        numPrice <= 0
+        numPrice <= 0 ||
+        numPrice > 25000
       ) {
         return res.status(400).json({
-          message: "Price must be a number greater than 0",
+          message: "Product selling price must be between ₹1 and ₹25,000",
         });
       }
 
@@ -129,7 +132,7 @@ router.get(
 
 // =========================================
 // GET ALL PRODUCTS - ADMIN
-// INCLUDING HIDDEN PRODUCTS
+// DEFAULTS TO ACTIVE PRODUCTS, OR ALL IF includeHidden=true
 // =========================================
 
 router.get(
@@ -138,9 +141,13 @@ router.get(
   admin,
   async (req, res) => {
     try {
+      const filter =
+        req.query.includeHidden === "true"
+          ? {}
+          : { isVisible: { $ne: false } };
 
       const products =
-        await Product.find();
+        await Product.find(filter);
 
       res.status(200).json(
         products
@@ -166,36 +173,31 @@ router.get(
   "/:id",
   async (req, res) => {
     try {
+      const rawId = (req.params.id || "").trim();
+      let product = null;
 
-      const product =
-        await Product.findById(
-          req.params.id
-        );
-
-      if (!product) {
-
-        return res.status(404).json({
-          message:
-            "Product not found",
-        });
-
+      if (mongoose.Types.ObjectId.isValid(rawId)) {
+        product = await Product.findById(rawId);
       }
 
-      res.status(200).json(
-        product
-      );
+      if (!product) {
+        product = await Product.findOne({ name: rawId });
+      }
 
+      if (!product) {
+        return res.status(404).json({
+          message: "Product not found",
+        });
+      }
+
+      res.status(200).json(product);
     } catch (error) {
-
       res.status(500).json({
-        message:
-          error.message,
+        message: error.message,
       });
-
     }
   }
 );
-
 
 // =========================================
 // UPDATE PRODUCT - ADMIN ONLY
@@ -209,9 +211,9 @@ router.put(
     try {
       if (req.body.price !== undefined) {
         const numPrice = Number(req.body.price);
-        if (isNaN(numPrice) || numPrice <= 0) {
+        if (isNaN(numPrice) || numPrice <= 0 || numPrice > 25000) {
           return res.status(400).json({
-            message: "Price must be a number greater than 0",
+            message: "Product selling price must be between ₹1 and ₹25,000",
           });
         }
         req.body.price = numPrice;

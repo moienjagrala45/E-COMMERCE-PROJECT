@@ -1,216 +1,140 @@
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 import { enrichProduct } from "../data/productsData";
 
 function ProductCard({ product: rawProduct }) {
-  const { addToCart, getItemQuantity } = useContext(CartContext);
+  const navigate = useNavigate();
+  const { addToCart, getItemQuantity } = useContext(CartContext) || {};
 
-  const product = enrichProduct(rawProduct);
+  const product = enrichProduct ? enrichProduct(rawProduct) : rawProduct;
   const productId = product._id || product.id;
 
-  const inCartQty = getItemQuantity(productId);
-  const isMaxLimitReached = inCartQty >= 2;
+  const inCartQty = getItemQuantity ? getItemQuantity(productId) : 0;
 
-  const [stockMessage, setStockMessage] = useState("");
-  const [checkingStock, setCheckingStock] = useState(false);
+  const [feedbackMsg, setFeedbackMsg] = useState("");
 
-  const handleAddToCart = async () => {
-    // 1. Check local cart limit: maximum 2 units per customer
-    if (inCartQty >= 2) {
-      setStockMessage("OUT OF STOCK");
-      return;
-    }
+  // Source of truth: real database stock
+  const actualStock = product.stock !== undefined ? Number(product.stock) : 10;
+  const isOutOfStock = actualStock <= 0;
+  const isMaxLimitReached = actualStock > 0 && inCartQty >= actualStock;
 
-    setCheckingStock(true);
+  // Natural inventory status
+  let stockBadgeText = "In Stock";
+  let stockBadgeClass = "status-in";
 
-    try {
-      // 2. Check live backend stock if ID is available
-      if (product._id) {
-        const response = await fetch(
-          `https://e-commerce-project-backend-vpdz.onrender.com/api/products/${product._id}`,
-          { cache: "no-store" }
-        );
+  if (isOutOfStock) {
+    stockBadgeText = "Out of Stock";
+    stockBadgeClass = "status-out";
+  } else if (actualStock >= 1 && actualStock <= 5) {
+    stockBadgeText = `Only ${actualStock} left`;
+    stockBadgeClass = "status-low";
+  } else {
+    stockBadgeText = "In Stock";
+    stockBadgeClass = "status-in";
+  }
 
-        if (response.ok) {
-          const latestProduct = await response.json();
-          if (
-            latestProduct.stock !== undefined &&
-            Number(latestProduct.stock) <= 0
-          ) {
-            setStockMessage("OUT OF STOCK");
-            return;
-          }
-        }
-      }
-
-      // 3. Add to cart
-      const result = addToCart(product);
-
-      if (!result.success) {
-        setStockMessage("OUT OF STOCK");
-      } else {
-        setStockMessage("");
-      }
-    } catch (error) {
-      console.error("Stock check error:", error);
-      // Fallback add if backend network is slow
-      const result = addToCart(product);
-      if (!result.success) {
-        setStockMessage("OUT OF STOCK");
-      }
-    } finally {
-      setCheckingStock(false);
+  const handleCardClick = () => {
+    if (productId) {
+      navigate(`/product/${productId}`);
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
-  const isOutOfStock =
-    isMaxLimitReached ||
-    stockMessage === "OUT OF STOCK" ||
-    (product.stock !== undefined && Number(product.stock) <= 0);
+  const handleAddToCart = (e) => {
+    e.stopPropagation();
+
+    if (isOutOfStock) {
+      setFeedbackMsg("Out of Stock");
+      return;
+    }
+
+    if (isMaxLimitReached) {
+      setFeedbackMsg(`All ${actualStock} in cart`);
+      return;
+    }
+
+    if (addToCart) {
+      const result = addToCart(product);
+      if (result && result.success === false) {
+        if (result.reason === "MAX_LIMIT_REACHED") {
+          setFeedbackMsg(`All ${actualStock} in cart`);
+        } else {
+          setFeedbackMsg("Could not add to cart");
+        }
+      } else {
+        setFeedbackMsg("Added to Cart");
+        setTimeout(() => setFeedbackMsg(""), 2200);
+      }
+    }
+  };
+
+  const formattedPrice = Number(product.price || 0).toLocaleString("en-IN");
+  const imageSrc =
+    (typeof product.image === "string" && product.image.trim()) ||
+    (typeof product.imageUrl === "string" && product.imageUrl.trim()) ||
+    (Array.isArray(product.images) && product.images.length > 0 && typeof product.images[0] === "string" && product.images[0].trim()) ||
+    "";
 
   return (
-    <div className="product-card-enhanced">
-      {/* ================= SECTION 1: PRODUCT DETAILS ================= */}
-      <div className="product-details-container">
-        {/* IMAGE WRAPPER */}
-        <div className="product-image-wrapper">
-          <img
-            src={product.image}
-            alt={product.name}
-            className="product-image-img"
-            loading="lazy"
-          />
-          <span className="product-category-pill">
-            {product.category}
-          </span>
-          {isOutOfStock && (
-            <span className="product-soldout-ribbon">
-              OUT OF STOCK
-            </span>
-          )}
-        </div>
-
-        {/* DETAILS BODY */}
-        <div className="product-body-content">
-          <div className="product-header-info">
-            <h3 className="product-title-heading">
-              {product.name}
-            </h3>
-            <div className="product-price-tag">
-              ₹{Number(product.price).toLocaleString("en-IN")}
-            </div>
-          </div>
-
-          {/* SHORT PRODUCT DESCRIPTION */}
-          <p className="product-short-description">
-            {product.shortDescription}
-          </p>
-
-          {/* KEY FEATURES & SPECIFICATIONS */}
-          <div className="product-specs-card">
-            <h4 className="product-specs-title">
-              Key Features & Specifications
-            </h4>
-            <ul className="product-features-list">
-              {product.features &&
-                product.features.map((feature, idx) => (
-                  <li key={idx} className="product-feature-item">
-                    <span className="feature-check-icon">✓</span>
-                    <span className="feature-text">{feature}</span>
-                  </li>
-                ))}
-            </ul>
-          </div>
-
-          {/* USEFUL DETAILS / HIGHLIGHTS */}
-          {product.highlights && (
-            <div className="product-highlights-row">
-              {product.highlights.map((highlight, idx) => (
-                <span key={idx} className="highlight-tag">
-                  • {highlight}
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
+    <article
+      className="shopease-product-card"
+      onClick={handleCardClick}
+      role="button"
+      tabIndex={0}
+      title={`View details for ${product.name}`}
+    >
+      {/* COMPLETE UNCROPPED IMAGE (object-fit: contain) */}
+      <div className="card-image-container">
+        <img
+          src={imageSrc}
+          alt={product.name}
+          className="card-product-image"
+          loading="lazy"
+          referrerPolicy="no-referrer"
+        />
       </div>
 
-      {/* ================= VISUAL SEPARATION DIVIDER ================= */}
-      <div className="product-card-divider" />
-
-      {/* ================= SECTION 2: ADD TO CART ACTION ================= */}
-      <div className="product-action-container">
-        {/* STOCK / QUANTITY STATUS INDICATOR */}
-        <div className="product-cart-meta">
-          <span className="cart-limit-notice">
-            Quantity limit: Max 2 units
-          </span>
-          {inCartQty > 0 && (
-            <span className="in-cart-indicator">
-              In Cart: {inCartQty}/2
-            </span>
-          )}
+      {/* CARD CONTENT */}
+      <div className="card-body">
+        {/* Real Inventory Status */}
+        <div className={`card-stock-row ${stockBadgeClass}`}>
+          <span className="stock-indicator-dot"></span>
+          <span className="stock-status-text">{stockBadgeText}</span>
         </div>
 
-        {/* OUT OF STOCK MESSAGE IN BOLD RED COLOR */}
-        {(isMaxLimitReached || stockMessage) && (
-          <div
-            className="out-of-stock-alert"
-            role="alert"
-            style={{
-              color: "#dc2626",
-              backgroundColor: "#fef2f2",
-              border: "1px solid #f87171",
-              borderRadius: "6px",
-              padding: "10px 14px",
-              marginBottom: "12px",
-              textAlign: "center",
-              fontSize: "13px",
-              fontWeight: "700",
-              letterSpacing: "0.5px",
-            }}
-          >
-            ❌ OUT OF STOCK
-            <div
-              style={{
-                fontSize: "12px",
-                fontWeight: "500",
-                color: "#b91c1c",
-                marginTop: "3px",
-              }}
-            >
-              {isMaxLimitReached
-                ? "You already have the maximum 2 units of this product in your cart."
-                : "This item is currently out of stock."}
-            </div>
-          </div>
-        )}
+        {/* Product Title */}
+        <h3 className="card-title" title={product.name}>
+          {product.name}
+        </h3>
 
-        {/* ADD TO CART BUTTON */}
+        {/* Price & Category */}
+        <div className="card-meta-row">
+          <div className="card-price">₹{formattedPrice}</div>
+          <span className="card-category-tag">{product.category}</span>
+        </div>
+
+        {/* Add to Cart Button */}
         <button
-          className={`add-cart-action-btn ${
-            isOutOfStock ? "btn-out-of-stock" : ""
+          type="button"
+          className={`card-add-btn ${
+            isOutOfStock || isMaxLimitReached ? "btn-disabled" : ""
           }`}
           onClick={handleAddToCart}
-          disabled={checkingStock}
-          aria-label={
-            isOutOfStock
-              ? `Out of stock for ${product.name}`
-              : `Add ${product.name} to Cart`
-          }
+          disabled={isOutOfStock || isMaxLimitReached}
         >
-          {checkingStock
-            ? "Checking Stock..."
+          {isOutOfStock
+            ? "Out of Stock"
             : isMaxLimitReached
-            ? "OUT OF STOCK (Limit Reached)"
-            : isOutOfStock
-            ? "OUT OF STOCK"
-            : inCartQty === 1
-            ? "Add 2nd Unit to Cart"
-            : "Add to Cart"}
+            ? "All in Cart"
+            : feedbackMsg || "Add to Cart"}
         </button>
+
+        {feedbackMsg && feedbackMsg !== "Added to Cart" && (
+          <div className="card-feedback-text">{feedbackMsg}</div>
+        )}
       </div>
-    </div>
+    </article>
   );
 }
 

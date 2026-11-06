@@ -23,10 +23,10 @@ export function CartProvider({
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed)) {
-          // Ensure all saved quantities are capped at 2
+          // Ensure all saved quantities are valid numbers
           return parsed.map((item) => ({
             ...item,
-            quantity: Math.min(Math.max(Number(item.quantity) || 1, 1), 2),
+            quantity: Math.max(Number(item.quantity) || 1, 1),
           }));
         }
       }
@@ -74,7 +74,9 @@ export function CartProvider({
   };
 
   const isMaxStockReached = (productId) => {
-    return getItemQuantity(productId) >= 2;
+    const found = cartItems.find((item) => (item._id || item.id) === productId);
+    const maxStock = found?.stock !== undefined ? Number(found.stock) : 99;
+    return getItemQuantity(productId) >= maxStock;
   };
 
   /* ================= ADD TO CART ================= */
@@ -82,9 +84,10 @@ export function CartProvider({
   const addToCart = (product) => {
     const pId = product._id || product.id;
     const currentQty = getItemQuantity(pId);
+    const maxStock = product.stock !== undefined ? Number(product.stock) : 99;
 
-    // Enforce maximum 2 units per individual product
-    if (currentQty >= 2) {
+    // Enforce maximum units per individual product based on available stock
+    if (currentQty >= maxStock) {
       return {
         success: false,
         reason: "MAX_LIMIT_REACHED",
@@ -99,7 +102,7 @@ export function CartProvider({
 
       /* PRODUCT ALREADY EXISTS */
       if (existingProduct) {
-        const newQty = Math.min(Number(existingProduct.quantity) + 1, 2);
+        const newQty = Math.min(Number(existingProduct.quantity) + 1, maxStock);
         return prevItems.map((item) =>
           (item._id || item.id) === pId
             ? {
@@ -144,9 +147,10 @@ export function CartProvider({
     setCartItems((prevItems) =>
       prevItems.map((item) => {
         if ((item._id || item.id) === id) {
-          if (Number(item.quantity) >= 2) {
+          const maxStock = item.stock !== undefined ? Number(item.stock) : 99;
+          if (Number(item.quantity) >= maxStock) {
             limitReached = true;
-            return item; // strictly capped at 2
+            return item;
           }
           return {
             ...item,

@@ -18,6 +18,7 @@ const productSchema = new mongoose.Schema(
       type: Number,
       required: [true, "Price is required"],
       min: [0.01, "Price must be greater than 0"],
+      max: [25000, "Price cannot exceed ₹25,000"],
     },
 
     image: {
@@ -38,6 +39,22 @@ const productSchema = new mongoose.Schema(
     isVisible: {
       type: Boolean,
       default: true,
+    },
+
+    // EXTENDED PRODUCT DETAILS & SPECIFICATIONS
+    description: {
+      type: String,
+      trim: true,
+    },
+
+    brand: {
+      type: String,
+      trim: true,
+    },
+
+    specs: {
+      type: mongoose.Schema.Types.Mixed,
+      default: {},
     },
   },
   {

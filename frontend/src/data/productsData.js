@@ -1,339 +1,1138 @@
 /**
- * Accurate details, specifications, and features for existing products in ShopEase.
- * Contains ONLY the 9 products already existing on the store.
+ * ShopEase Verified Ultra-Premium Catalog
+ * Exactly 4 Categories:
+ * 1. Laptops (12 products)
+ * 2. Phones (12 products)
+ * 3. Accessories (12 products)
+ * 4. Fashion & Apparel (10 products)
+ * Total Active Products: 46
+ *
+ * High-resolution authentic photography on neutral backgrounds.
  */
 
-export const PRODUCT_DETAILS_MAP = {
-  // 1. MacBook Pro
-  "macbook pro": {
-    shortDescription:
-      "High-performance Apple MacBook Pro featuring the powerful Apple Silicon chip, stunning Liquid Retina XDR display, and all-day battery life engineered for pro workflows.",
-    features: [
-      "14.2-inch Liquid Retina XDR display with ProMotion 120Hz",
-      "Apple Silicon Pro processor for high-speed multitasking",
-      "16GB Unified Memory & 512GB Ultra-Fast NVMe SSD",
-      "Up to 18 hours battery life with MagSafe 3 fast charging",
-    ],
-    specs: {
-      Display: "14.2-inch Liquid Retina XDR (3024 x 1964)",
-      Processor: "Apple Silicon Pro Chip",
-      Memory: "16GB Unified RAM | 512GB SSD",
-      Battery: "Up to 18 Hours with MagSafe 3",
-    },
-    highlights: [
-      "1-Year Apple Official Warranty",
-      "Free Insured Express Delivery",
-      "MagSafe Fast Charger Included",
-    ],
-  },
-
-  // 2. Professional Camera
-  "professional camera": {
-    shortDescription:
-      "Full-frame professional mirrorless camera offering cinematic 4K 60fps video capture, ultra-fast dual pixel autofocus, and superior low-light performance.",
-    features: [
-      "24.2 MP Full-Frame CMOS Sensor with image processor",
-      "4K UHD video recording at 60fps with 10-bit color profile",
-      "5-Axis In-Body Optical Image Stabilization (IBIS)",
-      "Dual UHS-II SD slots with weather-sealed magnesium body",
-    ],
-    specs: {
-      Sensor: "24.2 MP Full-Frame Exmor CMOS",
-      Video: "4K UHD at 60fps / FHD at 120fps",
-      Autofocus: "693 Phase-Detection AF Points",
-      Body: "Weather-Sealed Magnesium Alloy",
-    },
-    highlights: [
-      "2-Year Manufacturer Warranty",
-      "Includes 24-70mm Lens Kit",
-      "Free Padded Camera Shoulder Bag",
-    ],
-  },
-
-  // 3. Premium PS5 Gaming Setup
-  "premium ps5 gaming setup": {
-    shortDescription:
-      "Complete next-generation PlayStation 5 gaming setup featuring the PS5 console, dual haptic wireless controllers, 3D audio headset, and high-speed gaming accessories.",
-    features: [
-      "Ultra-high speed 825GB custom NVMe SSD with near-instant loading",
-      "Ray Tracing acceleration supporting 4K 120Hz & HDR output",
-      "DualSense Wireless Controller with Haptic Feedback & Adaptive Triggers",
-      "Tempest 3D AudioTech for immersive directional soundscapes",
-    ],
-    specs: {
-      Console: "PlayStation 5 Disc Edition",
-      Graphics: "Custom AMD RDNA 2 GPU (Ray Tracing)",
-      Audio: "Tempest 3D AudioTech",
-      Storage: "825GB High-Speed NVMe SSD",
-    },
-    highlights: [
-      "1-Year Sony India Official Warranty",
-      "Includes 2 DualSense Controllers",
-      "3 Blockbuster Game Titles Included",
-    ],
-  },
-
-  // 4. Premium Home Audio System
-  "premium home audio system": {
-    shortDescription:
-      "Audiophile-grade surround sound home audio system delivering crystal-clear acoustics, deep resonant bass, and room-filling Dolby Atmos cinematic audio.",
-    features: [
-      "5.1 Channel surround acoustic architecture with 1000W peak power",
-      "Dolby Atmos & DTS:X immersive cinematic 3D sound processing",
-      "Wireless long-throw subwoofer and wireless rear satellite speakers",
-      "Multi-connectivity: HDMI eARC, Optical audio, Bluetooth 5.2 & Wi-Fi",
-    ],
-    specs: {
-      Power: "1000W Peak Cinematic Output",
-      Channels: "5.1 Channel Surround System",
-      Formats: "Dolby Atmos, DTS:X, Hi-Res Audio",
-      Connectivity: "HDMI eARC, Optical, Bluetooth 5.2, Wi-Fi",
-    },
-    highlights: [
-      "2-Year Comprehensive On-Site Warranty",
-      "Free Home Acoustic Setup & Installation",
-      "Calibration Microphone Included",
-    ],
-  },
-
-  // 5. Running Shoes
-  "running shoes": {
-    shortDescription:
-      "Lightweight performance running shoes engineered with high-rebound foam cushioning and breathable engineered mesh for superior comfort on every stride.",
-    features: [
-      "High-rebound responsive EVA foam midsole with shock absorption",
-      "Breathable double-layer stretch mesh upper for continuous airflow",
-      "Durable slip-resistant vulcanized rubber outsole for multi-surface grip",
-      "Padded ergonomic heel collar and removable memory foam insole",
-    ],
-    specs: {
-      Upper: "Breathable Engineered Mesh",
-      Outsole: "High-Traction Anti-Slip Rubber",
-      Closure: "Lace-Up Athletic Fit",
-      Weight: "Approx. 240g (Ultra-Lightweight)",
-    },
-    highlights: [
-      "30-Day Easy Size Exchange",
-      "Standard Indian & UK Sizing Available",
-      "Machine Washable Breathable Fabric",
-    ],
-  },
-
-  // 6. Premium Leather Jacket
-  "premium leather jacket": {
-    shortDescription:
-      "Handcrafted genuine lambskin leather jacket featuring a timeless biker silhouette, heavy-duty metallic zippers, and quilted satin interior thermal lining.",
-    features: [
-      "100% genuine full-grain lambskin leather with supple hand-feel",
-      "Quilted thermal satin lining for all-weather comfort and insulation",
-      "Heavy-duty YKK rust-resistant metallic zippers and snap collars",
-      "4 exterior zippered hand pockets plus 2 secure concealed interior pockets",
-    ],
-    specs: {
-      Material: "100% Genuine Lambskin Leather",
-      Lining: "Thermal Quilted Satin",
-      Zippers: "Heavy-Duty YKK Metallic Hardware",
-      Fit: "Tailored Classic Biker Cut",
-    },
-    highlights: [
-      "1-Year Leather Quality Guarantee",
-      "Free Premium Garment Dust Bag",
-      "Complimentary Leather Care Kit",
-    ],
-  },
-
-  // 7. Premium Luxury Watch
-  "premium luxury watch": {
-    shortDescription:
-      "Masterfully designed luxury chronograph timepiece featuring a scratch-resistant sapphire crystal glass, precision Japanese movement, and stainless steel link bracelet.",
-    features: [
-      "Precision multi-subdial chronograph Japanese movement",
-      "Anti-reflective scratch-resistant sapphire crystal front glass",
-      "316L surgical-grade stainless steel case with butterfly deployment clasp",
-      "50-meter (5 ATM) water resistance with luminous hands and date window",
-    ],
-    specs: {
-      Case: "42mm Surgical Stainless Steel (316L)",
-      Crystal: "Scratch-Resistant Sapphire Glass",
-      WaterResistance: "5 ATM / 50 Meters",
-      Bracelet: "Solid Stainless Steel Link Bracelet",
-    },
-    highlights: [
-      "2-Year International Movement Warranty",
-      "Luxury Wooden Gift Box Included",
-      "Free Bracelet Resizing Tool Provided",
-    ],
-  },
-
-  // 8. Premium Laptop Bag
-  "premium laptop bag": {
-    shortDescription:
-      "Durable and weather-resistant commuter laptop backpack built with ballistic nylon, shockproof padded laptop sleeve, and external USB pass-through charging.",
-    features: [
-      "Dedicated shock-absorbing padded sleeve fits laptops up to 15.6 inches",
-      "Water-repellent 900D Oxford nylon exterior with reinforced load points",
-      "External USB charging port with interior power bank organizer pocket",
-      "Ergonomic breathable mesh back cushioning and TSA luggage trolley strap",
-    ],
-    specs: {
-      Fit: "Fits Up to 15.6-inch Laptops & Tablets",
-      Fabric: "Water-Repellent 900D Ballistic Nylon",
-      Volume: "28 Liters Multi-Compartment Storage",
-      Dimensions: "46cm x 31cm x 15cm",
-    },
-    highlights: [
-      "1-Year Warranty against Stitching/Zips",
-      "Concealed Anti-Theft Back Pocket",
-      "TSA-Friendly Luggage Sleeve",
-    ],
-  },
-
-  // 9. Wireless Bluetooth Headphones
-  "wireless bluetooth headphones": {
-    shortDescription:
-      "Ergonomic over-ear wireless Bluetooth headphones delivering punchy deep bass, active ambient noise isolation, and up to 40 hours of continuous wireless playback.",
-    features: [
-      "40mm High-Definition Dynamic Bass Drivers for deep, resonant sound",
-      "Advanced Bluetooth 5.3 with ultra-low latency & 10-meter stable range",
-      "Up to 40 hours wireless playtime with Type-C fast-charging support",
-      "Ultra-plush memory foam cushioned earcups with foldable lightweight design",
-    ],
-    specs: {
-      Drivers: "40mm High-Definition Neodymium Drivers",
-      Wireless: "Bluetooth 5.3 + Dual Device Pairing",
-      Battery: "40 Hours Playback (Fast Type-C Charge)",
-      Microphone: "Built-in HD Microphone for Crisp Calls",
-    },
-    highlights: [
-      "1-Year Instant Replacement Warranty",
-      "Includes 3.5mm Aux Audio Cable",
-      "Foldable Compact Travel Pouch",
-    ],
-  },
-};
-
-/**
- * Enriches any product from backend with its accurate metadata.
- */
-export function enrichProduct(product) {
-  if (!product) return product;
-
-  const key = (product.name || "").trim().toLowerCase();
-  const matchedDetails = PRODUCT_DETAILS_MAP[key] || {};
-
-  return {
-    ...product,
-    shortDescription:
-      product.description ||
-      matchedDetails.shortDescription ||
-      `Experience the premium quality and craftsmanship of ${product.name}. Designed for everyday excellence.`,
-    features: matchedDetails.features || [
-      "Premium quality materials and finish",
-      "Engineered for durability and reliability",
-      "Optimized for best-in-class performance",
-      "Quality tested and certified",
-    ],
-    specs: matchedDetails.specs || {
-      Category: product.category || "General",
-      Condition: "Brand New Sealed",
-    },
-    highlights: matchedDetails.highlights || [
-      "Official Brand Warranty",
-      "Free Express Delivery",
-      "7-Day Return Policy",
-    ],
-  };
-}
-
-/**
- * Verified fallback catalog containing EXACTLY the 9 existing products from the store.
- * Used for instant rendering if the free backend instance is spinning up.
- */
 export const EXISTING_STORE_PRODUCTS = [
   {
-    _id: "6a970acc0b3efb169d32fe57",
-    name: "MacBook Pro",
-    category: "Electronics",
-    price: 159999,
-    image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800",
-    stock: 99,
-    isVisible: true,
+    "_id": "6aeae8d50992e029fafd3434",
+    "name": "Dell Inspiron 15 Touchscreen Laptop",
+    "brand": "Dell",
+    "category": "Laptops",
+    "price": 17990,
+    "stock": 5,
+    "isVisible": true,
+    "image": "https://m.media-amazon.com/images/I/81QBQE8xV4L.jpg",
+    "shortDescription": "The Dell Inspiron 15 offers a practical combination of performance and convenience for everyday computing. Its Intel Core i5 processor, 16GB RAM, and SSD storage support multitasking, office applications, and daily productivity. The 15.6-inch touchscreen display provides an interactive viewing experience.",
+    "description": "The Dell Inspiron 15 offers a practical combination of performance and convenience for everyday computing. Its Intel Core i5 processor, 16GB RAM, and SSD storage support multitasking, office applications, and daily productivity. The 15.6-inch touchscreen display provides an interactive viewing experience.",
+    "specs": {
+      "Brand": "Dell",
+      "Series": "Inspiron 15",
+      "Model": "Inspiron 3530",
+      "Processor": "Intel Core i5-1334U",
+      "RAM": "16GB",
+      "Storage": "512GB SSD",
+      "Display": "15.6-inch Full HD Touchscreen",
+      "Operating System": "Windows 11"
+    }
   },
   {
-    _id: "6a970afa0b3efb169d32fe58",
-    name: "Professional Camera",
-    category: "Electronics",
-    price: 125000,
-    image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800",
-    stock: 97,
-    isVisible: true,
+    "_id": "6aeae8d50992e029fafd3436",
+    "name": "Acer Aspire 5 AI PC Intel Core Ultra 5 Laptop",
+    "brand": "Acer",
+    "category": "Laptops",
+    "price": 19199,
+    "stock": 4,
+    "isVisible": true,
+    "image": "https://supermaxstores.in/cdn/shop/files/1_cb1252f8-da46-498b-9afd-41d760357738.png?v=1784523333&width=3840",
+    "shortDescription": "The Acer Aspire 5 AI PC brings intelligent next-generation computing into a sleek, ultra-portable 1.2 kg chassis. Powered by an Intel Core Ultra 5 processor with dedicated AI acceleration, 17.5 mm slim profile, vibrant display, and backlit keyboard, it is crafted for mobile productivity and creators on the go.",
+    "description": "The Acer Aspire 5 AI PC brings intelligent next-generation computing into a sleek, ultra-portable 1.2 kg chassis. Powered by an Intel Core Ultra 5 processor with dedicated AI acceleration, 17.5 mm slim profile, vibrant display, and backlit keyboard, it is crafted for mobile productivity and creators on the go.",
+    "specs": {
+      "Brand": "Acer",
+      "Series": "Aspire 5 AI PC",
+      "Model": "Aspire 5 AI PC",
+      "Processor": "Intel Core Ultra 5",
+      "Display": "14-inch Full HD IPS",
+      "Operating System": "Windows 11",
+      "Keyboard": "Backlit Keyboard",
+      "Weight": "1.2 kg",
+      "Thickness": "17.5 mm"
+    }
   },
   {
-    _id: "6a970c1c0b3efb169d32fe5c",
-    name: "Premium PS5 Gaming Setup",
-    category: "Electronics",
-    price: 149999,
-    image:
-      "https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&w=800&q=80",
-    stock: 99,
-    isVisible: true,
+    "_id": "6aeae8d50992e029fafd3439",
+    "name": "Samsung Galaxy Book4 Intel Core i5 Laptop",
+    "brand": "Samsung",
+    "category": "Laptops",
+    "price": 21299,
+    "stock": 2,
+    "isVisible": true,
+    "image": "https://tiimg.tistatic.com/fp/2/009/567/samsung-laptop-378.jpg",
+    "shortDescription": "The Samsung Galaxy Book4 delivers an elegant, slim profile with dependable Intel Core i5 processing power. Featuring a refined chassis, expansive display, full-size keyboard with numeric keypad, and seamless integration with the Samsung Galaxy ecosystem, it is built for effortless multitasking and mobile productivity.",
+    "description": "The Samsung Galaxy Book4 delivers an elegant, slim profile with dependable Intel Core i5 processing power. Featuring a refined chassis, expansive display, full-size keyboard with numeric keypad, and seamless integration with the Samsung Galaxy ecosystem, it is built for effortless multitasking and mobile productivity.",
+    "specs": {
+      "Brand": "Samsung",
+      "Series": "Galaxy Book4",
+      "Model": "Galaxy Book4",
+      "Processor": "Intel Core i5",
+      "Display": "15.6-inch Full HD",
+      "Operating System": "Windows 11",
+      "Keyboard": "Full-size Keyboard with Numeric Keypad"
+    }
   },
   {
-    _id: "6a970e0e0b3efb169d32fe60",
-    name: "Premium Home Audio System",
-    category: "Electronics",
-    price: 125000,
-    image:
-      "https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=800&q=80",
-    stock: 100,
-    isVisible: true,
+    "_id": "6aeae8d50992e029fafd343c",
+    "name": "Infinix Y1 Plus Neo XL30 Laptop",
+    "brand": "Infinix",
+    "category": "Laptops",
+    "price": 23499,
+    "stock": 2,
+    "isVisible": true,
+    "image": "https://rukminim3.flixcart.com/image/480/480/xif0q/computer/c/a/c/xl30-thin-and-light-laptop-infinix-original-imah3fhegsftbgwd.jpeg?q=90",
+    "shortDescription": "The Infinix Y1 Plus Neo is a thin-and-light laptop designed for everyday productivity, online learning, browsing, and general computing. Its Full HD display and portable design make it convenient for students and everyday users.",
+    "description": "The Infinix Y1 Plus Neo is a thin-and-light laptop designed for everyday productivity, online learning, browsing, and general computing. Its Full HD display and portable design make it convenient for students and everyday users.",
+    "specs": {
+      "Brand": "Infinix",
+      "Series": "Infinix Y1 Plus Neo",
+      "Model": "Y1 Plus Neo XL30",
+      "Processor": "Intel Celeron Quad Core",
+      "Display": "15.6-inch Full HD",
+      "Operating System": "Windows 11 Home",
+      "Keyboard": "Backlit Keyboard"
+    }
   },
   {
-    _id: "6a970e480b3efb169d32fe61",
-    name: "Running Shoes",
-    category: "Fashion",
-    price: 2499,
-    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800",
-    stock: 99,
-    isVisible: true,
+    "_id": "6aeae8d50992e029fafd343a",
+    "name": "LG gram Pro 17 Laptop",
+    "brand": "LG",
+    "category": "Laptops",
+    "price": 21999,
+    "stock": 4,
+    "isVisible": true,
+    "image": "https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/65e1c356-1d8a-4793-b05f-15f5d04a76d9/Laptops_17Z90TR-E-AAB4U1_gallery_1_new_5000x5000",
+    "shortDescription": "The LG gram Pro 17 is designed for users who want a large display in a premium, portable laptop. Its 17-inch WQXGA display offers detailed visuals and a spacious workspace. Its slim design makes it suitable for productivity, professional work, and everyday use.",
+    "description": "The LG gram Pro 17 is designed for users who want a large display in a premium, portable laptop. Its 17-inch WQXGA display offers detailed visuals and a spacious workspace. Its slim design makes it suitable for productivity, professional work, and everyday use.",
+    "specs": {
+      "Brand": "LG",
+      "Series": "LG gram Pro",
+      "Model": "17Z90TR Series",
+      "Display": "17-inch WQXGA IPS",
+      "Operating System": "Windows 11"
+    }
   },
   {
-    _id: "6a970e700b3efb169d32fe62",
-    name: "Premium Leather Jacket",
-    category: "Fashion",
-    price: 8999,
-    image:
-      "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=80",
-    stock: 99,
-    isVisible: true,
+    "_id": "6aeae8d50992e029fafd343b",
+    "name": "ASUS ROG Strix SCAR Series Gaming Laptop",
+    "brand": "ASUS",
+    "category": "Laptops",
+    "price": 22790,
+    "stock": 5,
+    "isVisible": true,
+    "image": "https://dlcdnwebimgs.asus.com/gain/299AF6C6-7DD0-4322-9343-3E37828784F1/w717/h525",
+    "shortDescription": "The ASUS ROG Strix SCAR is engineered for tournament-level esports and cutting-edge gaming performance. Featuring a distinctive semi-translucent chassis, RGB Aura Sync lightbar, full-size gaming keyboard, and high-refresh gaming display, it offers enthusiasts top-tier responsiveness and uncompromising style.",
+    "description": "The ASUS ROG Strix SCAR is engineered for tournament-level esports and cutting-edge gaming performance. Featuring a distinctive semi-translucent chassis, RGB Aura Sync lightbar, full-size gaming keyboard, and high-refresh gaming display, it offers enthusiasts top-tier responsiveness and uncompromising style.",
+    "specs": {
+      "Brand": "ASUS",
+      "Series": "ROG Strix SCAR",
+      "Model": "ROG Strix SCAR Series",
+      "Display": "ROG Nebula High-Refresh Gaming Display",
+      "Operating System": "Windows 11",
+      "Keyboard": "Per-Key RGB Backlit Gaming Keyboard with NumPad",
+      "Design": "Translucent Keyboard Deck & Aura Sync Lightbar"
+    }
   },
   {
-    _id: "6a970e960b3efb169d32fe63",
-    name: "Premium Luxury Watch",
-    category: "Fashion",
-    price: 15999,
-    image:
-      "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=80",
-    stock: 100,
-    isVisible: true,
+    "_id": "6aeae8d50992e029fafd3433",
+    "name": "HP 15 Intel Core i5 Laptop",
+    "brand": "HP",
+    "category": "Laptops",
+    "price": 17299,
+    "stock": 1,
+    "isVisible": true,
+    "image": "https://m.media-amazon.com/images/I/71zO9msJL7L._AC_UF1000,1000_QL80_.jpg",
+    "shortDescription": "The HP 15 is designed for everyday productivity, office tasks, online learning, and multitasking. Its 13th Gen Intel Core i5 processor, 16GB RAM, and 512GB SSD provide a responsive computing experience. The 15.6-inch Full HD anti-glare display and backlit keyboard make it suitable for both work and study.",
+    "description": "The HP 15 is designed for everyday productivity, office tasks, online learning, and multitasking. Its 13th Gen Intel Core i5 processor, 16GB RAM, and 512GB SSD provide a responsive computing experience. The 15.6-inch Full HD anti-glare display and backlit keyboard make it suitable for both work and study.",
+    "specs": {
+      "Brand": "HP",
+      "Series": "HP 15",
+      "Model": "FR0045TU",
+      "Processor": "13th Gen Intel Core i5-13420H",
+      "RAM": "16GB",
+      "Storage": "512GB SSD",
+      "Display": "15.6-inch Full HD",
+      "Operating System": "Windows 11",
+      "Keyboard": "Backlit"
+    }
   },
   {
-    _id: "6a9835d9eb53fafa5df80fc4",
-    name: "Premium Laptop Bag",
-    category: "Laptop Bags",
-    price: 2499,
-    image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62",
-    stock: 100,
-    isVisible: true,
+    "_id": "6aeae8d50992e029fafd343d",
+    "name": "Apple MacBook Laptop – Premium Aluminum Series",
+    "brand": "Apple",
+    "category": "Laptops",
+    "price": 24899,
+    "stock": 1,
+    "isVisible": true,
+    "image": "https://specials-images.forbesimg.com/imageserve/6213c2a05ed1f7de596d35b4/960x0.jpg",
+    "shortDescription": "The Apple MacBook combines an iconic slim aluminum unibody design with seamless performance. Featuring Apple's signature precision-crafted chassis, backlit Magic Keyboard, intuitive trackpad, and macOS ecosystem, it offers a sophisticated computing experience for professionals, creators, and everyday productivity.",
+    "description": "The Apple MacBook combines an iconic slim aluminum unibody design with seamless performance. Featuring Apple's signature precision-crafted chassis, backlit Magic Keyboard, intuitive trackpad, and macOS ecosystem, it offers a sophisticated computing experience for professionals, creators, and everyday productivity.",
+    "specs": {
+      "Brand": "Apple",
+      "Series": "MacBook",
+      "Model": "MacBook Series",
+      "Display": "Retina Display",
+      "Operating System": "macOS",
+      "Keyboard": "Backlit Magic Keyboard with Force Touch Trackpad",
+      "Material": "Precision Aluminum Unibody"
+    }
   },
   {
-    _id: "6a9e7b7d020e172ba035dfe4",
-    name: "Wireless Bluetooth Headphones",
-    category: "Electronics",
-    price: 1499,
-    image:
-      "https://images.pexels.com/photos/10292808/pexels-photo-10292808.jpeg",
-    stock: 100,
-    isVisible: true,
+    "_id": "6aeae8d50992e029fafd3432",
+    "name": "Lenovo IdeaPad Slim 3 Intel Core i7 Laptop",
+    "brand": "Lenovo",
+    "category": "Laptops",
+    "price": 16499,
+    "stock": 3,
+    "isVisible": true,
+    "image": "https://m.media-amazon.com/images/I/71WThYxixsL._AC_UF1000,1000_QL80_.jpg",
+    "shortDescription": "Experience powerful everyday computing with the Lenovo IdeaPad Slim 3. Its 13th Gen Intel Core i7 processor, 16GB RAM, and 512GB SSD provide responsive performance for multitasking, productivity, studying, and professional work. Its 15.3-inch WUXGA IPS display delivers clear visuals, while the backlit keyboard makes working more convenient.",
+    "description": "Experience powerful everyday computing with the Lenovo IdeaPad Slim 3. Its 13th Gen Intel Core i7 processor, 16GB RAM, and 512GB SSD provide responsive performance for multitasking, productivity, studying, and professional work. Its 15.3-inch WUXGA IPS display delivers clear visuals, while the backlit keyboard makes working more convenient.",
+    "specs": {
+      "Brand": "Lenovo",
+      "Series": "IdeaPad Slim 3",
+      "Model": "83K100CJIN",
+      "Processor": "13th Gen Intel Core i7-13620H",
+      "RAM": "16GB DDR5",
+      "Storage": "512GB SSD",
+      "Display": "15.3-inch WUXGA IPS",
+      "Operating System": "Windows 11",
+      "Keyboard": "Backlit"
+    }
   },
-].map(enrichProduct);
+  {
+    "_id": "6aeae8d50992e029fafd3435",
+    "name": "ASUS ROG Strix G16 Gaming Laptop",
+    "brand": "ASUS",
+    "category": "Laptops",
+    "price": 18499,
+    "stock": 2,
+    "isVisible": true,
+    "image": "https://in.store.asus.com/media/catalog/product/g/6/g615-lw.jpg",
+    "shortDescription": "The ASUS ROG Strix G16 is a performance-focused gaming laptop from the Republic of Gamers series. Its gaming-oriented design and powerful hardware platform make it suitable for demanding applications, entertainment, and gaming. Present its verified gaming specifications accurately.",
+    "description": "The ASUS ROG Strix G16 is a performance-focused gaming laptop from the Republic of Gamers series. Its gaming-oriented design and powerful hardware platform make it suitable for demanding applications, entertainment, and gaming. Present its verified gaming specifications accurately.",
+    "specs": {
+      "Brand": "ASUS",
+      "Series": "ROG Strix G16",
+      "Model": "G615LW Series",
+      "Display": "16-inch ROG Nebula Display",
+      "Operating System": "Windows 11",
+      "Keyboard": "4-Zone RGB Backlit Chiclet Keyboard"
+    }
+  },
+  {
+    "_id": "6aeae8d50992e029fafd3437",
+    "name": "MSI Pulse GL Series Gaming Laptop",
+    "brand": "MSI",
+    "category": "Laptops",
+    "price": 19890,
+    "stock": 1,
+    "isVisible": true,
+    "image": "https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/22504539/Pulse_GL76_GL66_Scenario_Photo_5.jpg?quality=90&strip=all&crop=0%2C0.002657736671452%2C100%2C99.994684526657&w=2400",
+    "shortDescription": "The MSI Pulse GL series features a bold gaming-focused design intended for immersive entertainment and gaming. Its performance-oriented design and gaming aesthetics make it a suitable choice for users looking for a dedicated gaming laptop experience.",
+    "description": "The MSI Pulse GL series features a bold gaming-focused design intended for immersive entertainment and gaming. Its performance-oriented design and gaming aesthetics make it a suitable choice for users looking for a dedicated gaming laptop experience.",
+    "specs": {
+      "Brand": "MSI",
+      "Series": "Pulse GL Series",
+      "Model": "Pulse GL Series (GL66 / GL76)",
+      "Keyboard": "RGB Backlit Gaming Keyboard",
+      "Design": "Sci-Fi Titanium Gray Armor Design",
+      "Cooling": "Cooler Boost 5 Thermal Architecture"
+    }
+  },
+  {
+    "_id": "6aeae8d50992e029fafd3438",
+    "name": "Microsoft Surface Laptop 13.5\" Touchscreen",
+    "brand": "Microsoft",
+    "category": "Laptops",
+    "price": 20499,
+    "stock": 3,
+    "isVisible": true,
+    "image": "https://m.media-amazon.com/images/I/71gegFR7yHL.jpg",
+    "shortDescription": "The Microsoft Surface Laptop combines sleek elegance with responsive AI-assisted computing. Featuring a stunning 13.5-inch 2K+ Touchscreen, Intel Core Ultra 5 processor, 16GB RAM, and 1TB fast SSD storage, it delivers an effortless premium computing experience for modern professionals and creators.",
+    "description": "The Microsoft Surface Laptop combines sleek elegance with responsive AI-assisted computing. Featuring a stunning 13.5-inch 2K+ Touchscreen, Intel Core Ultra 5 processor, 16GB RAM, and 1TB fast SSD storage, it delivers an effortless premium computing experience for modern professionals and creators.",
+    "specs": {
+      "Brand": "Microsoft",
+      "Series": "Surface Laptop",
+      "Model": "Surface Laptop (Intel Core Ultra 5 Edition)",
+      "Processor": "Intel Core Ultra 5",
+      "RAM": "16GB",
+      "Storage": "1TB SSD",
+      "Display": "13.5-inch 2K+ Touchscreen",
+      "Operating System": "Windows 11"
+    }
+  },
+  {
+    "_id": "6aeb3447d1f4a231d93f2795",
+    "name": "Apple iPhone 16 Plus (128GB - Pink)",
+    "brand": "Apple",
+    "category": "Phones",
+    "price": 24499,
+    "stock": 1,
+    "isVisible": true,
+    "image": "https://m.media-amazon.com/images/I/31Ir0LOgoeL._SX342_SY445_QL70_FMwebp_.jpg",
+    "shortDescription": "The Apple iPhone 16 Plus delivers an expansive 6.7-inch Super Retina XDR OLED display, incredible all-day battery life with up to 27 hours of video playback, and the cutting-edge A18 Bionic chip custom-built for Apple Intelligence. Capture stunning spatial photos and 4K Dolby Vision video using the 48MP Fusion camera system with 2x optical-quality telephoto. Featuring the innovative Camera Control slider and the customizable Action button, it provides seamless photographic control in an aerospace-grade aluminum enclosure.",
+    "description": "The Apple iPhone 16 Plus delivers an expansive 6.7-inch Super Retina XDR OLED display, incredible all-day battery life with up to 27 hours of video playback, and the cutting-edge A18 Bionic chip custom-built for Apple Intelligence. Capture stunning spatial photos and 4K Dolby Vision video using the 48MP Fusion camera system with 2x optical-quality telephoto. Featuring the innovative Camera Control slider and the customizable Action button, it provides seamless photographic control in an aerospace-grade aluminum enclosure.",
+    "specs": {
+      "Brand": "Apple",
+      "Series": "iPhone 16 Plus",
+      "Model": "A3290",
+      "Display": "6.7-inch Super Retina XDR OLED (2796x1290, 2000 nits)",
+      "Processor": "Apple A18 Bionic (6-Core CPU, 5-Core GPU, 16-Core NPU)",
+      "RAM": "8GB Unified Memory",
+      "Storage": "128GB NVMe",
+      "Rear Camera": "48MP Fusion (f/1.6, Sensor-shift OIS) + 12MP Ultra Wide",
+      "Front Camera": "12MP TrueDepth Camera with Autofocus",
+      "Battery": "Rechargeable Lithium-ion (Up to 27 hrs video playback)",
+      "Charging": "USB-C Fast Charging, 25W MagSafe, Qi2 Wireless",
+      "Operating System": "iOS 18 with Apple Intelligence",
+      "Controls": "Camera Control Touch Button & Action Button",
+      "Durability": "Ceramic Shield Front, IP68 Water/Dust Resistance",
+      "Network": "5G (sub-6 GHz), Wi-Fi 7, Bluetooth 5.3, UWB",
+      "Color": "Pink"
+    }
+  },
+  {
+    "_id": "6aeb3447d1f4a231d93f279d",
+    "name": "Lava Virat V1 5G Smartphone",
+    "brand": "Lava",
+    "category": "Phones",
+    "price": 6499,
+    "stock": 3,
+    "isVisible": true,
+    "image": "https://rukminim2.flixcart.com/image/1600/1600/xif0q/mobile/h/f/c/-original-imahqzzbknbqkkf5.jpeg?q=90",
+    "shortDescription": "Proudly engineered in India, the Lava Virat V1 5G delivers dependable 5G connectivity, durable IP64 dust and splash resistance, and an expansive 6.75-inch (17.13cm) HD+ 120Hz display. Equipped with an octa-core UNISOC T8200 5G processor, 4GB RAM with 4GB virtual RAM expansion, and a massive 6,000mAh battery, it ensures reliable multi-day performance. Supported by Lava's signature Free Service @ Home doorstep assistance, it offers total peace of mind for budget-conscious consumers.",
+    "description": "Proudly engineered in India, the Lava Virat V1 5G delivers dependable 5G connectivity, durable IP64 dust and splash resistance, and an expansive 6.75-inch (17.13cm) HD+ 120Hz display. Equipped with an octa-core UNISOC T8200 5G processor, 4GB RAM with 4GB virtual RAM expansion, and a massive 6,000mAh battery, it ensures reliable multi-day performance. Supported by Lava's signature Free Service @ Home doorstep assistance, it offers total peace of mind for budget-conscious consumers.",
+    "specs": {
+      "Brand": "Lava",
+      "Series": "Virat Series",
+      "Model": "Virat V1 5G",
+      "Display": "6.75-inch (17.13cm) HD+ Notch Display (120Hz, 2.5D Glass)",
+      "Processor": "UNISOC T8200 5G Octa-core Processor (up to 2.6GHz)",
+      "RAM": "4GB (+4GB Virtual RAM Expansion)",
+      "Storage": "64GB ROM (Expandable up to 1TB via MicroSD)",
+      "Rear Camera": "13MP AI Primary Camera with Portrait & HDR Modes",
+      "Front Camera": "5MP Front Camera with Screen Flash",
+      "Battery": "6000mAh Mega Endurance Battery",
+      "Charging": "Fast USB Type-C Charging",
+      "Operating System": "Android 16 (Clean OS, Zero Bloatware)",
+      "Durability": "IP64 Dust & Water Splash Resistant",
+      "Warranty & Support": "Free Service @ Home Doorstep Support",
+      "Network": "5G Dual SIM (5G+5G Dual Active), 4G VoLTE, Wi-Fi, Bluetooth",
+      "Color": "Arya Blue"
+    }
+  },
+  {
+    "_id": "6aeb3447d1f4a231d93f2793",
+    "name": "Samsung Galaxy Z Fold8 5G Smartphone",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 24899,
+    "stock": 2,
+    "isVisible": true,
+    "image": "https://m.media-amazon.com/images/I/71LVm2OIk0L._SX679_.jpg",
+    "shortDescription": "Unfold a new era of productivity and entertainment with the Samsung Galaxy Z Fold8. Featuring an expansive 7.6-inch Dynamic AMOLED 2X foldable interior display and a sleek 6.3-inch cover screen, this flagship device is engineered for multitasking with Galaxy AI. Powered by the high-performance Qualcomm Snapdragon 8 Gen 4 for Galaxy with 12GB RAM, it delivers responsive processing, high-resolution photography with a 50MP OIS camera, and all-day dual-cell battery endurance.",
+    "description": "Unfold a new era of productivity and entertainment with the Samsung Galaxy Z Fold8. Featuring an expansive 7.6-inch Dynamic AMOLED 2X foldable interior display and a sleek 6.3-inch cover screen, this flagship device is engineered for multitasking with Galaxy AI. Powered by the high-performance Qualcomm Snapdragon 8 Gen 4 for Galaxy with 12GB RAM, it delivers responsive processing, high-resolution photography with a 50MP OIS camera, and all-day dual-cell battery endurance.",
+    "specs": {
+      "Brand": "Samsung",
+      "Model": "Galaxy Z Fold8 5G",
+      "Form Factor": "Book-Style Foldable Smartphone",
+      "Main Display": "7.6-inch Dynamic AMOLED 2X (120Hz LTPO, 2600 nits)",
+      "Cover Display": "6.3-inch Dynamic AMOLED 2X (120Hz)",
+      "Processor": "Qualcomm Snapdragon 8 Gen 4 for Galaxy Octa-core",
+      "RAM": "12GB LPDDR5X",
+      "Storage": "256GB UFS 4.0",
+      "Rear Camera": "50MP Wide (OIS) + 12MP Ultra-Wide + Telephoto",
+      "Front Camera": "10MP Cover Camera + 4MP Under-Display Camera",
+      "Battery": "4600mAh Dual-Cell",
+      "Charging": "45W Fast Wired Charging, 15W Wireless Charging",
+      "Operating System": "Android 16 with One UI 8 & Galaxy AI",
+      "Network": "5G Dual SIM (Nano + eSIM)",
+      "Water Resistance": "IPX8 Certified"
+    }
+  },
+  {
+    "_id": "6aeb3447d1f4a231d93f2797",
+    "name": "Xiaomi 17T 5G Leica Smartphone",
+    "brand": "Xiaomi",
+    "category": "Phones",
+    "price": 21499,
+    "stock": 4,
+    "isVisible": true,
+    "image": "https://m.media-amazon.com/images/I/61AX0q6UfJL._AC_UL320_.jpg",
+    "shortDescription": "Co-engineered with Leica optics, the Xiaomi 17T sets a new benchmark in mobile photography. It boasts a dedicated 50MP Leica 5x optical periscope telephoto lens capable of up to 120x AI Ultra Zoom alongside a 50MP Light Fusion 800 primary sensor with OIS. Powered by the 4nm MediaTek Dimensity 8500 Ultra processor, a 120Hz 1.5K CrystalRes AMOLED display with 3500 nits peak brightness, and a 6,500mAh silicon-carbon battery with 67W HyperCharge, this flagship offers uncompromising speed and imaging excellence.",
+    "description": "Co-engineered with Leica optics, the Xiaomi 17T sets a new benchmark in mobile photography. It boasts a dedicated 50MP Leica 5x optical periscope telephoto lens capable of up to 120x AI Ultra Zoom alongside a 50MP Light Fusion 800 primary sensor with OIS. Powered by the 4nm MediaTek Dimensity 8500 Ultra processor, a 120Hz 1.5K CrystalRes AMOLED display with 3500 nits peak brightness, and a 6,500mAh silicon-carbon battery with 67W HyperCharge, this flagship offers uncompromising speed and imaging excellence.",
+    "specs": {
+      "Brand": "Xiaomi",
+      "Series": "17T Series",
+      "Model": "Xiaomi 17T 5G",
+      "Display": "6.59-inch 1.5K CrystalRes AMOLED (120Hz, 3500 nits)",
+      "Processor": "MediaTek Dimensity 8500 Ultra (4nm Octa-core up to 3.4GHz)",
+      "RAM": "12GB LPDDR5X",
+      "Storage": "256GB UFS 4.1 High-speed Storage",
+      "Rear Camera": "Leica Triple Camera: 50MP Main OIS + 50MP 5x Periscope + 12MP Ultra-Wide",
+      "Front Camera": "32MP In-display Selfie Camera",
+      "Battery": "6500mAh Silicon-Carbon High-Density Battery",
+      "Charging": "67W HyperCharge via USB Type-C",
+      "Operating System": "Xiaomi HyperOS 3 based on Android 16",
+      "Durability": "IP68 Water and Dust Resistance, Gorilla Glass 7i",
+      "Network": "5G Dual SIM, Wi-Fi 7, Bluetooth 6.0, IR Blaster",
+      "Audio": "Dual Stereo Speakers with Dolby Atmos",
+      "Color": "Titanium Black"
+    }
+  },
+  {
+    "_id": "6aeb3447d1f4a231d93f2799",
+    "name": "Google Pixel 9 Pro 5G AI Smartphone",
+    "brand": "Google",
+    "category": "Phones",
+    "price": 22999,
+    "stock": 5,
+    "isVisible": true,
+    "image": "https://rukminim2.flixcart.com/image/1600/1600/xif0q/mobile/j/8/e/-resized-original-imahqszeftuehhhq.jpeg?q=90",
+    "shortDescription": "The Google Pixel 9 Pro combines sophisticated design with Google's most powerful Tensor G4 processor and 16GB RAM for on-device Gemini AI experiences. Its iconic redesigned floating camera visor houses a pro-grade triple camera array with a 50MP main sensor, 48MP ultra-wide with Macro Focus, and a 48MP 5x telephoto lens with 30x Super Res Zoom. Equipped with a vivid 6.3-inch Super Actua LTPO 120Hz display and 7 years of promised updates, it represents Google's pinnacle mobile innovation.",
+    "description": "The Google Pixel 9 Pro combines sophisticated design with Google's most powerful Tensor G4 processor and 16GB RAM for on-device Gemini AI experiences. Its iconic redesigned floating camera visor houses a pro-grade triple camera array with a 50MP main sensor, 48MP ultra-wide with Macro Focus, and a 48MP 5x telephoto lens with 30x Super Res Zoom. Equipped with a vivid 6.3-inch Super Actua LTPO 120Hz display and 7 years of promised updates, it represents Google's pinnacle mobile innovation.",
+    "specs": {
+      "Brand": "Google",
+      "Series": "Pixel 9 Pro",
+      "Model": "Pixel 9 Pro 5G",
+      "Display": "6.3-inch Super Actua LTPO OLED (1-120Hz, 3000 nits)",
+      "Processor": "Google Tensor G4 with Titan M2 Security",
+      "RAM": "16GB LPDDR5X (Gemini Nano Optimized)",
+      "Storage": "128GB UFS 3.1",
+      "Rear Camera": "50MP Octa PD Wide (OIS) + 48MP Ultra-Wide + 48MP 5x Telephoto",
+      "Front Camera": "42MP Dual PD Selfie with Autofocus & 103° FOV",
+      "Battery": "4700mAh Battery (24+ hr life, Extreme Battery Saver)",
+      "Charging": "27W Fast Wired Charging + Fast Wireless Charging",
+      "Operating System": "Android 15 / 16 (7 Years of Feature Drops & Security)",
+      "Durability": "Corning Gorilla Glass Victus 2, IP68 Certified",
+      "Network": "5G Dual SIM, Wi-Fi 7, Bluetooth 5.3, UWB, Satellite SOS",
+      "Color": "Hazel Lavender"
+    }
+  },
+  {
+    "_id": "6aeb3447d1f4a231d93f279a",
+    "name": "Mivi One 5G Smartphone",
+    "brand": "Mivi",
+    "category": "Phones",
+    "price": 10499,
+    "stock": 3,
+    "isVisible": true,
+    "image": "https://rukminim2.flixcart.com/image/1600/1600/xif0q/mobile/w/f/o/-original-imahrgb9p4nnnhhp.jpeg?q=90",
+    "shortDescription": "The Mivi One 5G is the debut smartphone from Indian tech brand Mivi, delivering robust Snapdragon performance with zero bloatware and clean stock Android. Powered by the efficient Qualcomm Snapdragon 4 Gen 2 octa-core processor and a 50MP Samsung ISOCELL camera, it features a fluid 6.75-inch 120Hz display with Panda Glass protection. With an enormous 6,000mAh two-day battery and dual 5G connectivity, it brings exceptional reliability to the everyday user.",
+    "description": "The Mivi One 5G is the debut smartphone from Indian tech brand Mivi, delivering robust Snapdragon performance with zero bloatware and clean stock Android. Powered by the efficient Qualcomm Snapdragon 4 Gen 2 octa-core processor and a 50MP Samsung ISOCELL camera, it features a fluid 6.75-inch 120Hz display with Panda Glass protection. With an enormous 6,000mAh two-day battery and dual 5G connectivity, it brings exceptional reliability to the everyday user.",
+    "specs": {
+      "Brand": "Mivi",
+      "Model": "Mivi One 5G",
+      "Display": "6.75-inch HD+ IPS Display (120Hz, Panda Glass)",
+      "Processor": "Qualcomm Snapdragon 4 Gen 2 Octa-core (4nm up to 2.2GHz)",
+      "RAM": "6GB LPDDR4X (+6GB Virtual RAM Turbo)",
+      "Storage": "128GB Internal Storage (Expandable up to 1TB)",
+      "Rear Camera": "50MP Samsung AI Main Camera + Depth Sensor",
+      "Front Camera": "8MP Front Camera with Screen Flash",
+      "Battery": "6000mAh Ultra-Capacity Battery",
+      "Charging": "18W Fast Charging via USB Type-C",
+      "Operating System": "Stock Android (Zero Ads, Zero Pre-installed Bloatware)",
+      "Network": "5G Dual SIM, 4G VoLTE, Wi-Fi, Bluetooth 5.1",
+      "Audio": "3.5mm Headphone Jack, Studio-Tuned Audio",
+      "Color": "Royal Burgundy"
+    }
+  },
+  {
+    "_id": "6aeb3447d1f4a231d93f2794",
+    "name": "OnePlus N6x 5G Smartphone",
+    "brand": "OnePlus",
+    "category": "Phones",
+    "price": 12999,
+    "stock": 5,
+    "isVisible": true,
+    "image": "https://m.media-amazon.com/images/I/61rbuaZn+AL._AC_UY218_.jpg",
+    "shortDescription": "Engineered for unmatched endurance and durability, the OnePlus N6x features an enormous 7,000mAh battery that delivers up to 2.5 days of reliable power on a single charge. Its 6.8-inch ultra-smooth 120Hz display with Aqua Touch technology guarantees responsive touch response even with wet hands. Built to MIL-STD-810H military-grade standards and powered by the MediaTek Dimensity 6360 Apex 5G processor, it offers exceptional resilience and smooth everyday multitasking.",
+    "description": "Engineered for unmatched endurance and durability, the OnePlus N6x features an enormous 7,000mAh battery that delivers up to 2.5 days of reliable power on a single charge. Its 6.8-inch ultra-smooth 120Hz display with Aqua Touch technology guarantees responsive touch response even with wet hands. Built to MIL-STD-810H military-grade standards and powered by the MediaTek Dimensity 6360 Apex 5G processor, it offers exceptional resilience and smooth everyday multitasking.",
+    "specs": {
+      "Brand": "OnePlus",
+      "Model": "OnePlus N6x 5G",
+      "Display": "6.8-inch HD+ LCD Display (120Hz Refresh Rate, Aqua Touch)",
+      "Processor": "MediaTek Dimensity 6360 Apex Octa-core (6nm)",
+      "RAM": "6GB LPDDR4X (Expandable via RAM-Vita)",
+      "Storage": "128GB Internal Storage (Expandable up to 1TB)",
+      "Rear Camera": "13MP AI Primary Camera with Night & Portrait Modes",
+      "Front Camera": "5MP HD Selfie Camera",
+      "Battery": "7000mAh Silicon-Carbon Mega Battery",
+      "Charging": "SuperVOOC Fast Charging + Reverse Charging Support",
+      "Operating System": "OxygenOS 16 based on Android 16",
+      "Durability": "MIL-STD-810H Military-Grade & IP64 Splash Resistance",
+      "Network": "5G Dual SIM, 4G VoLTE, Wi-Fi, Bluetooth 5.3",
+      "Audio": "3.5mm Headphone Jack, Dual Stereo Speakers"
+    }
+  },
+  {
+    "_id": "6aeb3447d1f4a231d93f279b",
+    "name": "Infinix Hot 70 Pro 5G Smartphone",
+    "brand": "Infinix",
+    "category": "Phones",
+    "price": 14999,
+    "stock": 1,
+    "isVisible": true,
+    "image": "https://rukminim2.flixcart.com/image/1600/1600/xif0q/mobile/t/d/o/-original-imahqu3mcbdvkawx.jpeg?q=90",
+    "shortDescription": "Turn heads with the Infinix Hot 70 Pro 5G, featuring India's first interactive Active Matrix Cube (AMC) rear LED display that displays customizable notifications, charging animations, and emojis. Backed by a 50MP Sony IMX882 optical camera with 2x lossless zoom and flagship-level IP68 dust and water resistance, this phone excels in multimedia and gaming with its 6.76-inch 144Hz 3D-curved AMOLED display, MediaTek Dimensity 7100 5G processor, and 6,000mAh battery with 45W fast charging.",
+    "description": "Turn heads with the Infinix Hot 70 Pro 5G, featuring India's first interactive Active Matrix Cube (AMC) rear LED display that displays customizable notifications, charging animations, and emojis. Backed by a 50MP Sony IMX882 optical camera with 2x lossless zoom and flagship-level IP68 dust and water resistance, this phone excels in multimedia and gaming with its 6.76-inch 144Hz 3D-curved AMOLED display, MediaTek Dimensity 7100 5G processor, and 6,000mAh battery with 45W fast charging.",
+    "specs": {
+      "Brand": "Infinix",
+      "Series": "Hot Series",
+      "Model": "Hot 70 Pro 5G",
+      "Display": "6.76-inch 3D Curved AMOLED (144Hz, 1.5K, 1300 nits)",
+      "Rear Feature": "Active Matrix Cube (AMC) Interactive Mini LED Matrix",
+      "Processor": "MediaTek Dimensity 7100 5G Octa-core (6nm)",
+      "RAM": "8GB LPDDR4X (+8GB Extended RAM)",
+      "Storage": "128GB UFS 2.2",
+      "Rear Camera": "50MP Sony IMX882 (OIS, 2x Lossless Zoom) + Depth",
+      "Front Camera": "32MP Crystal Clear Selfie with Dual LED Flash",
+      "Battery": "6000mAh Battery",
+      "Charging": "45W All-Round FastCharge 2.0 with Reverse Charging",
+      "Operating System": "XOS 14.5 based on Android 14",
+      "Durability": "IP68 Ultimate Dust and Water Resistant",
+      "Audio": "Dual Stereo Speakers tuned by JBL",
+      "Network": "5G Dual SIM, Wi-Fi 6, Bluetooth 5.4",
+      "Color": "Active Matrix Titanium"
+    }
+  },
+  {
+    "_id": "6aeb3447d1f4a231d93f279c",
+    "name": "Tecno Spark 30 Pro AMOLED Smartphone",
+    "brand": "Tecno",
+    "category": "Phones",
+    "price": 8999,
+    "stock": 4,
+    "isVisible": true,
+    "image": "https://rukminim2.flixcart.com/image/1600/1600/xif0q/mobile/f/s/u/-original-imahqzrdjxxdjyz2.jpeg?q=90",
+    "shortDescription": "The Tecno Spark 30 Pro brings flagship aesthetics to the mainstream with its ultra-slim 7.4mm profile and a stunning 6.78-inch FHD+ 120Hz AMOLED display reaching 1,700 nits peak brightness. Capture extraordinary detail with the 108MP ultra-clear main camera featuring 3x in-sensor lossless zoom and quad-LED flash. Powered by the MediaTek Helio G100 processor, 8GB RAM with 8GB virtual expansion, stereo Dolby Atmos speakers, and a 5,000mAh battery with 33W super charging, it offers complete everyday luxury.",
+    "description": "The Tecno Spark 30 Pro brings flagship aesthetics to the mainstream with its ultra-slim 7.4mm profile and a stunning 6.78-inch FHD+ 120Hz AMOLED display reaching 1,700 nits peak brightness. Capture extraordinary detail with the 108MP ultra-clear main camera featuring 3x in-sensor lossless zoom and quad-LED flash. Powered by the MediaTek Helio G100 processor, 8GB RAM with 8GB virtual expansion, stereo Dolby Atmos speakers, and a 5,000mAh battery with 33W super charging, it offers complete everyday luxury.",
+    "specs": {
+      "Brand": "Tecno",
+      "Series": "Spark 30 Series",
+      "Model": "Spark 30 Pro",
+      "Display": "6.78-inch FHD+ AMOLED (120Hz, 1700 nits, In-display Sensor)",
+      "Processor": "MediaTek Helio G100 Octa-core (6nm up to 2.2GHz)",
+      "RAM": "8GB (+8GB Extended Virtual RAM)",
+      "Storage": "128GB Internal Storage (Expandable via MicroSD)",
+      "Rear Camera": "108MP Ultra-Clear Camera with 3x Lossless Zoom",
+      "Front Camera": "13MP Selfie Camera with Dual Color Temperature Flash",
+      "Battery": "5000mAh Battery",
+      "Charging": "33W SuperCharge via USB Type-C",
+      "Operating System": "HiOS 14 based on Android 14",
+      "Durability": "IP54 Splash/Dust Resistance, 7.4mm Slim Design",
+      "Audio": "Dual Stereo Speakers with Dolby Atmos & Hi-Res",
+      "Network": "4G LTE Dual SIM, Dual-Band Wi-Fi, Bluetooth 5.3, NFC, IR Blaster",
+      "Color": "Obsidian Edge"
+    }
+  },
+  {
+    "_id": "6aeb3447d1f4a231d93f2796",
+    "name": "Samsung Galaxy A37 5G Smartphone",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 18990,
+    "stock": 3,
+    "isVisible": true,
+    "image": "https://m.media-amazon.com/images/I/71U4G9lYY3L._AC_UY218_.jpg",
+    "shortDescription": "Experience a smooth and engaging smartphone experience with the Samsung Galaxy A37 5G. Its modern design, vibrant 6.7-inch Super AMOLED 120Hz display with Vision Booster, versatile 50MP triple camera system with Optical Image Stabilization (OIS), and reliable 5G connectivity make it suitable for everyday entertainment, photography, and multitasking. Powered by the Exynos 1480 processor with AMD Xclipse graphics and backed by a 5,000mAh battery with 45W fast charging, it delivers refined performance with 6 years of promised security updates.",
+    "description": "Experience a smooth and engaging smartphone experience with the Samsung Galaxy A37 5G. Its modern design, vibrant 6.7-inch Super AMOLED 120Hz display with Vision Booster, versatile 50MP triple camera system with Optical Image Stabilization (OIS), and reliable 5G connectivity make it suitable for everyday entertainment, photography, and multitasking. Powered by the Exynos 1480 processor with AMD Xclipse graphics and backed by a 5,000mAh battery with 45W fast charging, it delivers refined performance with 6 years of promised security updates.",
+    "specs": {
+      "Brand": "Samsung",
+      "Series": "Galaxy A Series",
+      "Model": "Galaxy A37 5G",
+      "Display": "6.7-inch Super AMOLED FHD+ (120Hz, Vision Booster)",
+      "Processor": "Samsung Exynos 1480 Octa-core (up to 2.75GHz)",
+      "GPU": "AMD Xclipse 530",
+      "RAM": "8GB LPDDR5X",
+      "Storage": "128GB (Expandable up to 1TB via MicroSD)",
+      "Rear Camera": "50MP Main (OIS) + 8MP Ultra-Wide + 5MP Macro",
+      "Front Camera": "12MP High-Resolution Selfie Camera",
+      "Battery": "5000mAh All-Day Battery",
+      "Charging": "45W Super Fast Charging via USB-C",
+      "Operating System": "Android 16 with One UI 8",
+      "Durability": "IP68 Dust and Water Resistant (1.5m for 30 mins)",
+      "Network": "5G Dual SIM, Wi-Fi 6, Bluetooth 5.3, NFC",
+      "Security": "Knox Vault & In-Display Fingerprint Sensor",
+      "Color": "Awesome Light Violet"
+    }
+  },
+  {
+    "_id": "6aeb3447d1f4a231d93f2798",
+    "name": "Apple iPhone 16 (128GB - Pink)",
+    "brand": "Apple",
+    "category": "Phones",
+    "price": 23790,
+    "stock": 2,
+    "isVisible": true,
+    "image": "https://m.media-amazon.com/images/I/61zwK7mmLtL._AC_UY218_.jpg",
+    "shortDescription": "Designed from the ground up for Apple Intelligence, the Apple iPhone 16 features the powerful A18 Bionic chip, an intuitive new Camera Control button for instant photo adjustments, and a versatile 48MP Fusion camera with 2x optical-quality telephoto. Its compact 6.1-inch Super Retina XDR OLED screen with Dynamic Island shines up to 2000 nits outdoors, while the aerospace-grade aluminum chassis with color-infused glass back offers durable elegance.",
+    "description": "Designed from the ground up for Apple Intelligence, the Apple iPhone 16 features the powerful A18 Bionic chip, an intuitive new Camera Control button for instant photo adjustments, and a versatile 48MP Fusion camera with 2x optical-quality telephoto. Its compact 6.1-inch Super Retina XDR OLED screen with Dynamic Island shines up to 2000 nits outdoors, while the aerospace-grade aluminum chassis with color-infused glass back offers durable elegance.",
+    "specs": {
+      "Brand": "Apple",
+      "Series": "iPhone 16",
+      "Model": "A3287",
+      "Display": "6.1-inch Super Retina XDR OLED (2556x1179, 2000 nits)",
+      "Processor": "Apple A18 Bionic (6-Core CPU, 5-Core GPU, 16-Core Neural Engine)",
+      "RAM": "8GB Unified Memory",
+      "Storage": "128GB NVMe",
+      "Rear Camera": "48MP Fusion (f/1.6, Sensor-shift OIS) + 12MP Ultra Wide",
+      "Front Camera": "12MP TrueDepth Camera with 4K Dolby Vision HDR",
+      "Battery": "Rechargeable Lithium-ion (Up to 22 hrs video playback)",
+      "Charging": "USB-C Fast Charging, 25W MagSafe, Qi2 Wireless",
+      "Operating System": "iOS 18 with Apple Intelligence",
+      "Controls": "Camera Control Button & Customizable Action Button",
+      "Durability": "Latest-generation Ceramic Shield, IP68 Rated",
+      "Network": "5G, Wi-Fi 7, Bluetooth 5.3, Ultra Wideband",
+      "Color": "Pink"
+    }
+  },
+  {
+    "_id": "6aeb3447d1f4a231d93f279e",
+    "name": "iQOO Z10 5G Curved AMOLED Smartphone",
+    "brand": "iQOO",
+    "category": "Phones",
+    "price": 17499,
+    "stock": 2,
+    "isVisible": true,
+    "image": "https://rukminim2.flixcart.com/image/1600/1600/xif0q/mobile/s/l/j/-original-imahgzpkgd5xy9vs.jpeg?q=90",
+    "shortDescription": "Built for gamers and power users, the iQOO Z10 5G pairs a breathtaking 6.77-inch 3D curved 120Hz AMOLED display with up to 5,000 nits local peak brightness and a groundbreaking 7,300mAh silicon-carbon battery. Powered by the 4nm Qualcomm Snapdragon 7s Gen 3 chipset and 90W ultra-fast FlashCharge, it handles heavy gaming and intense multitasking with effortless cooling. A 50MP Sony OIS camera and IP65 splash resistance round out this performance powerhouse.",
+    "description": "Built for gamers and power users, the iQOO Z10 5G pairs a breathtaking 6.77-inch 3D curved 120Hz AMOLED display with up to 5,000 nits local peak brightness and a groundbreaking 7,300mAh silicon-carbon battery. Powered by the 4nm Qualcomm Snapdragon 7s Gen 3 chipset and 90W ultra-fast FlashCharge, it handles heavy gaming and intense multitasking with effortless cooling. A 50MP Sony OIS camera and IP65 splash resistance round out this performance powerhouse.",
+    "specs": {
+      "Brand": "iQOO",
+      "Series": "Z Series",
+      "Model": "iQOO Z10 5G",
+      "Display": "6.77-inch FHD+ 3D Curved AMOLED (120Hz, 5000 nits peak)",
+      "Processor": "Qualcomm Snapdragon 7s Gen 3 (4nm Octa-core up to 2.5GHz)",
+      "RAM": "8GB LPDDR4X (+8GB Extended RAM 3.0)",
+      "Storage": "128GB UFS 2.2",
+      "Rear Camera": "50MP Sony Ultra-Sensing OIS Camera + 2MP Bokeh, 4K Video",
+      "Front Camera": "32MP HD Portrait Selfie Camera",
+      "Battery": "7300mAh Monster Silicon-Carbon Battery",
+      "Charging": "90W FlashCharge via USB Type-C",
+      "Operating System": "Funtouch OS 15 based on Android 15",
+      "Durability": "IP65 Splash and Dust Resistance",
+      "Gaming & Haptics": "Linear Motor & Ultra-Gaming Mode",
+      "Network": "5G Dual SIM, Wi-Fi 6, Bluetooth 5.4, IR Blaster",
+      "Color": "Glacier Silver"
+    }
+  },
+  {
+    "_id": "6aeb3d38f2cab606c966a87e",
+    "name": "P47 Wireless Foldable Over-Ear Headphones",
+    "brand": "P47",
+    "category": "Accessories",
+    "price": 1199,
+    "stock": 3,
+    "isVisible": true,
+    "image": "https://rukminim2.flixcart.com/image/1600/1600/xif0q/headphone/r/u/h/p47-wireless-ic-04-headphone-with-mic-sd-card-slot-bluetooth-original-imahs4ujcu7rnpgc.jpeg?q=90",
+    "shortDescription": "The P47 Wireless Headphones deliver crisp stereo sound with deep bass and flexible audio options. Featuring Bluetooth wireless connectivity, a built-in microphone for hands-free calling, and an integrated Micro-SD card slot for offline MP3 playback, these headphones are built for daily commuting, workouts, and study sessions. Its lightweight foldable headband and cushioned on-ear earcups ensure long-lasting listening comfort with easy-access on-ear media controls.",
+    "description": "The P47 Wireless Headphones deliver crisp stereo sound with deep bass and flexible audio options. Featuring Bluetooth wireless connectivity, a built-in microphone for hands-free calling, and an integrated Micro-SD card slot for offline MP3 playback, these headphones are built for daily commuting, workouts, and study sessions. Its lightweight foldable headband and cushioned on-ear earcups ensure long-lasting listening comfort with easy-access on-ear media controls.",
+    "specs": {
+      "Brand": "P47",
+      "Model": "P47 Wireless (IC-04)",
+      "Form Factor": "On-Ear Foldable Headset",
+      "Connectivity": "Bluetooth Wireless + 3.5mm AUX Wired Mode",
+      "Microphone": "Built-in Microphone for Calls",
+      "Memory Card Slot": "Micro-SD / TF Card Support",
+      "Controls": "On-Ear Multi-function Button Wheel (Play/Pause, Volume, Track, Mode)",
+      "Design": "Collapsible Folding Headband with Cushioned Ear Cushions",
+      "Color": "Matte Black"
+    }
+  },
+  {
+    "_id": "6aeb3d38f2cab606c966a87f",
+    "name": "O15-240 Plus Dual Mic ENC Wireless Earbuds",
+    "brand": "O15",
+    "category": "Accessories",
+    "price": 2199,
+    "stock": 2,
+    "isVisible": true,
+    "image": "https://rukminim2.flixcart.com/image/1600/1600/xif0q/headphone/s/2/d/o15-240-plus-wireless-bluetooth-earbuds-with-100-hrs-playback-original-imahpp4yzdvghbnb.jpeg?q=90",
+    "shortDescription": "Experience pristine audio and crystal-clear phone calls with the O15-240 Plus True Wireless Earbuds. Equipped with advanced Dual-Mic Environmental Noise Cancellation (ENC), they filter out background chatter so your voice comes through with clarity. The ergonomic stem earbuds nestle comfortably in your ears, while the elegant pebble charging case features gold trim and an integrated LED battery indicator for on-the-go recharges.",
+    "description": "Experience pristine audio and crystal-clear phone calls with the O15-240 Plus True Wireless Earbuds. Equipped with advanced Dual-Mic Environmental Noise Cancellation (ENC), they filter out background chatter so your voice comes through with clarity. The ergonomic stem earbuds nestle comfortably in your ears, while the elegant pebble charging case features gold trim and an integrated LED battery indicator for on-the-go recharges.",
+    "specs": {
+      "Brand": "O15",
+      "Model": "O15-240 Plus",
+      "Headphone Type": "In-Ear True Wireless Stereo (TWS)",
+      "Noise Cancellation": "Dual-Microphone ENC (Environmental Noise Cancellation)",
+      "Charging Case": "Pocket-sized Magnetic Charging Case with LED Indicator",
+      "Connectivity": "Bluetooth Low Latency",
+      "Earbud Fit": "Ergonomic In-Ear with Soft Silicone Tips",
+      "Color": "Lavender Violet with Gold Accent Trim"
+    }
+  },
+  {
+    "_id": "6aeb3d38f2cab606c966a880",
+    "name": "HRX Urban Laptop Backpack with USB Charging Port",
+    "brand": "HRX",
+    "category": "Accessories",
+    "price": 2799,
+    "stock": 4,
+    "isVisible": true,
+    "image": "https://rukminim2.flixcart.com/image/1600/1600/xif0q/backpack/k/1/4/4-sefton-bize2go-pro-unisex-travel-13-hrx-020-laptop-backpack-original-imahgtcnhdjyygge.jpeg?q=90",
+    "shortDescription": "The HRX Urban Laptop Backpack combines contemporary athletic styling with everyday commuter utility. Constructed from durable, water-resistant polyester with an embossed HRX front emblem, it features a dedicated padded laptop compartment, an external USB pass-through port for charging your mobile device on the move, reflective safety accents, breathable air-mesh shoulder straps, and dual side mesh water bottle holders.",
+    "description": "The HRX Urban Laptop Backpack combines contemporary athletic styling with everyday commuter utility. Constructed from durable, water-resistant polyester with an embossed HRX front emblem, it features a dedicated padded laptop compartment, an external USB pass-through port for charging your mobile device on the move, reflective safety accents, breathable air-mesh shoulder straps, and dual side mesh water bottle holders.",
+    "specs": {
+      "Brand": "HRX",
+      "Model": "HRX-020",
+      "Type": "Unisex Everyday & Travel Laptop Backpack",
+      "Material": "Durable Water-Resistant Polyester",
+      "Compartments": "Multi-Compartment with Padded Laptop Sleeve & Quick-Access Zip Pockets",
+      "External Feature": "Built-in USB Pass-Through Charging Port",
+      "Straps": "Padded Ergonomic Shoulder Straps with Air Mesh Back Panel",
+      "Side Pockets": "Dual Mesh Bottle/Umbrella Pockets",
+      "Color": "Navy Blue & Matte Black"
+    }
+  },
+  {
+    "_id": "6aeb3d38f2cab606c966a881",
+    "name": "4-in-1 Mobile & PC Gaming Accessories Combo",
+    "brand": "ShopEase Gaming",
+    "category": "Accessories",
+    "price": 3499,
+    "stock": 1,
+    "isVisible": true,
+    "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/laptop-accessories-combo/0/o/a/4-in-1-mobile-gaming-combo-type-c-hub-rgb-gaming-mouse-mouse-pad-original-imahsnfnjgrhqkav.jpeg?q=70",
+    "shortDescription": "Level up your gaming and mobile workstation with this comprehensive 4-in-1 accessories bundle. The set includes a full-sized tactile USB keyboard with dedicated numeric keypad and built-in smartphone docking groove, an ergonomic RGB optical gaming mouse with contoured thumb grips, a sleek aluminum 4-port Type-C USB 3.0 multiport hub adapter, and a smooth-glide neon constellation speed mouse pad.",
+    "description": "Level up your gaming and mobile workstation with this comprehensive 4-in-1 accessories bundle. The set includes a full-sized tactile USB keyboard with dedicated numeric keypad and built-in smartphone docking groove, an ergonomic RGB optical gaming mouse with contoured thumb grips, a sleek aluminum 4-port Type-C USB 3.0 multiport hub adapter, and a smooth-glide neon constellation speed mouse pad.",
+    "specs": {
+      "Included Components": "1x USB Keyboard, 1x RGB Gaming Mouse, 1x Type-C 4-Port Hub, 1x Gaming Mouse Pad",
+      "Keyboard": "Full-size 104-Key USB Keyboard with Mobile Phone Cradle Notch",
+      "Mouse": "Ergonomic Multi-Button Wired Gaming Mouse with Dynamic RGB Lighting",
+      "Hub Adapter": "Aluminum Alloy 4-Port Type-C Multiport USB 3.0 Hub",
+      "Mouse Pad": "Non-Slip Rubber Base Speed Fabric Pad with Constellation Graphic",
+      "Compatibility": "PC, Laptop, Smartphone & Tablet (Type-C OTG Supported)"
+    }
+  },
+  {
+    "_id": "6aeb3d38f2cab606c966a882",
+    "name": "Portable Dual-Woofer RGB DJ Party Speaker with Remote",
+    "brand": "3RY Audio",
+    "category": "Accessories",
+    "price": 4299,
+    "stock": 2,
+    "isVisible": true,
+    "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/speaker/party-speaker/v/d/f/dj-speaker1-3ry-original-imahp8shwgptxptj.jpeg?q=70",
+    "shortDescription": "Bring the party wherever you go with the Portable Dual-Woofer DJ Party Speaker. Featuring twin pulsating RGB LED ring woofers that sync to your music, a top-mounted digital mode display, and an included multi-function wireless remote, it pumps out dynamic stereo sound. Equipped with an ergonomic carry handle, Bluetooth wireless connectivity, USB flash drive input, TF/MicroSD slot, and AUX playback modes, it is ready for indoor gatherings and outdoor entertainment.",
+    "description": "Bring the party wherever you go with the Portable Dual-Woofer DJ Party Speaker. Featuring twin pulsating RGB LED ring woofers that sync to your music, a top-mounted digital mode display, and an included multi-function wireless remote, it pumps out dynamic stereo sound. Equipped with an ergonomic carry handle, Bluetooth wireless connectivity, USB flash drive input, TF/MicroSD slot, and AUX playback modes, it is ready for indoor gatherings and outdoor entertainment.",
+    "specs": {
+      "Brand": "3RY",
+      "Model": "DJ-Speaker1-3RY",
+      "Speaker Type": "Portable Column DJ Party Speaker",
+      "Lighting": "Dual RGB Ring LED Lights with Multi-Color Party Modes",
+      "Connectivity": "Bluetooth Wireless, USB Flash Drive, TF/MicroSD Card, AUX",
+      "Display": "Top Digital LED Status Display (Mode / Track)",
+      "Controls": "Full-function Wireless Remote Control + Top Control Dials",
+      "Portability": "Integrated Heavy-Duty Top Carrying Handle",
+      "Color": "Matte Black"
+    }
+  },
+  {
+    "_id": "6aeb3d38f2cab606c966a883",
+    "name": "Celltech Clear MagSafe Magnetic Protective Back Cover for iPhone 17",
+    "brand": "Celltech",
+    "category": "Accessories",
+    "price": 699,
+    "stock": 5,
+    "isVisible": true,
+    "image": "https://rukminim2.flixcart.com/image/1600/1600/xif0q/cases-covers/back-cover/u/m/o/clear-mgsafe-ip-17-celltech-original-imahg2bhcvxzqc28.jpeg?q=90",
+    "shortDescription": "Showcase your phone's original color and finish while enjoying snap-on magnetic convenience with the Celltech Clear MagSafe Case for iPhone 17. Built with an ultra-transparent scratch-resistant hard acrylic back and shock-absorbing flexible TPU edges, it integrates a precision neodymium magnetic ring for flawless MagSafe wireless charging, magnetic car mounts, and wallet attachments. Raised lips around the camera island and display prevent direct surface contact.",
+    "description": "Showcase your phone's original color and finish while enjoying snap-on magnetic convenience with the Celltech Clear MagSafe Case for iPhone 17. Built with an ultra-transparent scratch-resistant hard acrylic back and shock-absorbing flexible TPU edges, it integrates a precision neodymium magnetic ring for flawless MagSafe wireless charging, magnetic car mounts, and wallet attachments. Raised lips around the camera island and display prevent direct surface contact.",
+    "specs": {
+      "Brand": "Celltech",
+      "Model": "Clear-MGSAFE-IP-17",
+      "Compatible Device": "Apple iPhone 17",
+      "Case Type": "Hybrid Transparent Magnetic Back Cover",
+      "MagSafe Compatible": "Built-in Strong Neodymium Magnetic Ring & Alignment Magnet",
+      "Material": "High-Clarity Anti-Yellowing Acrylic Back + Flexible TPU Bumper",
+      "Edge Protection": "Raised Bezels for Camera Lens & Screen Protection",
+      "Cutouts": "Precise CNC Cutouts for Speakers, USB-C Port & Independent Button Covers"
+    }
+  },
+  {
+    "_id": "6aeb3d38f2cab606c966a884",
+    "name": "Fervik 8-Socket Power Strip & Surge Protector with 4 USB Ports",
+    "brand": "Fervik",
+    "category": "Accessories",
+    "price": 1499,
+    "stock": 3,
+    "isVisible": true,
+    "image": "https://rukminim2.flixcart.com/image/1600/1600/xif0q/surge-protector/u/w/c/3-8-pin-black-no-a8pd-yes-fervik-original-imahph6uangvubym.jpeg?q=90",
+    "shortDescription": "Organize and protect your home office electronics with the Fervik 8-Socket Surge Protector Power Strip. Featuring 8 widely spaced universal AC outlets and a dedicated 4-port USB charging station (3 USB-A ports plus 1 USB Type-C port), it powers up to 12 devices simultaneously. Built with flame-retardant casing, an illuminated master power switch with integrated overload circuit breaker, and a durable 2-meter heavy-duty cable with a 3-pin Indian plug.",
+    "description": "Organize and protect your home office electronics with the Fervik 8-Socket Surge Protector Power Strip. Featuring 8 widely spaced universal AC outlets and a dedicated 4-port USB charging station (3 USB-A ports plus 1 USB Type-C port), it powers up to 12 devices simultaneously. Built with flame-retardant casing, an illuminated master power switch with integrated overload circuit breaker, and a durable 2-meter heavy-duty cable with a 3-pin Indian plug.",
+    "specs": {
+      "Brand": "Fervik",
+      "Model": "A8PD",
+      "AC Outlets": "8 Universal 3-Pin Sockets with Child Safety Shutters",
+      "USB Ports": "3x USB-A + 1x USB Type-C Smart Charging Ports",
+      "Cable Length": "2-Meter Heavy-Duty Copper Power Cord",
+      "Plug Type": "Standard Indian 3-Pin Grounded Plug",
+      "Safety Protection": "Master Switch with Integrated Overload & Surge Protection",
+      "Mounting": "Desktop Layout with Anti-Slip Base Rubber Feet",
+      "Color": "Matte Black"
+    }
+  },
+  {
+    "_id": "6aeb3d38f2cab606c966a885",
+    "name": "Aqua Care Gadget Cleaning Kit (100ml Pack of 3 with Microfiber Cloths)",
+    "brand": "Aqua Care",
+    "category": "Accessories",
+    "price": 449,
+    "stock": 4,
+    "isVisible": true,
+    "image": "https://rukminim2.flixcart.com/image/1600/1600/xif0q/cleaning-kit/c/o/h/gadget-cleaner-100-ml-pack-of-3-with-3-cloths-for-mobile-laptop-original-imahqv92rzrhd4hh.jpeg?q=90",
+    "shortDescription": "Keep your screens, laptops, and gadgets spotless and crystal clear with the Aqua Care 3-Pack Cleaning Kit. Each set includes three 100ml fine-mist spray bottles and three ultra-soft microfiber cloths. The gentle, streak-free, anti-static cleaning solution effectively lifts dust, oil, smudges, and fingerprints from smartphones, laptop displays, tablets, camera lenses, monitors, and smartwatch faces without scratching delicate surfaces.",
+    "description": "Keep your screens, laptops, and gadgets spotless and crystal clear with the Aqua Care 3-Pack Cleaning Kit. Each set includes three 100ml fine-mist spray bottles and three ultra-soft microfiber cloths. The gentle, streak-free, anti-static cleaning solution effectively lifts dust, oil, smudges, and fingerprints from smartphones, laptop displays, tablets, camera lenses, monitors, and smartwatch faces without scratching delicate surfaces.",
+    "specs": {
+      "Brand": "Aqua Care",
+      "Package Contents": "3x 100ml Cleaning Spray Bottles + 3x Microfiber Cleaning Cloths",
+      "Total Volume": "300 ml (3 x 100 ml)",
+      "Formula": "Non-Streaking, Alcohol-Free, Anti-Static Screen Formula",
+      "Application": "Fine Mist Spray Pump for Even Surface Dispersion",
+      "Compatible Devices": "Smartphones, Laptops, Tablets, Smart TVs, Monitors, Camera Lenses & Glasses",
+      "Cloths": "High-Density Reusable & Washable Microfiber Cloths"
+    }
+  },
+  {
+    "_id": "6aeb3d38f2cab606c966a886",
+    "name": "Velqor 68W GaN Turbo Power Fast Charger Set with Type-C Cable",
+    "brand": "Velqor",
+    "category": "Accessories",
+    "price": 1899,
+    "stock": 2,
+    "isVisible": true,
+    "image": "https://rukminim2.flixcart.com/image/1600/1600/xif0q/battery-charger/v/h/d/vlqr-68wmc-a02-velqor-original-imahs2zzy9msneh6.jpeg?q=90",
+    "shortDescription": "Power your modern devices at high velocity with the Velqor 68W GaN Turbo Power Wall Charger. Utilizing advanced Gallium Nitride (GaN) semiconductor technology, it delivers high-wattage charging in a compact, cool-running form factor that fits effortlessly into pockets or travel bags. The kit comes complete with a durable Type-C to Type-C high-current cable and intelligent multi-protection circuitry against over-current, over-voltage, and short circuits.",
+    "description": "Power your modern devices at high velocity with the Velqor 68W GaN Turbo Power Wall Charger. Utilizing advanced Gallium Nitride (GaN) semiconductor technology, it delivers high-wattage charging in a compact, cool-running form factor that fits effortlessly into pockets or travel bags. The kit comes complete with a durable Type-C to Type-C high-current cable and intelligent multi-protection circuitry against over-current, over-voltage, and short circuits.",
+    "specs": {
+      "Brand": "Velqor",
+      "Model": "VLQR-68WMC-A02",
+      "Total Output Power": "68W Turbo Power",
+      "Semiconductor Technology": "GaN (Gallium Nitride) High-Efficiency Architecture",
+      "Output Interface": "USB Type-C Fast-Charging Port",
+      "Included Cable": "Durable High-Speed Type-C to Type-C Charging Cable",
+      "Plug Type": "Standard Indian 2-Pin Wall Plug",
+      "Safety Systems": "Smart Multi-Layer Thermal & Overload Protection",
+      "Color": "Matte Black with 68 Graphic"
+    }
+  },
+  {
+    "_id": "6aeb3d38f2cab606c966a887",
+    "name": "Realspeed 128GB Metal USB 3.0 High-Speed Flash Pen Drive",
+    "brand": "Realspeed",
+    "category": "Accessories",
+    "price": 999,
+    "stock": 5,
+    "isVisible": true,
+    "image": "https://rukminim2.flixcart.com/image/1600/1600/xif0q/pendrive/pendrive/l/m/j/rs-realspeed-original-imahs2rtscmaybbz.jpeg?q=90",
+    "shortDescription": "Carry your essential documents, media, and backups securely with the Realspeed 128GB USB Flash Drive. Built with a shock-resistant and heat-dissipating metallic zinc-alloy unibody, it features an integrated blue lanyard loop for easy attachment to keychains. Backed by high-speed USB 3.0 performance with backwards USB 2.0 compatibility, it provides driver-free plug-and-play convenience across PCs, laptops, smart TVs, and vehicle media systems.",
+    "description": "Carry your essential documents, media, and backups securely with the Realspeed 128GB USB Flash Drive. Built with a shock-resistant and heat-dissipating metallic zinc-alloy unibody, it features an integrated blue lanyard loop for easy attachment to keychains. Backed by high-speed USB 3.0 performance with backwards USB 2.0 compatibility, it provides driver-free plug-and-play convenience across PCs, laptops, smart TVs, and vehicle media systems.",
+    "specs": {
+      "Brand": "Realspeed",
+      "Model": "RS-Realspeed 128G",
+      "Storage Capacity": "128 GB",
+      "Interface": "USB 3.0 (Backwards Compatible with USB 2.0)",
+      "Body Construction": "Durable Zinc-Alloy Metallic Unibody",
+      "Form Factor": "Capless Design with Integrated Lanyard Keyring Hole",
+      "Operation": "Plug & Play (No Driver Installation Required)",
+      "OS Compatibility": "Windows, macOS, Linux, ChromeOS, Smart TVs & Car Audio",
+      "Color": "Silver Chrome with Blue Accent Loop"
+    }
+  },
+  {
+    "_id": "6aeb3d38f2cab606c966a888",
+    "name": "360° Adjustable Telescopic Car Mobile Holder for Dashboard",
+    "brand": "Manoj Traders",
+    "category": "Accessories",
+    "price": 799,
+    "stock": 3,
+    "isVisible": true,
+    "image": "https://rukminim2.flixcart.com/image/1600/1600/xif0q/car-cradle/dashboard/f/u/x/sc360-01-manojtraders-original-imahp73ujngbpygm.jpeg?q=90",
+    "shortDescription": "Drive safely with optimal GPS visibility using the 360° Adjustable Telescopic Car Mobile Phone Cradle. Featuring a heat-resistant ABS build with carbon-fiber texture backplate and cushioned side clamping arms, it holds smartphones securely over road bumps. The telescopic extending arm and 360-degree pivoting ball joint allow custom angle and distance adjustment, while the heavy-duty suction gel pad with locking lever firmly grips dashboards or windshields.",
+    "description": "Drive safely with optimal GPS visibility using the 360° Adjustable Telescopic Car Mobile Phone Cradle. Featuring a heat-resistant ABS build with carbon-fiber texture backplate and cushioned side clamping arms, it holds smartphones securely over road bumps. The telescopic extending arm and 360-degree pivoting ball joint allow custom angle and distance adjustment, while the heavy-duty suction gel pad with locking lever firmly grips dashboards or windshields.",
+    "specs": {
+      "Brand": "Manoj Traders",
+      "Model": "SC360-01",
+      "Mounting Type": "Heavy-Duty Suction Gel Base with Pressure Locking Lever",
+      "Mounting Placement": "Car Dashboard, Windshield or Flat Desktop Surface",
+      "Arm Mechanism": "Telescopic Extendable & Angle-Adjustable Arm",
+      "Rotation": "360-Degree Ball Joint for Portrait and Landscape Orientations",
+      "Cradle Features": "Cushioned Side Clamping Arms, Quick Release Button & Bottom Support Feet",
+      "Material": "Heat-Resistant ABS with Carbon Fiber Finish",
+      "Color": "Black"
+    }
+  },
+  {
+    "_id": "6aeb3d38f2cab606c966a889",
+    "name": "Wontons Smooth Touch Tempered Glass Screen Protector for Nothing Phone 3a Lite",
+    "brand": "Wontons",
+    "category": "Accessories",
+    "price": 299,
+    "stock": 4,
+    "isVisible": true,
+    "image": "https://rukminim2.flixcart.com/image/1600/1600/xif0q/screen-guard/tempered-glass/m/7/c/nothing-phone-3a-lite-tempered-glass-wontons-original-imahpgtggzgazdvn.jpeg?q=90",
+    "shortDescription": "Shield your display against daily scratches, scrapes, and drops with the Wontons Ultra-Smooth Tempered Glass Screen Protector designed specifically for the Nothing Phone 3a Lite. Engineered with high touch sensitivity for effortless gaming and swiping, it features an electroplated oleophobic coating that repels fingerprint smudges, facial oils, and moisture. The precision laser-cut border offers edge-to-edge coverage while maintaining complete case compatibility.",
+    "description": "Shield your display against daily scratches, scrapes, and drops with the Wontons Ultra-Smooth Tempered Glass Screen Protector designed specifically for the Nothing Phone 3a Lite. Engineered with high touch sensitivity for effortless gaming and swiping, it features an electroplated oleophobic coating that repels fingerprint smudges, facial oils, and moisture. The precision laser-cut border offers edge-to-edge coverage while maintaining complete case compatibility.",
+    "specs": {
+      "Brand": "Wontons",
+      "Compatible Device": "Nothing Phone 3a Lite",
+      "Protector Type": "Edge-to-Edge HD Clear Tempered Glass",
+      "Touch Sensitivity": "Ultra-Smooth High-Sensitivity Surface (Game Friendly)",
+      "Surface Coating": "Anti-Fingerprint Oleophobic Coating Repels Smudges & Oil",
+      "Transparency": "High-Definition Optical Clarity Preserving Display Colors",
+      "Cutout": "Precision Laser-Cut Earpiece Speaker & Sensor Openings",
+      "Installation": "Bubble-Free Self-Adhering Silicon Layer"
+    }
+  },
+  {
+    "_id": "6aeb4731a97ef7f510e651cc",
+    "name": "HRX Men's Purple & White Streetwear Casual Sneakers",
+    "brand": "HRX by Hrithik Roshan",
+    "category": "Fashion & Apparel",
+    "price": 2699,
+    "stock": 3,
+    "isVisible": true,
+    "image": "https://rukminim2.flixcart.com/image/800/1070/xif0q/shoe/u/5/p/6-hrxwpk44703-6-hrx-by-hrithik-roshan-purple-original-imahjzrppy5gzjtp.jpeg?q=80",
+    "shortDescription": "Elevate your streetwear aesthetic with these HRX by Hrithik Roshan dual-tone casual sneakers. Designed with a clean white and lavender-purple paneled synthetic leather upper, they feature ventilated micro-perforations on the toe box, a padded collar with soft grey lining, and the signature 'HRX Lifestyle 13' woven tongue patch. The thick cushioned rubber cupsole and treaded purple outsole provide all-day shock absorption and stable grip for city walking.",
+    "description": "Elevate your streetwear aesthetic with these HRX by Hrithik Roshan dual-tone casual sneakers. Designed with a clean white and lavender-purple paneled synthetic leather upper, they feature ventilated micro-perforations on the toe box, a padded collar with soft grey lining, and the signature 'HRX Lifestyle 13' woven tongue patch. The thick cushioned rubber cupsole and treaded purple outsole provide all-day shock absorption and stable grip for city walking.",
+    "specs": {
+      "Brand": "HRX by Hrithik Roshan",
+      "Model": "HRXWPK44703",
+      "Footwear Type": "Low-Top Casual Sneakers",
+      "Color": "White & Lavender Purple",
+      "Upper Material": "Durable Synthetic Leather with Perforated Toe Box",
+      "Sole Material": "Cushioned Rubber / TPR Cupsole with Textured Tread",
+      "Closure": "Lace-Up with Flat White Cotton Laces",
+      "Available Sizes": "UK 6, UK 7, UK 8, UK 9, UK 10",
+      "Occasion": "Casual Streetwear & Daily Lifestyle"
+    }
+  },
+  {
+    "_id": "6aeb4731a97ef7f510e651cd",
+    "name": "Rodeiz Men's Lavender Checked Long-Sleeve Casual Shirt",
+    "brand": "Rodeiz",
+    "category": "Fashion & Apparel",
+    "price": 749,
+    "stock": 4,
+    "isVisible": true,
+    "image": "https://rukminim2.flixcart.com/image/1600/1600/xif0q/shirt/f/i/m/m-chk-006-levandar-e-rodeiz-original-imahq5pcnjahvjzz.jpeg?q=90",
+    "shortDescription": "Refine your smart-casual wardrobe with the Rodeiz Men's Checked Casual Shirt. Tailored in a dusty lavender base with crisp white windowpane grid checks, this versatile shirt features a spread collar, a full front button placket with white buttons, long sleeves with buttoned cuffs, and a gently curved hemline. Perfect for layering over a plain white tee or wearing buttoned up for casual workplace and evening outings.",
+    "description": "Refine your smart-casual wardrobe with the Rodeiz Men's Checked Casual Shirt. Tailored in a dusty lavender base with crisp white windowpane grid checks, this versatile shirt features a spread collar, a full front button placket with white buttons, long sleeves with buttoned cuffs, and a gently curved hemline. Perfect for layering over a plain white tee or wearing buttoned up for casual workplace and evening outings.",
+    "specs": {
+      "Brand": "Rodeiz",
+      "Model": "M-CHK-006",
+      "Collar": "Spread / Turndown Collar",
+      "Pattern": "Windowpane Grid Check Plaid",
+      "Color": "Dusty Lavender & White",
+      "Sleeve Length": "Full Sleeves with Button Cuffs",
+      "Fit": "Regular Casual Fit with Curved Hemline",
+      "Available Sizes": "S, M, L, XL, XXL",
+      "Occasion": "Smart Casual & Weekend Wear"
+    }
+  },
+  {
+    "_id": "6aeb4732a97ef7f510e651ce",
+    "name": "Hirpara Men's Luxury Octagonal Bezel Analog Watch",
+    "brand": "Hirpara",
+    "category": "Fashion & Apparel",
+    "price": 1699,
+    "stock": 2,
+    "isVisible": true,
+    "image": "https://rukminim2.flixcart.com/image/1600/1600/xif0q/watch/2/p/q/1-st-sl-lv-04-analog-watch-for-men-hirpara-men-original-imahphs883fxt794.jpeg?q=90",
+    "shortDescription": "Make an impression with the Hirpara Luxury Octagonal Bezel Wristwatch. Inspired by iconic Swiss sports watch silhouettes, it features a brushed silver-tone octagonal bezel with polished beveled chamfers surrounding an embossed horizontal-lined plum-purple dial. Equipped with luminous baton hour markers, silver hands, a practical date display at 3 o'clock, and an integrated stainless steel link bracelet with a secure fold-over deployment clasp.",
+    "description": "Make an impression with the Hirpara Luxury Octagonal Bezel Wristwatch. Inspired by iconic Swiss sports watch silhouettes, it features a brushed silver-tone octagonal bezel with polished beveled chamfers surrounding an embossed horizontal-lined plum-purple dial. Equipped with luminous baton hour markers, silver hands, a practical date display at 3 o'clock, and an integrated stainless steel link bracelet with a secure fold-over deployment clasp.",
+    "specs": {
+      "Brand": "Hirpara",
+      "Model": "ST-SL-LV-04",
+      "Display Type": "Analog Quartz Movement",
+      "Dial Color": "Textured Plum Purple with Horizontal Embossing",
+      "Bezel & Case": "Brushed Silver-Tone Octagonal Alloy Bezel",
+      "Functions": "Hours, Minutes, Sweeping Seconds & Date Window at 3 O'clock",
+      "Indices": "Luminous Baton Markers with Minute Track",
+      "Strap": "Integrated Brushed Stainless Steel Link Bracelet",
+      "Clasp": "Fold-Over Deployment Clasp"
+    }
+  },
+  {
+    "_id": "6aeb4732a97ef7f510e651cf",
+    "name": "Shyam Clothing Men's Casual Lavender Pullover Hoodie",
+    "brand": "Shyam Clothing",
+    "category": "Fashion & Apparel",
+    "price": 1099,
+    "stock": 5,
+    "isVisible": true,
+    "image": "https://rukminim2.flixcart.com/image/1600/1600/xif0q/sweatshirt/t/o/y/xl-plain-hoodie-with-purple-colour-men-s-shyamclothing-original-imahrsjpjvhfdrgk.jpeg?q=90",
+    "shortDescription": "Stay comfortable and effortlessly stylish with this casual pullover hoodie from Shyam Clothing. Rendered in a soothing pastel lavender-purple shade, it is designed with a relaxed drop-shoulder cut, a spacious double-layered hood with contrasting black flat drawstrings, a roomy kangaroo pouch pocket, and snug ribbed cuffs and hem to lock in warmth on breezy days.",
+    "description": "Stay comfortable and effortlessly stylish with this casual pullover hoodie from Shyam Clothing. Rendered in a soothing pastel lavender-purple shade, it is designed with a relaxed drop-shoulder cut, a spacious double-layered hood with contrasting black flat drawstrings, a roomy kangaroo pouch pocket, and snug ribbed cuffs and hem to lock in warmth on breezy days.",
+    "specs": {
+      "Brand": "Shyam Clothing",
+      "Style": "Pullover Hoodie Sweatshirt",
+      "Color": "Pastel Lavender / Light Purple",
+      "Fit": "Relaxed Drop-Shoulder Casual Fit",
+      "Hood Details": "Double-Layered Hood with Black Drawstrings & Metal Eyelets",
+      "Pockets": "Front Kangaroo Pocket",
+      "Sleeve & Hem": "Full Sleeves with Ribbed Cuffs and Elasticated Hem",
+      "Available Sizes": "S, M, L, XL, XXL",
+      "Occasion": "Loungewear, Streetwear & Everyday Casual"
+    }
+  },
+  {
+    "_id": "6aeb4732a97ef7f510e651d0",
+    "name": "Glamzy Mini Elegance Purple Structured Satchel Handbag",
+    "brand": "Glamzy",
+    "category": "Fashion & Apparel",
+    "price": 899,
+    "stock": 1,
+    "isVisible": true,
+    "image": "https://rukminim2.flixcart.com/image/1600/1600/xif0q/hand-messenger-bag/4/8/3/mini-elegance-handbag-7-k-p-mini-purple008-pouch-potli-glamzy-12-resized-original-imahzghsekqqtade.jpeg?q=90",
+    "shortDescription": "Add a touch of sophistication to your ensemble with the Glamzy Mini Elegance Handbag. Sculpted from premium textured vegan PU leather in an exquisite royal purple finish, this structured mini satchel features elegant vertical strap overlays, dual rounded top carrying handles, gold-toned metallic hardware with embossed brand lettering, and a stable flat base designed to stand upright.",
+    "description": "Add a touch of sophistication to your ensemble with the Glamzy Mini Elegance Handbag. Sculpted from premium textured vegan PU leather in an exquisite royal purple finish, this structured mini satchel features elegant vertical strap overlays, dual rounded top carrying handles, gold-toned metallic hardware with embossed brand lettering, and a stable flat base designed to stand upright.",
+    "specs": {
+      "Brand": "Glamzy",
+      "Model": "Mini-Purple008",
+      "Bag Type": "Mini Structured Satchel / Handbag",
+      "Color": "Deep Royal Purple / Amethyst",
+      "Material": "Textured Vegan PU Leather with Micro-Grain Finish",
+      "Handles": "Dual Rigid Curved Top Carry Handles with Gold Rivets",
+      "Hardware": "Polished Gold-Tone Handle Rings & Gold Brand Lettering",
+      "Base": "Flat Reinforced Base for Freestanding Stability",
+      "Occasion": "Parties, Formal Dinners & Evening Gatherings"
+    }
+  },
+  {
+    "_id": "6aeb4732a97ef7f510e651d1",
+    "name": "Provogue Men's Day-Date Series Navy Blue Dial Analog Watch",
+    "brand": "Provogue",
+    "category": "Fashion & Apparel",
+    "price": 1399,
+    "stock": 3,
+    "isVisible": true,
+    "image": "https://rukminim2.flixcart.com/image/1600/1600/xif0q/watch/3/6/0/1-pg-2013-provogue-men-watermarked-original-imah3hktneycgnk8.jpeg?q=90",
+    "shortDescription": "The Provogue PG-2013 Analog Watch blends executive precision with active sports appeal. Featuring a bold navy blue sunray dial adorned with silver-tone Roman numeral hour markers at XII and VI, it houses an integrated dual Day and Date calendar complication at 3 o'clock. Enclosed in a polished silver alloy case with ergonomic crown guards, it is paired with a durable matte navy blue silicone sports strap.",
+    "description": "The Provogue PG-2013 Analog Watch blends executive precision with active sports appeal. Featuring a bold navy blue sunray dial adorned with silver-tone Roman numeral hour markers at XII and VI, it houses an integrated dual Day and Date calendar complication at 3 o'clock. Enclosed in a polished silver alloy case with ergonomic crown guards, it is paired with a durable matte navy blue silicone sports strap.",
+    "specs": {
+      "Brand": "Provogue",
+      "Model": "PG-2013",
+      "Series": "Day and Date Series",
+      "Display Type": "3-Hand Analog Quartz Movement",
+      "Dial Color": "Navy Blue with Sunray Finish",
+      "Hour Markers": "Silver Roman Numerals (XII, VI) & Baton Indices",
+      "Functions": "Dual Day & Date Calendar Window at 3 O'clock",
+      "Case": "Polished Silver-Tone Metal Case with Integrated Crown Guard",
+      "Strap Material": "Durable Matte Navy Blue Flexible Silicone / Resin Strap",
+      "Clasp": "Stainless Steel Tang Buckle"
+    }
+  },
+  {
+    "_id": "6aeb4732a97ef7f510e651d2",
+    "name": "HRX by Hrithik Roshan Ankle Socks (Pack of 3 Pairs)",
+    "brand": "HRX by Hrithik Roshan",
+    "category": "Fashion & Apparel",
+    "price": 349,
+    "stock": 4,
+    "isVisible": true,
+    "image": "https://rukminim2.flixcart.com/image/1600/1600/xif0q/sock/m/4/w/free-3-hrx23114-hrx-original-imahd5wfsrghjvqv.jpeg?q=90",
+    "shortDescription": "Power through daily workouts and everyday routines with this 3-pack of athletic ankle socks from HRX by Hrithik Roshan. Knit in an active stretch cotton blend, each pair features reinforced heel and toe cushioning for blister resistance, arch support bands for stability, and breathable ribbed ankle cuffs embroidered with the HRX insignia. Comes in three versatile heathered tones: Navy Blue, Melange Grey, and Charcoal Black.",
+    "description": "Power through daily workouts and everyday routines with this 3-pack of athletic ankle socks from HRX by Hrithik Roshan. Knit in an active stretch cotton blend, each pair features reinforced heel and toe cushioning for blister resistance, arch support bands for stability, and breathable ribbed ankle cuffs embroidered with the HRX insignia. Comes in three versatile heathered tones: Navy Blue, Melange Grey, and Charcoal Black.",
+    "specs": {
+      "Brand": "HRX by Hrithik Roshan",
+      "Model": "HRX23114",
+      "Pack Contents": "3 Pairs of Athletic Socks (Pack of 3)",
+      "Colors Included": "1x Navy Blue with Grey, 1x Heather Grey, 1x Charcoal Black",
+      "Sock Length": "Ankle / Low-Cut Sport Length",
+      "Cuff": "Ribbed Elasticated Non-Slip Cuff with Knitted HRX Logo",
+      "Reinforcement": "Cushioned Terry Sole, Heel & Toe Protection",
+      "Size": "Free Size (Unisex Stretchable Fit)",
+      "Activity": "Running, Gym, Sports & Everyday Footwear"
+    }
+  },
+  {
+    "_id": "6aeb4732a97ef7f510e651d3",
+    "name": "HRX Women's Blush Pink Suede Fleece Walking Shoes",
+    "brand": "HRX by Hrithik Roshan",
+    "category": "Fashion & Apparel",
+    "price": 2199,
+    "stock": 2,
+    "isVisible": true,
+    "image": "https://rukminim2.flixcart.com/image/1600/1600/xif0q/shoe/k/w/a/7-hrxcs356-40-hrx-by-hrithik-roshan-pink-original-imahpmz6rdyzzzvf.jpeg?q=90",
+    "shortDescription": "Experience walking comfort with the HRX Women's Suede Casual Shoes. Styled with a vintage track silhouette in a soft dusty blush-pink faux suede upper, they feature clean off-white racing side stripes, a low-profile gum rubber sole with heel wrap-up for driving comfort, and a plush fleece-lined collar that keeps your ankles cozy and warm throughout the day.",
+    "description": "Experience walking comfort with the HRX Women's Suede Casual Shoes. Styled with a vintage track silhouette in a soft dusty blush-pink faux suede upper, they feature clean off-white racing side stripes, a low-profile gum rubber sole with heel wrap-up for driving comfort, and a plush fleece-lined collar that keeps your ankles cozy and warm throughout the day.",
+    "specs": {
+      "Brand": "HRX by Hrithik Roshan",
+      "Model": "HRXCS356",
+      "Footwear Type": "Women's Casual Retro Walking Shoes",
+      "Color": "Blush Pink & Off-White",
+      "Upper Material": "Soft Faux Suede with Stitched Toe Overlay",
+      "Inner Lining": "Plush Sherpa Fleece Collar & Tongue Lining",
+      "Sole Material": "Flexible Low-Profile Gum Rubber Sole with Heel Bumper",
+      "Closure": "Traditional Front Lace-Up with Flat White Laces",
+      "Available Sizes": "UK 4, UK 5, UK 6, UK 7"
+    }
+  },
+  {
+    "_id": "6aeb4732a97ef7f510e651d4",
+    "name": "Nexbelt Men's Vegan Leather Ratchet Dress Belt with Gold Panther Buckle",
+    "brand": "Nexbelt",
+    "category": "Fashion & Apparel",
+    "price": 599,
+    "stock": 5,
+    "isVisible": true,
+    "image": "https://rukminim2.flixcart.com/image/1600/1600/xif0q/belt/e/w/2/one-size-vegan-leather-belt-01-belt-for-men-nexbelt-original-imahzuf9hzke8uag.jpeg?q=90",
+    "shortDescription": "Upgrade your formal attire with this Nexbelt Men's Ratchet Dress Belt. Crafted from textured black vegan PU leather, it eliminates unsightly belt holes with an innovative hidden track ratchet system that allows 1/4-inch micro-adjustments for an exact fit. The centerpiece is a polished rectangular black buckle bordered in gold and highlighted by an embossed 3D sculptural golden leaping panther.",
+    "description": "Upgrade your formal attire with this Nexbelt Men's Ratchet Dress Belt. Crafted from textured black vegan PU leather, it eliminates unsightly belt holes with an innovative hidden track ratchet system that allows 1/4-inch micro-adjustments for an exact fit. The centerpiece is a polished rectangular black buckle bordered in gold and highlighted by an embossed 3D sculptural golden leaping panther.",
+    "specs": {
+      "Brand": "Nexbelt",
+      "Model": "Vegan Leather Belt 01",
+      "Belt Mechanism": "Automatic Ratchet Track (Hole-Less Micro-Adjustable System)",
+      "Strap Material": "High-Grade Textured Vegan PU Leather",
+      "Color": "Matte Black Strap with Rich Brown Underside",
+      "Buckle": "Black Gloss Face with Polished Gold Border & 3D Panther Emblem",
+      "Closure": "Quick-Release Lever on Buckle Side",
+      "Size": "One Size (Trim-to-Fit Strap Fits Waist Sizes up to 44 Inches)",
+      "Style": "Formal Dress & Business Casual"
+    }
+  },
+  {
+    "_id": "6aeb4732a97ef7f510e651d5",
+    "name": "BNK Nexus Women's Plaid Long-Sleeve Shirt & Crop Cami 2-Piece Set",
+    "brand": "BNK Nexus",
+    "category": "Fashion & Apparel",
+    "price": 1249,
+    "stock": 2,
+    "isVisible": true,
+    "image": "https://rukminim2.flixcart.com/image/1600/1600/xif0q/shirt/v/z/x/s-women-trending-black-pink-check-combo-shirt-bnk-nexus-resized-original-imahz2sedpgpdybm.jpeg?q=90",
+    "shortDescription": "Embrace versatile layered styling with this BNK Nexus 2-piece coordinated outfit set. The set features a relaxed-fit long-sleeve plaid overshirt with a spread collar and button cuffs, paired with a matching square-neck smocked crop camisole top finished with a playful ruffled peplum hemline. Wear the pieces together for a coordinated casual look or mix and match with high-waisted denim and skirts.",
+    "description": "Embrace versatile layered styling with this BNK Nexus 2-piece coordinated outfit set. The set features a relaxed-fit long-sleeve plaid overshirt with a spread collar and button cuffs, paired with a matching square-neck smocked crop camisole top finished with a playful ruffled peplum hemline. Wear the pieces together for a coordinated casual look or mix and match with high-waisted denim and skirts.",
+    "specs": {
+      "Brand": "BNK Nexus",
+      "Set Includes": "2-Piece Set (1x Long-Sleeve Plaid Overshirt + 1x Smocked Crop Cami)",
+      "Pattern": "Classic Windowpane Tartan Plaid",
+      "Color Options": "Black & White Tartan / Dusty Rose Pink Tartan",
+      "Overshirt Details": "Button-Down Front Placket, Spread Collar, Long Sleeves",
+      "Cami Details": "Square Neckline, Elastic Smocked Bodice & Frilled Peplum Hem",
+      "Fit": "Regular Relaxed Fit",
+      "Available Sizes": "S, M, L, XL",
+      "Occasion": "Casual Outings, College & Layered Streetwear"
+    }
+  }
+];
+
+export function enrichProduct(p) {
+  if (!p) return null;
+  const image = p.image || p.imageUrl || (Array.isArray(p.images) ? p.images[0] : "");
+  return {
+    ...p,
+    image,
+    imageUrl: image,
+    description: p.description || p.shortDescription || "",
+    shortDescription: p.shortDescription || p.description || "",
+    specs: p.specs || {}
+  };
+}

@@ -458,57 +458,128 @@ router.get(
 );
 
 
+
+/* =====================================================
+   CHANGE PASSWORD - AUTHENTICATED
+===================================================== */
+router.put(
+  "/change-password",
+  protect,
+  async (req, res) => {
+    try {
+      const { currentPassword, newPassword } = req.body;
+
+      if (!currentPassword || !newPassword) {
+        return res.status(400).json({
+          message: "Current password and new password are required",
+        });
+      }
+
+      if (newPassword.trim().length < 6) {
+        return res.status(400).json({
+          message: "New password must be at least 6 characters long",
+        });
+      }
+
+      const user = await User.findById(req.user._id);
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+
+      const isMatch = await user.comparePassword(currentPassword);
+      if (!isMatch) {
+        return res.status(400).json({ message: "Current password is incorrect" });
+      }
+
+      user.password = newPassword.trim();
+      await user.save();
+
+      res.status(200).json({ message: "Password updated successfully" });
+    } catch (error) {
+      console.error("Change password error:", error);
+      res.status(500).json({
+        message: error.message || "Failed to update password",
+      });
+    }
+  }
+);
+
 /* =====================================================
    GET ALL USERS - ADMIN ONLY
 ===================================================== */
 
 router.get(
-
   "/admin/all",
-
   protect,
-
   admin,
-
   async (req, res) => {
-
     try {
+      const users = await User.find()
+        .select("-password")
+        .sort({ createdAt: -1 })
+        .lean();
 
-      const users =
-        await User.find()
-
-          .select(
-            "-password"
-          )
-
-          .sort({
-            createdAt: -1,
-          });
-
-
-      res.status(200).json(
-        users
-      );
-
-    } catch (error) {
-
-      console.error(
-        "Fetch users error:",
-        error
-      );
-
-
-      res.status(500).json({
-
-        message:
-          error.message,
-
+      // Aggregate order counts per user
+      const Order = require("../models/Order");
+      const orderCounts = await Order.aggregate([
+        { $group: { _id: "$user", count: { $sum: 1 } } }
+      ]);
+      const countMap = {};
+      orderCounts.forEach((oc) => {
+        if (oc._id) countMap[oc._id.toString()] = oc.count;
       });
 
+      const usersWithOrders = users.map((u) => ({
+        ...u,
+        orderCount: countMap[u._id.toString()] || 0,
+      }));
+
+      res.status(200).json(usersWithOrders);
+    } catch (error) {
+      console.error("Fetch users error:", error);
+      res.status(500).json({
+        message: error.message,
+      });
     }
-
   }
+);
 
+
+/* =====================================================
+   GET SINGLE CUSTOMER BY ID - ADMIN ONLY
+===================================================== */
+router.get(
+  "/admin/:id",
+  protect,
+  admin,
+  async (req, res) => {
+    try {
+      const user = await User.findById(req.params.id).select("-password").lean();
+      if (!user) {
+        return res.status(404).json({ message: "Customer not found" });
+      }
+
+      const Order = require("../models/Order");
+      const customerOrders = await Order.find({ user: user._id })
+        .populate("items.product", "name price image category")
+        .sort({ createdAt: -1 })
+        .lean();
+
+      const totalSpent = customerOrders.reduce(
+        (sum, o) => sum + (o.isPaid ? Number(o.totalPrice || 0) : 0),
+        0
+      );
+
+      res.status(200).json({
+        ...user,
+        orders: customerOrders,
+        orderCount: customerOrders.length,
+        totalSpent,
+      });
+    } catch (error) {
+      res.status(500).json({ message: error.message || "Failed to fetch customer" });
+    }
+  }
 );
 
 

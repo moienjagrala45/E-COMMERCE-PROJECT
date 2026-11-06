@@ -1,159 +1,82 @@
-import { useNavigate } from "react-router-dom";
-import "./About.css";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function About() {
-  const navigate = useNavigate();
-
   return (
-    <div className="about-page">
+    <div className="shopease-dark-root">
+      {/* 1. NAVBAR */}
+      <Navbar />
 
-      {/* NAVBAR */}
-      <nav className="about-navbar">
+      {/* 2. MAIN ABOUT CONTENT */}
+      <main className="about-page-wrapper">
+        {/* SECTION 1 — INTRODUCTION (CLEAN SPLIT LAYOUT) */}
+        <section className="about-intro-section">
+          <div className="about-intro-grid">
+            {/* LEFT: NARRATIVE */}
+            <div className="about-intro-text">
+              <h1 className="about-main-title">
+                Built around a <br />
+                <span className="about-title-accent">simpler way to shop.</span>
+              </h1>
+              <p className="about-lead-desc">
+                ShopEase is a student-built e-commerce experience focused on making product discovery straightforward. It brings technology, fashion, accessories and everyday essentials into one clean and easy-to-use shopping space.
+              </p>
+            </div>
 
-        <div
-          className="about-logo"
-          onClick={() => navigate("/home")}
-        >
-          ShopEase
-        </div>
-
-        <div className="about-nav-links">
-
-          <button onClick={() => navigate("/home")}>
-            Home
-          </button>
-
-          <button onClick={() => navigate("/products")}>
-            Products
-          </button>
-
-          <button className="active-link">
-            About
-          </button>
-
-          <button onClick={() => navigate("/contact")}>
-            Contact
-          </button>
-
-        </div>
-
-      </nav>
-
-
-      {/* HERO SECTION */}
-      <section className="about-hero">
-
-        <p className="about-small-title">
-          ABOUT SHOPEASE
-        </p>
-
-        <h1>
-          Your Simple and Reliable
-          <br />
-          Shopping Destination
-        </h1>
-
-        <p className="about-hero-text">
-          ShopEase is an online shopping platform designed to make
-          shopping simple, convenient, and enjoyable. Explore a variety
-          of products and enjoy a smooth shopping experience in one place.
-        </p>
-
-        <button
-          className="about-explore-btn"
-          onClick={() => navigate("/products")}
-        >
-          Explore Products
-        </button>
-
-      </section>
-
-
-      {/* WHO WE ARE */}
-      <section className="about-content">
-
-        <div className="about-heading">
-
-          <p>WHO WE ARE</p>
-
-          <h2>Shopping Made Simple</h2>
-
-          <span>
-            We focus on creating an easy and convenient online
-            shopping experience for everyone.
-          </span>
-
-        </div>
-
-
-        {/* CARDS */}
-        <div className="about-cards">
-
-          <div className="about-card">
-
-            <div className="about-icon">🛍️</div>
-
-            <h3>Quality Products</h3>
-
-            <p>
-              We aim to provide products that meet customer
-              expectations and deliver great value.
-            </p>
-
+            {/* RIGHT: ONE STRONG WORKSPACE/LIFESTYLE SCENE */}
+            <div className="about-visual-frame">
+              <img
+                src="/about-workspace.png"
+                alt="ShopEase modern development workspace"
+                className="about-hero-img"
+              />
+            </div>
           </div>
-
-
-          <div className="about-card">
-
-            <div className="about-icon">⚡</div>
-
-            <h3>Easy Shopping</h3>
-
-            <p>
-              Browse products, add your favorites to the cart,
-              and place your order with ease.
-            </p>
-
-          </div>
-
-
-          <div className="about-card">
-
-            <div className="about-icon">❤️</div>
-
-            <h3>Customer Satisfaction</h3>
-
-            <p>
-              Our goal is to provide a simple, smooth, and
-              reliable shopping experience for every customer.
-            </p>
-
-          </div>
-
-        </div>
-
-
-        {/* MISSION */}
-        <section className="mission-section">
-
-          <p className="mission-small-title">
-            OUR MISSION
-          </p>
-
-          <h2>
-            Making Online Shopping Better
-          </h2>
-
-          <p>
-            Our mission is to make online shopping easier, faster,
-            and more convenient by providing a simple platform where
-            customers can discover products and shop with confidence.
-          </p>
-
         </section>
 
-      </section>
+        {/* SECTION 2 — WHY SHOPEASE EXISTS (TEXT-FOCUSED SECTION, NO CARD REQUIRED) */}
+        <section className="about-philosophy-section">
+          <div className="about-philosophy-inner">
+            <h2 className="about-section-heading">Why ShopEase exists</h2>
+            <p className="about-philosophy-text">
+              Online stores can easily become crowded with offers, ratings, banners and unnecessary information. ShopEase was designed around a simpler idea — help people find products, understand the important details and move through the shopping process without unnecessary clutter.
+            </p>
+          </div>
+        </section>
 
+        {/* SECTION 3 — PROJECT FOCUS (THREE PURPOSEFUL AREAS) */}
+        <section className="about-focus-section">
+          <div className="about-focus-header">
+            <h2 className="about-section-heading">What we focus on</h2>
+          </div>
+
+          <div className="about-focus-grid">
+            <div className="about-focus-item">
+              <h3 className="about-focus-title">Clarity</h3>
+              <p className="about-focus-desc">
+                Useful product information without unnecessary noise.
+              </p>
+            </div>
+
+            <div className="about-focus-item">
+              <h3 className="about-focus-title">Simplicity</h3>
+              <p className="about-focus-desc">
+                Straightforward navigation from discovery to checkout.
+              </p>
+            </div>
+
+            <div className="about-focus-item">
+              <h3 className="about-focus-title">Consistency</h3>
+              <p className="about-focus-desc">
+                A shopping experience that feels connected across products, cart and account.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* 3. MAIN COMPLETE FOOTER */}
+      <Footer />
     </div>
   );
 }

@@ -18,118 +18,108 @@ router.post(
   protect,
   async (req, res) => {
     try {
-      const { items } = req.body;
-
-      if (
-        !items ||
-        !Array.isArray(items) ||
-        items.length === 0
-      ) {
-        return res.status(400).json({
-          message: "No products found",
-        });
-      }
+      const { items, orderId } = req.body;
 
       let totalPrice = 0;
+      let shopeaseOrder = null;
 
       /* =============================================
-         CALCULATE TOTAL FROM DATABASE
-         NEVER TRUST FRONTEND PRICE
+         CASE A: RETRY PAYMENT FOR EXISTING PENDING ORDER
+         Never trust frontend amount, fetch from database.
       ============================================= */
-
-      for (const item of items) {
-        if (!item.product) {
-          return res.status(400).json({
-            message: "Invalid product",
-          });
-        }
-
-        const quantity =
-          Number(item.quantity) || 1;
-
-        if (quantity < 1) {
-          return res.status(400).json({
-            message: "Invalid quantity",
-          });
-        }
-
-        const product =
-          await Product.findById(
-            item.product
-          );
-
-        if (!product) {
-          return res.status(404).json({
-            message: "Product not found",
-          });
-        }
-
-        if (
-          product.stock === undefined ||
-          product.stock < quantity
-        ) {
-          return res.status(400).json({
-            message:
-              `${product.name} is out of stock`,
-          });
-        }
-
-        totalPrice +=
-          Number(product.price) *
-          quantity;
-      }
-
-
-      /* =============================================
-         RAZORPAY AMOUNT
-         
-         ₹1 = 100 paise
-      ============================================= */
-
-      const amountInPaise =
-        Math.round(
-          totalPrice * 100
-        );
-
-
-      /* =============================================
-         CREATE RAZORPAY ORDER
-      ============================================= */
-
-      const razorpayOrder =
-        await razorpay.orders.create({
-
-          amount:
-            amountInPaise,
-
-          currency:
-            "INR",
-
-          receipt:
-            `shopease_${Date.now()}`,
-
+      if (orderId) {
+        const Order = require("../models/Order");
+        shopeaseOrder = await Order.findOne({
+          _id: orderId,
+          user: req.user._id,
         });
 
+        if (!shopeaseOrder) {
+          return res.status(404).json({
+            message: "Pending order not found",
+          });
+        }
 
-      return res.status(201).json({
+        if (shopeaseOrder.isPaid) {
+          return res.status(400).json({
+            message: "This order has already been paid",
+          });
+        }
 
-        success:
-          true,
+        totalPrice = Number(shopeaseOrder.totalPrice);
+      } 
+      /* =============================================
+         CASE B: INITIAL PAYMENT - VERIFY PRODUCTS & STOCK
+      ============================================= */
+      else {
+        if (
+          !items ||
+          !Array.isArray(items) ||
+          items.length === 0
+        ) {
+          return res.status(400).json({
+            message: "No products found",
+          });
+        }
 
-        keyId:
-          keyId,
+        for (const item of items) {
+          if (!item.product) {
+            return res.status(400).json({
+              message: "Invalid product",
+            });
+          }
 
-        orderId:
-          razorpayOrder.id,
+          const quantity = Number(item.quantity) || 1;
+          if (quantity < 1) {
+            return res.status(400).json({
+              message: "Invalid quantity",
+            });
+          }
 
-        amount:
-          razorpayOrder.amount,
+          const product = await Product.findById(item.product);
+          if (!product) {
+            return res.status(404).json({
+              message: "Product not found",
+            });
+          }
 
-        currency:
-          razorpayOrder.currency,
+          if (
+            product.stock === undefined ||
+            product.stock < quantity
+          ) {
+            return res.status(400).json({
+              message: `${product.name} is out of stock`,
+            });
+          }
 
+          totalPrice += Number(product.price) * quantity;
+        }
+      }
+
+      const amountInPaise = Math.round(totalPrice * 100);
+
+      const razorpayOrder = await razorpay.orders.create({
+        amount: amountInPaise,
+        currency: "INR",
+        receipt: `shopease_${shopeaseOrder ? shopeaseOrder._id.toString().slice(-8) : Date.now()}`,
+        notes: {
+          shopeaseOrderId: shopeaseOrder ? shopeaseOrder._id.toString() : "",
+        },
       });
 
+      if (shopeaseOrder) {
+        shopeaseOrder.razorpayOrderId = razorpayOrder.id;
+        await shopeaseOrder.save();
+      }
+
+      return res.status(201).json({
+        success: true,
+        keyId: keyId,
+        orderId: razorpayOrder.id,
+        amount: razorpayOrder.amount,
+        currency: razorpayOrder.currency,
+        shopeaseOrderId: shopeaseOrder ? shopeaseOrder._id : null,
+      });
     } catch (error) {
 
       console.error(

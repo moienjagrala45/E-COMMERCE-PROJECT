@@ -1,0 +1,635 @@
+[
+  {
+    "_id": "6a96dfe18c933598f256b7b6",
+    "user": "6a9542f604c946d890b64178",
+    "items": [
+      {
+        "product": "6a958c168de0603b517164a1",
+        "quantity": 3,
+        "_id": "6a96dfe18c933598f256b7b7"
+      }
+    ],
+    "totalPrice": 2397,
+    "status": "Processing",
+    "createdAt": "2026-09-01T14:23:29.520Z",
+    "updatedAt": "2026-09-01T14:32:02.163Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a99751ddb8198a45d9d6bd0",
+    "user": "6a9542f604c946d890b64178",
+    "items": [
+      {
+        "product": "6a970acc0b3efb169d32fe57",
+        "quantity": 1,
+        "_id": "6a99751ddb8198a45d9d6bd1"
+      },
+      {
+        "product": "6a970afa0b3efb169d32fe58",
+        "quantity": 1,
+        "_id": "6a99751ddb8198a45d9d6bd2"
+      }
+    ],
+    "totalPrice": 284999,
+    "status": "Shipped",
+    "createdAt": "2026-09-03T13:24:45.050Z",
+    "updatedAt": "2026-09-03T14:22:03.379Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a997bdadb8198a45d9d6bd3",
+    "user": "6a9542f604c946d890b64178",
+    "items": [
+      {
+        "product": "6a970acc0b3efb169d32fe57",
+        "quantity": 1,
+        "_id": "6a997bdadb8198a45d9d6bd4"
+      },
+      {
+        "product": "6a970afa0b3efb169d32fe58",
+        "quantity": 1,
+        "_id": "6a997bdadb8198a45d9d6bd5"
+      }
+    ],
+    "totalPrice": 284999,
+    "status": "Pending",
+    "createdAt": "2026-09-03T13:53:30.345Z",
+    "updatedAt": "2026-09-03T13:53:30.345Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a99b10c644f4d9a69812bb8",
+    "user": "6a9542f604c946d890b64178",
+    "items": [
+      {
+        "product": "6a970acc0b3efb169d32fe57",
+        "quantity": 5,
+        "_id": "6a99b10c644f4d9a69812bb9"
+      },
+      {
+        "product": "6a970afa0b3efb169d32fe58",
+        "quantity": 3,
+        "_id": "6a99b10c644f4d9a69812bba"
+      },
+      {
+        "product": "6a970c1c0b3efb169d32fe5c",
+        "quantity": 1,
+        "_id": "6a99b10c644f4d9a69812bbb"
+      }
+    ],
+    "totalPrice": 1324994,
+    "status": "Pending",
+    "createdAt": "2026-09-03T17:40:28.849Z",
+    "updatedAt": "2026-09-03T17:40:28.849Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9ac695a6292bbea1acbc24",
+    "user": "6a9542f604c946d890b64178",
+    "items": [
+      {
+        "product": "6a970afa0b3efb169d32fe58",
+        "quantity": 1
+      },
+      {
+        "product": "6a970c1c0b3efb169d32fe5c",
+        "quantity": 1
+      }
+    ],
+    "shippingAddress": {
+      "fullName": "Moien Jagrala",
+      "phone": "7977698045",
+      "address": "D-904,AL-SIDDIQUE APT. WESTERN PARK,KASHIGAON,KASHIMIRA,GHODBUNDER ROAD",
+      "city": "MIRA BHAYANDER",
+      "state": "MAHARASHTRA",
+      "pincode": "401107"
+    },
+    "totalPrice": 274999,
+    "status": "Pending",
+    "createdAt": "2026-09-04T13:24:37.987Z",
+    "updatedAt": "2026-09-04T13:24:37.987Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9ace7c35e5ed9ce44f048d",
+    "user": "6a9542f604c946d890b64178",
+    "items": [
+      {
+        "product": "6a970c1c0b3efb169d32fe5c",
+        "quantity": 1
+      },
+      {
+        "product": "6a970e0e0b3efb169d32fe60",
+        "quantity": 1
+      }
+    ],
+    "shippingAddress": {
+      "fullName": "Moien Jagrala",
+      "phone": "7977698045",
+      "address": "D-904,AL-SIDDIQUE APT. WESTERN PARK,KASHIGAON,KASHIMIRA,GHODBUNDER ROAD",
+      "city": "MIRA BHAYANDER",
+      "state": "MAHARASHTRA",
+      "pincode": "401107"
+    },
+    "totalPrice": 274999,
+    "status": "Pending",
+    "createdAt": "2026-09-04T13:58:20.382Z",
+    "updatedAt": "2026-09-04T13:58:20.382Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9ad3bd7102c669fd6e30fe",
+    "user": "6a9542f604c946d890b64178",
+    "items": [
+      {
+        "product": "6a970acc0b3efb169d32fe57",
+        "quantity": 1
+      },
+      {
+        "product": "6a970afa0b3efb169d32fe58",
+        "quantity": 1
+      }
+    ],
+    "shippingAddress": {
+      "fullName": "Moien Jagrala",
+      "phone": "7977698045",
+      "address": "D-904,AL-SIDDIQUE APT. WESTERN PARK,KASHIGAON,KASHIMIRA,GHODBUNDER ROAD",
+      "city": "MIRA BHAYANDER",
+      "state": "MAHARASHTRA",
+      "pincode": "401107"
+    },
+    "totalPrice": 284999,
+    "status": "Pending",
+    "createdAt": "2026-09-04T14:20:45.680Z",
+    "updatedAt": "2026-09-04T14:20:45.680Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9ad43b7102c669fd6e30ff",
+    "user": "6a9542f604c946d890b64178",
+    "items": [
+      {
+        "product": "6a970acc0b3efb169d32fe57",
+        "quantity": 1
+      },
+      {
+        "product": "6a970afa0b3efb169d32fe58",
+        "quantity": 1
+      }
+    ],
+    "shippingAddress": {
+      "fullName": "Moien Jagrala",
+      "phone": "7977698045",
+      "address": "D-904,AL-SIDDIQUE APT. WESTERN PARK,KASHIGAON,KASHIMIRA,GHODBUNDER ROAD",
+      "city": "MIRA BHAYANDER",
+      "state": "MAHARASHTRA",
+      "pincode": "401107"
+    },
+    "totalPrice": 284999,
+    "status": "Pending",
+    "createdAt": "2026-09-04T14:22:51.575Z",
+    "updatedAt": "2026-09-04T14:22:51.575Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9ad61a7102c669fd6e3101",
+    "user": "6a9ad5bb7102c669fd6e3100",
+    "items": [
+      {
+        "product": "6a970acc0b3efb169d32fe57",
+        "quantity": 1
+      },
+      {
+        "product": "6a970afa0b3efb169d32fe58",
+        "quantity": 1
+      }
+    ],
+    "shippingAddress": {
+      "fullName": "Uzma Jagrala",
+      "phone": "8169810718",
+      "address": "904,alsiddique d wing western park \nKashimira",
+      "city": "Mumbai",
+      "state": "Maharashtra",
+      "pincode": "401107"
+    },
+    "totalPrice": 284999,
+    "status": "Pending",
+    "createdAt": "2026-09-04T14:30:50.479Z",
+    "updatedAt": "2026-09-04T14:30:50.479Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9ae2b931348d369db7cac7",
+    "user": "6a9542f604c946d890b64178",
+    "items": [
+      {
+        "product": "6a970acc0b3efb169d32fe57",
+        "quantity": 1
+      },
+      {
+        "product": "6a970afa0b3efb169d32fe58",
+        "quantity": 1
+      }
+    ],
+    "shippingAddress": {
+      "fullName": "Moien Jagrala",
+      "phone": "7977698045",
+      "address": "D-904,AL-SIDDIQUE APT. WESTERN PARK,KASHIGAON,KASHIMIRA,GHODBUNDER ROAD",
+      "city": "MIRA BHAYANDER",
+      "state": "MAHARASHTRA",
+      "pincode": "401107"
+    },
+    "totalPrice": 284999,
+    "status": "Pending",
+    "createdAt": "2026-09-04T15:24:41.975Z",
+    "updatedAt": "2026-09-04T15:24:41.975Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9bc35a450fb1b8381399e4",
+    "user": "6a9542f604c946d890b64178",
+    "items": [
+      {
+        "product": "6a970afa0b3efb169d32fe58",
+        "quantity": 1
+      },
+      {
+        "product": "6a970c1c0b3efb169d32fe5c",
+        "quantity": 1
+      }
+    ],
+    "shippingAddress": {
+      "fullName": "Moien Jagrala",
+      "phone": "7977698045",
+      "address": "D-904,AL-SIDDIQUE APT. WESTERN PARK,KASHIGAON,KASHIMIRA,GHODBUNDER ROAD",
+      "city": "MIRA BHAYANDER",
+      "state": "MAHARASHTRA",
+      "pincode": "401107"
+    },
+    "totalPrice": 274999,
+    "status": "Pending",
+    "createdAt": "2026-09-05T07:23:06.969Z",
+    "updatedAt": "2026-09-05T07:23:06.969Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9bc7de450fb1b8381399e8",
+    "user": "6a9bc793450fb1b8381399e7",
+    "items": [
+      {
+        "product": "6a970acc0b3efb169d32fe57",
+        "quantity": 1
+      }
+    ],
+    "shippingAddress": {
+      "fullName": "qais",
+      "phone": "07304759661",
+      "address": "1601,Magic Square, Malad East, Mumbai-400097.",
+      "city": "Mumbai",
+      "state": "Maharashtra",
+      "pincode": "400097"
+    },
+    "totalPrice": 159999,
+    "status": "Pending",
+    "createdAt": "2026-09-05T07:42:22.778Z",
+    "updatedAt": "2026-09-05T07:42:22.778Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d9a0e3a3b2ffa3e179984",
+    "user": "6a9542f604c946d890b64178",
+    "items": [
+      {
+        "product": "6a970acc0b3efb169d32fe57",
+        "quantity": 1
+      }
+    ],
+    "shippingAddress": {
+      "fullName": "Moien Jagrala",
+      "phone": "7977698045",
+      "address": "D-904,AL-SIDDIQUE APT. WESTERN PARK,KASHIGAON,KASHIMIRA,GHODBUNDER ROAD",
+      "city": "MIRA BHAYANDER",
+      "state": "MAHARASHTRA",
+      "pincode": "401107"
+    },
+    "totalPrice": 159999,
+    "status": "Pending",
+    "createdAt": "2026-09-06T16:51:26.923Z",
+    "updatedAt": "2026-09-06T16:51:26.923Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9e7c66020e172ba035dfe5",
+    "user": "6a985a1b438ea7812045c211",
+    "items": [
+      {
+        "product": "6a9e7b7d020e172ba035dfe4",
+        "quantity": 1
+      }
+    ],
+    "shippingAddress": {
+      "fullName": "Moien Jagrala",
+      "phone": "7977698045",
+      "address": "D-904,AL-SIDDIQUE APT. WESTERN PARK,KASHIMIRA,NEAR JARI MARI MANDIR ROAD",
+      "city": "MIRA BHAYANDER",
+      "state": "MAHARASHTRA",
+      "pincode": "401107"
+    },
+    "totalPrice": 1499,
+    "status": "Pending",
+    "createdAt": "2026-09-07T08:57:10.039Z",
+    "updatedAt": "2026-09-07T08:57:10.039Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9e7c99020e172ba035dfe6",
+    "user": "6a985a1b438ea7812045c211",
+    "items": [
+      {
+        "product": "6a9e7b7d020e172ba035dfe4",
+        "quantity": 1
+      }
+    ],
+    "shippingAddress": {
+      "fullName": "Moien Jagrala",
+      "phone": "7977698045",
+      "address": "D-904,AL-SIDDIQUE APT. WESTERN PARK,KASHIMIRA,NEAR JARI MARI MANDIR ROAD",
+      "city": "MIRA BHAYANDER",
+      "state": "MAHARASHTRA",
+      "pincode": "401107"
+    },
+    "totalPrice": 1499,
+    "status": "Pending",
+    "createdAt": "2026-09-07T08:58:01.280Z",
+    "updatedAt": "2026-09-07T08:58:01.280Z",
+    "__v": 0
+  },
+  {
+    "_id": "6aa7b8d3a950b4971efd11d1",
+    "user": "6a9542f604c946d890b64178",
+    "items": [
+      {
+        "product": "6a970e480b3efb169d32fe61",
+        "quantity": 1
+      },
+      {
+        "product": "6a970e700b3efb169d32fe62",
+        "quantity": 1
+      }
+    ],
+    "shippingAddress": {
+      "fullName": "Moien Jagrala",
+      "phone": "7977698045",
+      "address": "D-904,AL-SIDDIQUE APT. WESTERN PARK,KASHIGAON,KASHIMIRA,GHODBUNDER ROAD",
+      "city": "MIRA BHAYANDER",
+      "state": "MAHARASHTRA",
+      "pincode": "401107"
+    },
+    "totalPrice": 11498,
+    "status": "Processing",
+    "paymentMethod": "Razorpay",
+    "paymentId": "pay_TbrRcicfaX4rVv",
+    "razorpayOrderId": "order_TbrQyMDfSU8PQ6",
+    "isPaid": true,
+    "paidAt": "2026-09-14T09:05:23.869Z",
+    "createdAt": "2026-09-14T09:05:23.880Z",
+    "updatedAt": "2026-09-14T09:05:23.880Z",
+    "__v": 0
+  },
+  {
+    "_id": "6aa7b930a950b4971efd11d2",
+    "user": "6a9542f604c946d890b64178",
+    "items": [
+      {
+        "product": "6a970acc0b3efb169d32fe57",
+        "quantity": 1
+      },
+      {
+        "product": "6a970afa0b3efb169d32fe58",
+        "quantity": 1
+      }
+    ],
+    "shippingAddress": {
+      "fullName": "Moien Jagrala",
+      "phone": "7977698045",
+      "address": "D-904,AL-SIDDIQUE APT. WESTERN PARK,KASHIGAON,KASHIMIRA,GHODBUNDER ROAD",
+      "city": "MIRA BHAYANDER",
+      "state": "MAHARASHTRA",
+      "pincode": "401107"
+    },
+    "totalPrice": 284999,
+    "status": "Processing",
+    "paymentMethod": "Razorpay",
+    "paymentId": "pay_TbrT0KTxhQ1gNG",
+    "razorpayOrderId": "order_TbrSwktSycmJqI",
+    "isPaid": true,
+    "paidAt": "2026-09-14T09:06:56.165Z",
+    "createdAt": "2026-09-14T09:06:56.166Z",
+    "updatedAt": "2026-09-14T09:06:56.166Z",
+    "__v": 0
+  },
+  {
+    "_id": "6aa7c433c50c65837d25bdc8",
+    "user": "6a9542f604c946d890b64178",
+    "items": [
+      {
+        "product": "6a970afa0b3efb169d32fe58",
+        "quantity": 1
+      },
+      {
+        "product": "6a970c1c0b3efb169d32fe5c",
+        "quantity": 1
+      }
+    ],
+    "shippingAddress": {
+      "fullName": "Moien Jagrala",
+      "phone": "7977698045",
+      "address": "D-904,AL-SIDDIQUE APT. WESTERN PARK,KASHIGAON,KASHIMIRA,GHODBUNDER ROAD",
+      "city": "MIRA BHAYANDER",
+      "state": "MAHARASHTRA",
+      "pincode": "401107"
+    },
+    "totalPrice": 274999,
+    "status": "Processing",
+    "paymentMethod": "Razorpay",
+    "paymentId": "pay_TbsGnn1sqeHYhV",
+    "razorpayOrderId": "order_TbsGbKoAy6fWLq",
+    "isPaid": true,
+    "paidAt": "2026-09-14T09:53:55.016Z",
+    "createdAt": "2026-09-14T09:53:55.022Z",
+    "updatedAt": "2026-09-14T09:53:55.022Z",
+    "__v": 0
+  },
+  {
+    "_id": "6aa7c576c50c65837d25bdc9",
+    "user": "6a9542f604c946d890b64178",
+    "items": [
+      {
+        "product": "6a970afa0b3efb169d32fe58",
+        "quantity": 1
+      }
+    ],
+    "shippingAddress": {
+      "fullName": "Moien Jagrala",
+      "phone": "7977698045",
+      "address": "D-904,AL-SIDDIQUE APT. WESTERN PARK,KASHIGAON,KASHIMIRA,GHODBUNDER ROAD",
+      "city": "MIRA BHAYANDER",
+      "state": "MAHARASHTRA",
+      "pincode": "401107"
+    },
+    "totalPrice": 125000,
+    "status": "Processing",
+    "paymentMethod": "Razorpay",
+    "paymentId": "pay_TbsMYpsvSZ9XJa",
+    "razorpayOrderId": "order_TbsMH3PmpEp7pe",
+    "isPaid": true,
+    "paidAt": "2026-09-14T09:59:18.597Z",
+    "createdAt": "2026-09-14T09:59:18.598Z",
+    "updatedAt": "2026-09-14T09:59:18.598Z",
+    "__v": 0
+  },
+  {
+    "_id": "6aa7f321eb11c2e211a1a291",
+    "user": "6a9542f604c946d890b64178",
+    "items": [
+      {
+        "product": "6a970acc0b3efb169d32fe57",
+        "quantity": 2
+      }
+    ],
+    "shippingAddress": {
+      "fullName": "Moien Jagrala",
+      "phone": "7977698045",
+      "address": "D-904,AL-SIDDIQUE APT. WESTERN PARK,KASHIGAON,KASHIMIRA,GHODBUNDER ROAD",
+      "city": "MIRA BHAYANDER",
+      "state": "MAHARASHTRA",
+      "pincode": "401107"
+    },
+    "totalPrice": 319998,
+    "status": "Processing",
+    "paymentMethod": "Razorpay",
+    "paymentId": "pay_TbvgLi9qC5WX9o",
+    "razorpayOrderId": "order_TbvgARUYuylkbH",
+    "isPaid": true,
+    "paidAt": "2026-09-14T13:14:09.191Z",
+    "createdAt": "2026-09-14T13:14:09.197Z",
+    "updatedAt": "2026-09-14T13:14:09.197Z",
+    "__v": 0
+  },
+  {
+    "_id": "6aa7f670397896415060d826",
+    "user": "6a9542f604c946d890b64178",
+    "items": [
+      {
+        "product": "6a970acc0b3efb169d32fe57",
+        "quantity": 2
+      }
+    ],
+    "shippingAddress": {
+      "fullName": "Moien Jagrala",
+      "phone": "7977698045",
+      "address": "D-904,AL-SIDDIQUE APT. WESTERN PARK,KASHIGAON,KASHIMIRA,GHODBUNDER ROAD",
+      "city": "MIRA BHAYANDER",
+      "state": "MAHARASHTRA",
+      "pincode": "401107"
+    },
+    "totalPrice": 319998,
+    "status": "Processing",
+    "paymentMethod": "Razorpay",
+    "paymentId": "pay_TbvvGrx84Q22DQ",
+    "razorpayOrderId": "order_Tbvv6p5X1lZwSB",
+    "isPaid": true,
+    "paidAt": "2026-09-14T13:28:16.043Z",
+    "createdAt": "2026-09-14T13:28:16.048Z",
+    "updatedAt": "2026-09-14T13:28:16.048Z",
+    "__v": 0
+  },
+  {
+    "_id": "6aa7fd443c061c36c6e00997",
+    "user": "6a9542f604c946d890b64178",
+    "items": [
+      {
+        "product": "6a9e7b7d020e172ba035dfe4",
+        "quantity": 2
+      }
+    ],
+    "shippingAddress": {
+      "fullName": "Moien Jagrala",
+      "phone": "7977698045",
+      "address": "D-904,AL-SIDDIQUE APT. WESTERN PARK,KASHIGAON,KASHIMIRA,GHODBUNDER ROAD",
+      "city": "MIRA BHAYANDER",
+      "state": "MAHARASHTRA",
+      "pincode": "401107"
+    },
+    "totalPrice": 2998,
+    "status": "Processing",
+    "paymentMethod": "Razorpay",
+    "paymentId": "pay_TbwQ33QFPGarof",
+    "razorpayOrderId": "order_TbwPuzGY06tyB5",
+    "isPaid": true,
+    "paidAt": "2026-09-14T13:57:24.456Z",
+    "createdAt": "2026-09-14T13:57:24.460Z",
+    "updatedAt": "2026-09-14T13:57:24.460Z",
+    "__v": 0
+  },
+  {
+    "_id": "6aa7fe093c061c36c6e00998",
+    "user": "6a9542f604c946d890b64178",
+    "items": [
+      {
+        "product": "6a970c1c0b3efb169d32fe5c",
+        "quantity": 2
+      }
+    ],
+    "shippingAddress": {
+      "fullName": "Moien Jagrala",
+      "phone": "7977698045",
+      "address": "D-904,AL-SIDDIQUE APT. WESTERN PARK,KASHIGAON,KASHIMIRA,GHODBUNDER ROAD",
+      "city": "MIRA BHAYANDER",
+      "state": "MAHARASHTRA",
+      "pincode": "401107"
+    },
+    "totalPrice": 299998,
+    "status": "Processing",
+    "paymentMethod": "Razorpay",
+    "paymentId": "pay_TbwTUtOEdebqGV",
+    "razorpayOrderId": "order_TbwTR59UklR9fR",
+    "isPaid": true,
+    "paidAt": "2026-09-14T14:00:41.528Z",
+    "createdAt": "2026-09-14T14:00:41.530Z",
+    "updatedAt": "2026-09-14T14:00:41.530Z",
+    "__v": 0
+  },
+  {
+    "_id": "6aa821302785ad7f0ff392f4",
+    "user": "6a9542f604c946d890b64178",
+    "items": [
+      {
+        "product": "6a970afa0b3efb169d32fe58",
+        "quantity": 1
+      },
+      {
+        "product": "6a970acc0b3efb169d32fe57",
+        "quantity": 1
+      }
+    ],
+    "shippingAddress": {
+      "fullName": "Moien Jagrala",
+      "phone": "7977698045",
+      "address": "D-904,AL-SIDDIQUE APT. WESTERN PARK,KASHIGAON,KASHIMIRA,GHODBUNDER ROAD",
+      "city": "MIRA BHAYANDER",
+      "state": "MAHARASHTRA",
+      "pincode": "401107"
+    },
+    "totalPrice": 284999,
+    "status": "Processing",
+    "paymentMethod": "Razorpay",
+    "paymentId": "pay_Tbz1uRYhghh98F",
+    "razorpayOrderId": "order_Tbz1jrvZuIbrqz",
+    "isPaid": true,
+    "paidAt": "2026-09-14T16:30:40.813Z",
+    "createdAt": "2026-09-14T16:30:40.817Z",
+    "updatedAt": "2026-09-14T16:30:40.817Z",
+    "__v": 0
+  }
+]
