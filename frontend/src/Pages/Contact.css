@@ -266,18 +266,26 @@
 
 @media (max-width: 540px) {
   .contact-page-wrapper {
-    padding: 40px 16px 64px;
+    padding: 30px 14px 60px;
   }
 
   .contact-page-title {
-    font-size: 27px;
+    font-size: clamp(24px, 7vw, 27px);
   }
 
   .contact-context-heading {
-    font-size: 22px;
+    font-size: 20px;
+  }
+
+  .contact-form-input,
+  .contact-form-select,
+  .contact-form-textarea {
+    font-size: 16px;
+    min-height: 44px;
   }
 
   .contact-submit-btn {
     width: 100%;
+    min-height: 48px;
   }
 }

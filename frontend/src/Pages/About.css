@@ -674,3 +674,33 @@
     justify-content: center;
   }
 }
+
+@media (max-width: 480px) {
+  .about-hero-section {
+    padding: 40px 16px 36px;
+  }
+
+  .about-hero-title {
+    font-size: clamp(25px, 7.5vw, 30px);
+  }
+
+  .about-hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .about-primary-cta,
+  .about-secondary-cta {
+    width: 100%;
+    min-height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .about-stats-section {
+    padding: 10px 16px 40px;
+  }
+}
